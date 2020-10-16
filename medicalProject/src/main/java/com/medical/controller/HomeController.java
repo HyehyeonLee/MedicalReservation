@@ -20,9 +20,9 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value = "/index")
+	@RequestMapping(value = "/header")
 	public String index() {
 		
-		return "index";
+		return "header";
 	}
 }

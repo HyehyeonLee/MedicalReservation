@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file = "./include_file.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,12 +9,10 @@
 <link href="${pageContext.request.contextPath }/resources/css/header.css" rel="stylesheet" >
 </head>
 <body>
-
-
 	<div class = "sub-menu">
 		<ul>
-			<li><a href="">로그인</a></li>
-			<li><a href="">회원가입</a></li>
+			<li><a href="#">로그인</a></li>
+			<li><a href="#">회원가입</a></li>
 		</ul>
 	</div>
 	<div class = "main-menu">
