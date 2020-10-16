@@ -12,7 +12,7 @@
 	<select id="loginMember" resultType="java.lang.Integer">
 		SELECT COUNT(*) FROM p_member WHERE id=#{id} AND pw=#{pw}
 	</select>
-	<!-- 아이디 중복체크 -->
+	<!-- 아이디 중복체크  -->
 	<select id="idCheck" resultType="int">
 		SELECT COUNT(*) FROM p_member WHERE id=#{id}
 	</select>
