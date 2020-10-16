@@ -8,6 +8,8 @@
 <link href="${pageContext.request.contextPath }/resources/css/header.css" rel="stylesheet" >
 </head>
 <body>
+
+
 	<div class = "sub-menu">
 		<ul>
 			<li><a href="">로그인</a></li>
