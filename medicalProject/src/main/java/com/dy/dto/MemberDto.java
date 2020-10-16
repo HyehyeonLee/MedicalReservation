@@ -1,0 +1,134 @@
+package com.dy.dto;
+
+public class MemberDto {
+	private String id;
+	private String pw;
+	private String name;
+	private String postcode;
+	private String addr;
+	private String detailAddress;
+	private String extraAddress;
+	private String tel;
+	private int birth;
+	private String email;
+	
+	
+	public MemberDto() {}
+
+//	public MemberDto(String id, String pw) {
+//		this.id = id;
+//		this.pw = pw;
+//	}
+
+//	public MemberDto(String id, String pw, String name, String addr, String tel, int birth, String email) {
+//		this.id = id;
+//		this.pw = pw;
+//		this.name = name;
+//		this.addr = addr;
+//		this.tel = tel;
+//		this.birth = birth;
+//		this.email = email;
+//	}
+	
+	
+	public MemberDto(String id, String pw, String name, String postcode, String addr, String detailAddress,
+			String extraAddress, String tel, int birth, String email) {
+		this.id = id;
+		this.pw = pw;
+		this.name = name;
+		this.postcode = postcode;
+		this.addr = addr;
+		this.detailAddress = detailAddress;
+		this.extraAddress = extraAddress;
+		this.tel = tel;
+		this.birth = birth;
+		this.email = email;
+	}
+
+	public MemberDto(String id) {
+		this.id = id;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPw() {
+		return pw;
+	}
+
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAddr() {
+		return addr;
+	}
+
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+
+	public String getPostcode() {
+		return postcode;
+	}
+
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
+	}
+
+	public String getDetailAddress() {
+		return detailAddress;
+	}
+
+	public void setDetailAddress(String detailAddress) {
+		this.detailAddress = detailAddress;
+	}
+
+	public String getExtraAddress() {
+		return extraAddress;
+	}
+
+	public void setExtraAddress(String extraAddress) {
+		this.extraAddress = extraAddress;
+	}
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public int getBirth() {
+		return birth;
+	}
+
+	public void setBirth(int birth) {
+		this.birth = birth;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	
+	
+}
