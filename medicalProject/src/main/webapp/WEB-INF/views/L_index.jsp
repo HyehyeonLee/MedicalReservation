@@ -9,6 +9,6 @@
 <body>
 <h1>main</h1>
 <button onclick="location.href='J_joinform'">회원가입</button>
-<button onclick="location.href='J_loginform'">로그인</button>
+<button onclick="location.href='L_loginform'">로그인</button>
 </body>
 </html>

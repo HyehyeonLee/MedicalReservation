@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-<<<<<<< HEAD
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:c="http://www.springframework.org/schema/c"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-=======
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:c="http://www.springframework.org/schema/c"
 	xmlns:aop="http://www.springframework.org/schema/aop"
->>>>>>> branch 'main' of https://github.com/HyehyeonLee/MedicalReservation.git
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
@@ -21,9 +14,9 @@
 		<!-- DataSource : DB와의 연결을 담당.-->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/medical?characterEncoding=UTF-8&amp;serverTimezone=UTC"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/database_dy?characterEncoding=UTF-8&amp;serverTimezone=UTC"></property>
 		<property name="username" value="root"></property>
-		<property name="password" value="tiger"></property>
+		<property name="password" value="aostlxl1"></property>
 	</bean>
 	<!-- SqlSessionFactory : DB와의 연결과 SQL 실행에 대한 모든것을 가진 가장 중요한 객체-->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -38,12 +31,10 @@
 	<bean id="memberDao" class="com.medical.dao.MemberDaoImpl">
 	</bean>
 	
-<<<<<<< HEAD
 	
+	<!-- NaverLoginBO Class에 대한 Bean설정 추가 
+	<bean id="naverLoginBO" class="com.dy.controller.NaverLoginBO"></bean>
+	-->
 	
 	<context:component-scan base-package="com.medical.service" />
 </beans>
-=======
-	<context:component-scan base-package="com.dy.service" />
-</beans>
->>>>>>> branch 'main' of https://github.com/HyehyeonLee/MedicalReservation.git
