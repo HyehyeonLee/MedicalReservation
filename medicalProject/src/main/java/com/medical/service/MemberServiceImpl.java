@@ -1,10 +1,10 @@
-package com.dy.service;
+package com.medical.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dy.dao.MemberDao;
-import com.dy.dto.MemberDto;
+import com.medical.dao.MemberDao;
+import com.medical.dto.MemberDto;
 
 @Service
 public class MemberServiceImpl implements MemberService{

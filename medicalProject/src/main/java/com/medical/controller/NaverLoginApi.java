@@ -1,4 +1,4 @@
-package com.dy.controller;
+package com.medical.controller;
 
 import com.github.scribejava.core.builder.api.DefaultApi20;
 
