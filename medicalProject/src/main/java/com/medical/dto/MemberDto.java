@@ -11,7 +11,7 @@ public class MemberDto {
 	private String tel;
 	private int birth;
 	private String email;
-	
+	private String grade;
 	
 	public MemberDto() {}
 
@@ -127,6 +127,14 @@ public class MemberDto {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getGrade() {
+		return grade;
+	}
+
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 	
 	
