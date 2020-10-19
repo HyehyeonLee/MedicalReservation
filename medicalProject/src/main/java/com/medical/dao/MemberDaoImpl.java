@@ -11,18 +11,18 @@ public class MemberDaoImpl implements MemberDao {
 
 	@Override
 	public void insertMember(MemberDto dto) {
-		sqlSession.insert("com.dy.mapper.memberMapper.insertMember",dto);
+		sqlSession.insert("com.medical.mapper.memberMapper.insertMember",dto);
 	}
 
 	@Override
 	public boolean loginMember(MemberDto dto) {
-		int lo = sqlSession.selectOne("com.dy.mapper.memberMapper.loginMember", dto);
+		int lo = sqlSession.selectOne("com.medical.mapper.memberMapper.loginMember", dto);
 		return (lo==1)?true:false;
 	}
 
 	@Override
 	public int idCheck(MemberDto dto) {
-		int result = sqlSession.selectOne("com.dy.mapper.memberMapper.idCheck", dto);
+		int result = sqlSession.selectOne("com.medical.mapper.memberMapper.idCheck", dto);
 		return result;
 	}
 	
