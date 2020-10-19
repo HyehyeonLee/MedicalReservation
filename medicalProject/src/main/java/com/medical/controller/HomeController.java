@@ -1,6 +1,7 @@
 package com.medical.controller;
 
 import java.io.IOException;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,18 +19,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-<<<<<<< HEAD
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.google.protobuf.TextFormat.ParseException;
 import com.medical.dto.MemberDto;
 import com.medical.service.MemberService;
 
-=======
->>>>>>> branch 'main' of https://github.com/HyehyeonLee/MedicalReservation.git
 @Controller
 public class HomeController {
-<<<<<<< HEAD
+
 	private NaverLoginBO naverLoginBO;
 	private String apiResult = null;
 	@Autowired
@@ -46,16 +45,15 @@ public class HomeController {
 //	public String loginform() {
 //		return "loginform";
 //	}
+	
 	@RequestMapping("/L_index")
 	public String index() {
 		return "L_index";
-=======
-
+	}
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
 		return "home";
->>>>>>> branch 'main' of https://github.com/HyehyeonLee/MedicalReservation.git
 	}
 	@RequestMapping(value = "/J_joinform", method = RequestMethod.GET)
 	public String joinform(MemberDto dto) {
@@ -184,7 +182,6 @@ public class HomeController {
 		
 	}// end kakaoLogin()
 	
-<<<<<<< HEAD
 //	@RequestMapping(value = "/login.do")
 //	public String getKakaoSignIn(ModelMap model,@RequestParam("code") String code, HttpSession session) throws Exception {
 //		//System.out.println("1");
@@ -218,11 +215,5 @@ public class HomeController {
 			System.out.println("로그아웃 되었습니다.");
 			return "redirect:/L_index";
 		}
-=======
-	@RequestMapping(value = "/header")
-	public String index() {
-		
-		return "header";
-	}
->>>>>>> branch 'main' of https://github.com/HyehyeonLee/MedicalReservation.git
+
 }
