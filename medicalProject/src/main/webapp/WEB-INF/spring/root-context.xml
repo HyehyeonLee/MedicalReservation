@@ -30,7 +30,7 @@
 	</bean>
 	<bean id="memberDao" class="com.medical.dao.MemberDaoImpl">
 	</bean>
-	
+	<bean id="GrahpXml" class="com.medical.xml.GrahpXml"></bean>
 	
 	<!-- NaverLoginBO Class에 대한 Bean설정 추가 
 	<bean id="naverLoginBO" class="com.dy.controller.NaverLoginBO"></bean>

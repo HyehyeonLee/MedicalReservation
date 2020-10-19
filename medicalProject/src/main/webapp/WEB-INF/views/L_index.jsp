@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="./include_file.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,8 +18,75 @@
 		width : 90%; 
 		margin : 0 auto;
 	}
+	table{
+		margin-top:330px;
+		margin-left:310px;
+		width:560px;
+		text-align:center;
+		background-color:#f5fbff;
+	}
+	td{
+		border:1px solid #f5fbff;
+		border-collapse:collapse;
+		padding:7px;
+	}
 </style>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="resources/js/Chart.js"></script>
 </head>
+
+	<table>
+		<c:forEach var="item2" items="${list2 }">
+		<tr>
+			<td style="border-right:inset;">확진자 수<br/>${item2.decideCnt}</td>
+			<td style="border-right:inset;">격리해제 수<br/>${item2.clearCnt}</td>
+			<td>사망자 수<br/>${item2.deathCnt}</td>
+		</tr>
+		</c:forEach>
+	</table>
+	<div>
+		<div>
+			<canvas id="canvas" width="800px" height="200px" style="margin-left:200px;"></canvas>
+		</div>
+	</div>
+	
+<script>
+
+$(function(){
+	
+var chartLabels = [];
+var chartData1 = [];
+
+	<c:forEach var="item" items="${list }">
+		chartLabels.push(${item.stateDt});
+		chartData1.push(${item.decideCnt});
+	</c:forEach>
+
+var lineChartData = {
+	labels : chartLabels,
+	datasets : [
+			{	
+				label : "확진자 수",
+				backgroundColor:"rgba(230, 239, 245)",
+				borderColor : "rgba(111, 143, 163)",
+				pointBackgroundColor : "rgba(224, 34, 34)",
+				pointBorderColor : "rgba(0.0.0)",
+				data : chartData1
+			}
+		]
+	}
+	
+	function createChart(){
+		var ctx = document.getElementById("canvas").getContext("2d");
+		window.myLine = new Chart(ctx, { type:"line", data:lineChartData, options: {responsive:false} }); //바뀐 코드2.0버전
+}							
+	
+	createChart();
+	
+});		
+</script>
+
 <body>
 	<%@ include file="./header.jsp"%>
 	<div class = "search_div">		

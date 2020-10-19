@@ -1,6 +1,7 @@
 package com.medical.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,12 +20,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.google.protobuf.TextFormat.ParseException;
+import com.medical.dto.GrahpDto;
 import com.medical.dto.MemberDto;
 import com.medical.service.MemberService;
+import com.medical.xml.GrahpXml;
+import com.medical.xml.GrahpXml2;
 
 
 @Controller
@@ -42,13 +45,23 @@ public class HomeController {
 	@Autowired
 	MemberService ser;
 	
+	@Autowired
+	GrahpXml grahpXml1;
+	GrahpXml2 grahpXml2;
+	
 //	@RequestMapping("/loginform")
 //	public String loginform() {
 //		return "loginform";
 //	}
 	
 	@RequestMapping("/L_index")
-	public String index() {
+	public String index(Model model) {
+		GrahpXml grahpXml1 = new GrahpXml();
+		GrahpXml2 grahpXml2 = new GrahpXml2();
+		ArrayList<GrahpDto> list = grahpXml1.arrList();
+		model.addAttribute("list",grahpXml1.arrList());
+		ArrayList<GrahpDto> list2 = grahpXml2.arrList();
+		model.addAttribute("list2",grahpXml2.arrList());
 		return "L_index";
 	}
 
