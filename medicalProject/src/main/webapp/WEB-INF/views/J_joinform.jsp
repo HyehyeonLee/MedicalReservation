@@ -124,6 +124,7 @@
 		휴대전화 : <input type="text" name="tel"/><br/>
 		생년월일 : <input type="text" name="birth"/><br/>
 		이메일 : <input type="text" name="email"/><br/>
+		<input type="hidden" value="guset" name="grade"/>
 		<input type="submit" value="회원가입 완료!" onclick="pw()" />
 	</form>
 	 
@@ -132,7 +133,7 @@
         <div class="menu">
             <h1 style="text-align: center;">MENU</h1>
         </div>
-        <form class="insertAction">
+        <form class="insertAction"  >
             <p>
                 <label for="id" name="id" id="id" > 아이디</label></br>
                 <input type="text" name="id" id="id">
