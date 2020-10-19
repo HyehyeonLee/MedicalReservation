@@ -26,6 +26,7 @@ import com.google.protobuf.TextFormat.ParseException;
 import com.medical.dto.MemberDto;
 import com.medical.service.MemberService;
 
+
 @Controller
 public class HomeController {
 
@@ -50,6 +51,7 @@ public class HomeController {
 	public String index() {
 		return "L_index";
 	}
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
@@ -182,6 +184,7 @@ public class HomeController {
 		
 	}// end kakaoLogin()
 	
+
 //	@RequestMapping(value = "/login.do")
 //	public String getKakaoSignIn(ModelMap model,@RequestParam("code") String code, HttpSession session) throws Exception {
 //		//System.out.println("1");
