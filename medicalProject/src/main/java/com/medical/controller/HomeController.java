@@ -195,7 +195,7 @@ public class HomeController {
 //	  model.addAttribute("id", id);
 //	  model.addAttribute("email", email);
 //	  model.addAttribute("nickname", nickname);
-//	  model.addAttribute("image", image);
+//	  model.addAttribute( "image", image);
 //
 //	  return "kakaosuccess";
 //	}
