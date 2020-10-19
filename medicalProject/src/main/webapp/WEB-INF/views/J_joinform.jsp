@@ -133,7 +133,7 @@
         <div class="menu">
             <h1 style="text-align: center;">MENU</h1>
         </div>
-        <form class="insertAction">
+        <form class="insertAction"  >
             <p>
                 <label for="id" name="id" id="id" > 아이디</label></br>
                 <input type="text" name="id" id="id">
