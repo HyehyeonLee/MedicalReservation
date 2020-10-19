@@ -4,10 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>3조 main 페이지</title>
 </head>
 <body>
+<%@ include file="./header.jsp" %>
 <h1>main</h1>
+<h1>${pageContext.request.contextPath }</h1>
 <button onclick="location.href='J_joinform'">회원가입</button>
 <button onclick="location.href='L_loginform'">로그인</button>
 </body>
