@@ -11,8 +11,8 @@
 <body>
 	<div class = "sub-menu">
 		<ul>
-			<li><a href="#">로그인</a></li>
-			<li><a href="#">회원가입</a></li>
+			<li><a href="./L_loginform">로그인</a></li>
+			<li><a href="./J_joinform">회원가입</a></li>
 		</ul>
 	</div>
 	<div class = "main-menu">

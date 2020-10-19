@@ -19,12 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.google.protobuf.TextFormat.ParseException;
 import com.medical.dto.MemberDto;
 import com.medical.service.MemberService;
-
 
 
 @Controller
@@ -46,6 +46,7 @@ public class HomeController {
 //	public String loginform() {
 //		return "loginform";
 //	}
+	
 	@RequestMapping("/L_index")
 	public String index() {
 		return "L_index";
@@ -218,9 +219,4 @@ public class HomeController {
 			return "redirect:/L_index";
 		}
 
-	@RequestMapping(value = "/header")
-	public String index1() {
-		
-		return "header";
-	}
 }

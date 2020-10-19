@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: imfin
 Build-Jdk: 13.0.2
+=======
+Built-By: july4
+Build-Jdk: 14.0.2
+>>>>>>> branch 'main' of https://github.com/HyehyeonLee/MedicalReservation.git
 Created-By: Maven Integration for Eclipse
 
