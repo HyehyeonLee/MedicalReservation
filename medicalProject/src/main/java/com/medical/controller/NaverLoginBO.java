@@ -1,4 +1,4 @@
-package com.dy.controller;
+package com.medical.controller;
 
 import java.io.IOException;
 import java.util.UUID;

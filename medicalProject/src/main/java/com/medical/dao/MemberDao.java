@@ -1,6 +1,6 @@
-package com.dy.dao;
+package com.medical.dao;
 
-import com.dy.dto.MemberDto;
+import com.medical.dto.MemberDto;
 
 public interface MemberDao {
 	void insertMember(MemberDto dto);	//회원가

@@ -1,6 +1,6 @@
-package com.dy.service;
+package com.medical.service;
 
-import com.dy.dto.MemberDto;
+import com.medical.dto.MemberDto;
 
 public interface MemberService {
 	public void insertMemberAction(MemberDto dto);

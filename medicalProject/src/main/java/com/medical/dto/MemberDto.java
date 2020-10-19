@@ -1,4 +1,4 @@
-package com.dy.dto;
+package com.medical.dto;
 
 public class MemberDto {
 	private String id;

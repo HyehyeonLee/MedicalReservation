@@ -1,9 +1,9 @@
-package com.dy.dao;
+package com.medical.dao;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.dy.dto.MemberDto;
+import com.medical.dto.MemberDto;
 
 public class MemberDaoImpl implements MemberDao {
 	@Autowired

@@ -1,16 +1,22 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		<!-- DataSource : DB와의 연결을 담당.-->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/database_dy?characterEncoding=UTF-8&amp;serverTimezone=UTC"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/medical?characterEncoding=UTF-8&amp;serverTimezone=UTC"></property>
 		<property name="username" value="root"></property>
-		<property name="password" value="aostlxl1"></property>
+		<property name="password" value="tiger"></property>
 	</bean>
 	<!-- SqlSessionFactory : DB와의 연결과 SQL 실행에 대한 모든것을 가진 가장 중요한 객체-->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -22,10 +28,10 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
-	<bean id="memberDao" class="com.dy.dao.MemberDaoImpl">
+	<bean id="memberDao" class="com.medical.dao.MemberDaoImpl">
 	</bean>
 	
 	
 	
-	<context:component-scan base-package="com.dy.service" />
+	<context:component-scan base-package="com.medical.service" />
 </beans>
