@@ -12,10 +12,11 @@
 	.search_div{
 		background-color : #B0E0EA;
 		height: 200px;
+		padding-top : 50px;
 	}
 	
 	#search_form{
-		width : 90%; 
+		width : 80%; 
 		margin : 0 auto;
 	}
 	table{
@@ -30,6 +31,14 @@
 		border-collapse:collapse;
 		padding:7px;
 	}
+	
+	#search_option{
+		width : 20%;
+	}
+	
+	#keyword{
+		width : 70%;
+	}
 </style>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -40,11 +49,13 @@
 	<%@ include file="./header.jsp"%>
 	<div class = "search_div">		
 		<form action="./search/filter" method="get" id="search_form" class= "form-inline">
-			<input type="radio" name="spclAdmTyCd" value="A0" class="form-control"/>국민안심병원&nbsp;&nbsp;
-			<input type="radio" name="spclAdmTyCd" value="97" class="form-control"/>코로나검사 실시기관&nbsp;&nbsp;
-			<input type="radio" name="spclAdmTyCd" value="99" class="form-control"/>코로나 선별진료소 운영기관&nbsp;&nbsp;
-			<br />
-			<input type="text" name="keyword" id="keyword" class="form-control" style = "width : 80%;" placeholder = "지역명을 입력해주세요"/> &nbsp;&nbsp;
+			<select name="spclAdmTyCd" class="form-control" id = "search_option">
+				<option value="all">전체</option>
+				<option value="A0">국민안심병원</option>
+				<option value="97">코로나검사 실시기관</option>
+				<option value="99">코로나 선별진료소 운영기관</option>
+			</select>&nbsp;&nbsp;
+			<input type="text" name="keyword" id="keyword" class="form-control" placeholder = "지역명을 입력해주세요"/>&nbsp;&nbsp;
 			<input type="submit" value="검색" class = "btn btn-primary"/>
 		</form>
 	</div>
