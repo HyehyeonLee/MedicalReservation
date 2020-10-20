@@ -1,5 +1,9 @@
 package com.medical.dao;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -25,6 +29,12 @@ public class MemberDaoImpl implements MemberDao {
 		int result = sqlSession.selectOne("com.medical.mapper.memberMapper.idCheck", dto);
 		return result;
 	}
-	
+	@Override
+	public List<String> idSearch(String name, String email){
+		Map<String,Object>map = new HashMap<String,Object>();
+		map.put("name",name);
+		map.put("email",email);
+		return sqlSession.selectList("com.medical.mapper.memberMapper.idSearch",map);
+	}
 
 }

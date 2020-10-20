@@ -45,6 +45,11 @@ public class MemberDto {
 		this.email = email;
 	}
 
+	public MemberDto(String name, String email) {
+		this.name = name;
+		this.email = email;
+	}
+
 	public MemberDto(String id) {
 		this.id = id;
 	}
@@ -135,6 +140,7 @@ public class MemberDto {
 
 	public void setGrade(String grade) {
 		this.grade = grade;
+		
 	}
 	
 	

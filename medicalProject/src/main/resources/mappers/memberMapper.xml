@@ -16,4 +16,8 @@
 	<select id="idCheck" resultType="int">
 		SELECT COUNT(*) FROM medical.p_member WHERE id=#{id}
 	</select>
+	<!-- 아이디 찾기 -->
+	<select id="idSearch" resultType="java.lang.String">
+		SELECT id FROM p_member WHERE name=#{name} AND email=#{email}
+	</select>
 </mapper>

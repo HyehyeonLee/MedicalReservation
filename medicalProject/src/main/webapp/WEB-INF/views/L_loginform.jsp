@@ -34,6 +34,10 @@ pageEncoding="UTF-8"%>
 </c:otherwise>
 </c:choose>
 </center>
+
+<button onclick="location.href='L_idsearch'">아이디찾기</button>
+<button onclick="location.href='L_pwsearch'">비밀번호찾기</button>
+
 <!-- 
 <form action="joinform">
 	아이디 : <input type="text" name="id"><br/>
