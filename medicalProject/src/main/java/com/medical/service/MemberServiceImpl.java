@@ -31,8 +31,8 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 	@Override
-	public List<String> idSearchAction(String name, String email) {
-		List<String> id = dao.idSearch(name, email);
+	public String idSearchAction(String name, String email) {
+		String id = dao.idSearch(name, email);
 		return id;
 	}
 }

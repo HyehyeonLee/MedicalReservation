@@ -30,11 +30,11 @@ public class MemberDaoImpl implements MemberDao {
 		return result;
 	}
 	@Override
-	public List<String> idSearch(String name, String email){
+	public String idSearch(String name, String email){
 		Map<String,Object>map = new HashMap<String,Object>();
 		map.put("name",name);
 		map.put("email",email);
-		return sqlSession.selectList("com.medical.mapper.memberMapper.idSearch",map);
+		return sqlSession.selectOne("com.medical.mapper.memberMapper.idSearch",map);
 	}
 
 }

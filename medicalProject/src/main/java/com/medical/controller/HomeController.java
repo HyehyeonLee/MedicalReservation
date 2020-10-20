@@ -1,6 +1,7 @@
 package com.medical.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -102,10 +103,27 @@ public class HomeController {
 		return "L_idsearch";
 	}
 	@RequestMapping("/idSearchAction")
-	public String idSearchAction(@ModelAttribute("dto") String name,String email) {
-		List<String> dto = ser.idSearchAction(name, email);
+	public String idSearchAction(Model model, String name, String email, HttpSession session) {
+		String id = ser.idSearchAction(name, email);
+		session.setAttribute("demoId",id);
+		model.addAttribute("id", id);
 		return "L_idsearch";
 	}
+	
+//	@RequestMapping("/idSearchAction")
+//	public String idSearchAction(Model model, HttpServletResponse res, String name, String email) {
+//		String id = ser.idSearchAction(name, email);
+//		res.setContentType("text/html; charset=UTF-8");
+//		try {
+//			PrintWriter out = res.getWriter();
+//			out.println("<script>alert('아이디는"+id+"입니다!');</script>");
+//			out.flush();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		return "redirect:/L_idsearch";
+//	}
+	
 	@RequestMapping("/loginAction")
 	public String loginAction(@ModelAttribute("dto") MemberDto dto, HttpSession session) {
 		boolean result = ser.loginMemberAction(dto);
