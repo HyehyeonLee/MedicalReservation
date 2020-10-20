@@ -124,7 +124,7 @@
 		휴대전화 : <input type="text" name="tel"/><br/>
 		생년월일 : <input type="text" name="birth"/><br/>
 		이메일 : <input type="text" name="email"/><br/>
-		<input type="hidden" value="guset" name="grade"/>
+		<input type="hidden" value="guest" name="grade"/>
 		<input type="submit" value="회원가입 완료!" onclick="pw()" />
 	</form>
 	 
