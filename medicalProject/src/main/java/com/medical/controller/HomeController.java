@@ -2,6 +2,7 @@ package com.medical.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +27,7 @@ import com.google.protobuf.TextFormat.ParseException;
 import com.medical.dto.GrahpDto;
 import com.medical.dto.MemberDto;
 import com.medical.service.MemberService;
+import com.medical.service.Sha256;
 import com.medical.xml.GrahpXml;
 import com.medical.xml.GrahpXml2;
 
@@ -76,9 +78,17 @@ public class HomeController {
 	}
 	@RequestMapping("/insertAction")
 	public String joinSuccess(@ModelAttribute("dto") MemberDto dto) {
-		
+		  // 암호 확인
+	      System.out.println("첫번째:" + dto.getPw());
+	      System.out.println("두번째:"+dto.getName());
+	      // 비밀번호 암호화 (sha256
+	      String encryPassword = Sha256.encrypt(dto.getPw());
+	      dto.setPw(encryPassword);
+	      System.out.println("두번째:" + dto.getPw());
+	      System.out.println("세번째 :"+dto.getDetailAddress());
+	      
 		//ser.insertMemberAction(dto);
-		ser.insertMemberAction(dto);
+	//	ser.insertMemberAction(dto);
 		int result=ser.idCheckAction(dto);
 		if(result==1) {
 			return "/J_joinform";
@@ -86,6 +96,15 @@ public class HomeController {
 			ser.insertMemberAction(dto);
 		}
 		return "J_joinSuccess";
+	}
+	@RequestMapping("/L_idsearch")
+	public String idsearch() {
+		return "L_idsearch";
+	}
+	@RequestMapping("/idSearchAction")
+	public String idSearchAction(@ModelAttribute("dto") String name,String email) {
+		List<String> dto = ser.idSearchAction(name, email);
+		return "L_idsearch";
 	}
 	@RequestMapping("/loginAction")
 	public String loginAction(@ModelAttribute("dto") MemberDto dto, HttpSession session) {
@@ -103,6 +122,24 @@ public class HomeController {
 		int result = ser.idCheckAction(dto);
 		return result;
 	}
+	//비밀번호 암호화
+		@RequestMapping(value = "/reg", method = RequestMethod.POST)
+		   public String userRegPass(MemberDto dto, Model model, HttpServletRequest request) {
+			//String encryptPw = URLDecoder.decode(dto.getPw());
+			
+		      // 암호 확인
+		      System.out.println("첫번째:" + dto.getPw());
+		      // 비밀번호 암호화 (sha256
+		      String encryPassword = Sha256.encrypt(dto.getPw());
+		      dto.setPw(encryPassword);
+		      System.out.println("두번째:" + dto.getPw());
+		     //  회원가입 메서드
+		      //ser.insertMemberAction(dto);
+		      // 인증 메일 보내기 메서드
+//		      mailsender.mailSendWithUserKey(userVO.getUser_email(), userVO.getUser_id(), request);
+
+		      return "redirect:/";
+		   }
 	//로그인 첫 화면 요청 메소드
 	@RequestMapping(value = "/L_loginform", method = { RequestMethod.GET, RequestMethod.POST })
 	public String login(Model model, HttpSession session) {

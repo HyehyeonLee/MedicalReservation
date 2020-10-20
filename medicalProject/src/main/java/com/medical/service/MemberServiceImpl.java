@@ -1,5 +1,7 @@
 package com.medical.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,5 +30,9 @@ public class MemberServiceImpl implements MemberService{
 		int result = dao.idCheck(dto);
 		return result;
 	}
-
+	@Override
+	public List<String> idSearchAction(String name, String email) {
+		List<String> id = dao.idSearch(name, email);
+		return id;
+	}
 }
