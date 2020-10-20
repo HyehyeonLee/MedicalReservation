@@ -75,6 +75,24 @@
 		</div>
 	</div>
 	
+   <div class="bottom">
+         <dl class="first">
+            <dd><a href="#">이용약관</a></dd>
+            <dd><a href="#">개인정보 처리방침</a></dd>
+            <dd><a href="#">운영정책</a></dd>
+            <dd><a href="#">고객센터</a></dd> 
+            <dd><a href="#">공지사항</a></dd><br/>
+         </dl>
+         <dl class="second">
+            <dd><p>Copyright © MedicalReservatoin Corp. All rights reserved</p></dd>
+         </dl>         
+      </div>
+   </div>   
+	
+	
+	
+	
+	
 <script>
 
 $(function(){
