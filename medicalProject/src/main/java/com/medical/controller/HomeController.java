@@ -59,7 +59,7 @@ public class HomeController {
 	@Autowired
 	private Email email;
 	
-//	@RequestMapping("/loginform")
+//	@RequestMapping("/l  oginform")
 //	public String loginform() {
 //		return "loginform";
 //	}
