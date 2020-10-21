@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="./include_file.jsp"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,7 +37,6 @@
       width : 70%;
    }
 </style>
-<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="resources/js/Chart.js"></script>
 </head>
@@ -60,7 +56,6 @@
       </form>
    </div>
 </body>
-<<<<<<< HEAD
    <table style="margin: 10px auto 0;">> 
       <c:forEach var="item2" items="${list2 }">
       <tr>
@@ -75,9 +70,6 @@
          <canvas id="canvas" width="800px" height="200px" style="display:block; margin:0 auto;"></canvas>
       </div>
    </div>
-   
-   
-=======
 	<table>
 		<c:forEach var="item2" items="${list2 }">
 		<tr>
@@ -111,7 +103,6 @@
 	
 	
 	
->>>>>>> branch 'main' of https://github.com/HyehyeonLee/MedicalReservation.git
 <script>
 
 $(function(){

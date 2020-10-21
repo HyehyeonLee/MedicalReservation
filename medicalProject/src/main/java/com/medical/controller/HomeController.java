@@ -105,8 +105,7 @@ public class HomeController {
 	@RequestMapping("/idSearchAction")
 	public String idSearchAction(Model model, String name, String email, HttpSession session) {
 		String id = ser.idSearchAction(name, email);
-		session.setAttribute("demoId",id);
-		model.addAttribute("id", id);
+		model.addAttribute("find_id", id);
 		return "L_idsearch";
 	}
 	
