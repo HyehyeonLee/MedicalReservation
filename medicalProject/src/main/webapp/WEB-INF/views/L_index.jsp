@@ -60,6 +60,7 @@
       </form>
    </div>
 </body>
+<<<<<<< HEAD
    <table style="margin: 10px auto 0;">> 
       <c:forEach var="item2" items="${list2 }">
       <tr>
@@ -76,6 +77,41 @@
    </div>
    
    
+=======
+	<table>
+		<c:forEach var="item2" items="${list2 }">
+		<tr>
+			<td style="border-right:inset;">확진자 수<br/>${item2.decideCnt}</td>
+			<td style="border-right:inset;">격리해제 수<br/>${item2.clearCnt}</td>
+			<td>사망자 수<br/>${item2.deathCnt}</td>
+		</tr>
+		</c:forEach>
+	</table>
+	<div>
+		<div>
+			<canvas id="canvas" width="800px" height="200px" style="margin-left:200px;"></canvas>
+		</div>
+	</div>
+	
+   <div class="bottom">
+         <dl class="first">
+            <dd><a href="#">이용약관</a></dd>
+            <dd><a href="#">개인정보 처리방침</a></dd>
+            <dd><a href="#">운영정책</a></dd>
+            <dd><a href="#">고객센터</a></dd> 
+            <dd><a href="#">공지사항</a></dd><br/>
+         </dl>
+         <dl class="second">
+            <dd><p>Copyright © MedicalReservatoin Corp. All rights reserved</p></dd>
+         </dl>         
+      </div>
+   </div>   
+	
+	
+	
+	
+	
+>>>>>>> branch 'main' of https://github.com/HyehyeonLee/MedicalReservation.git
 <script>
 
 $(function(){
