@@ -32,6 +32,29 @@
 	</bean>
 	<bean id="GrahpXml" class="com.medical.xml.GrahpXml"></bean>
 	
+	<!-- gmail -->
+    <bean id="mailSender" class ="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="username" value="adoo9333@gmail.com" />
+        <property name="password" value="dacbkutcelgsnqct" />
+       
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+                <prop key="mail.smtp.auth">true</prop>
+               
+               
+            </props>
+        </property>
+       
+	    </bean>
+	    <bean id="email" class="com.medical.email.Email">
+	    </bean>
+	    <bean id="emailSender" class="com.medical.email.EmailSender">
+	 </bean>
+	
 	<!-- NaverLoginBO Class에 대한 Bean설정 추가 
 	<bean id="naverLoginBO" class="com.dy.controller.NaverLoginBO"></bean>
 	-->

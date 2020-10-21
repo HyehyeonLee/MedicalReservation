@@ -26,4 +26,8 @@
 	<select id="idSearch" resultType="java.lang.String">
 		SELECT id FROM p_member WHERE name=#{name} AND email=#{email}
 	</select>
+	<!-- pw 찾기 -->
+	<select id="pwSearch" resultType="java.lang.String">
+		SELECT pw FROM p_member WHERE id=#{id} AND email=#{email}
+	</select>
 </mapper>

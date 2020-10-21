@@ -1,10 +1,9 @@
 package com.medical.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +14,7 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,6 +27,8 @@ import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.google.protobuf.TextFormat.ParseException;
 import com.medical.dto.GrahpDto;
 import com.medical.dto.MemberDto;
+import com.medical.email.Email;
+import com.medical.email.EmailSender;
 import com.medical.service.MemberService;
 import com.medical.service.Sha256;
 import com.medical.xml.GrahpXml;
@@ -51,6 +53,11 @@ public class HomeController {
 	@Autowired
 	GrahpXml grahpXml1;
 	GrahpXml2 grahpXml2;
+	
+	@Autowired
+	private EmailSender emailSender;
+	@Autowired
+	private Email email;
 	
 //	@RequestMapping("/loginform")
 //	public String loginform() {
@@ -166,6 +173,32 @@ public class HomeController {
 
 		      return "redirect:/";
 		   }
+		@RequestMapping("/L_pwsearch")
+		public String pwSearch() {
+			return "L_pwsearch";
+		}
+		//email
+		@RequestMapping("/sendpw.do")
+	    public ModelAndView sendEmailAction (@RequestParam Map<String, Object> paramMap, ModelMap model) throws Exception {
+	        ModelAndView mav;
+	        String id=(String) paramMap.get("id");
+	        System.out.println(id);
+	        String e_mail=(String) paramMap.get("email");
+	        System.out.println(e_mail);
+	        String pw=ser.getPw(paramMap);
+	        System.out.println(pw);
+	        if(pw!=null) {
+	        	email.setContent("비밀번호는 "+pw+" 입니다.");
+	            email.setReceiver(e_mail);
+	            email.setSubject(id+"님 비밀번호 찾기 메일입니다.");
+	            emailSender.SendEmail(email);
+	            mav= new ModelAndView("redirect:/L_loginform");
+	            return mav;
+	        }else {
+	            mav=new ModelAndView("redirect:/L_index");
+	            return mav;
+	        }
+	    }
 	//로그인 첫 화면 요청 메소드
 	@RequestMapping(value = "/L_loginform", method = { RequestMethod.GET, RequestMethod.POST })
 	public String login(Model model, HttpSession session) {

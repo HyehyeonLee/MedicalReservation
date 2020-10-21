@@ -42,5 +42,9 @@ public class MemberDaoImpl implements MemberDao {
 		int result = sqlSession.selectOne("com.medical.mapper.memberMapper.emailCheck", dto);
 		return result;
 	}
+	@Override
+	public String getPw(Map<String, Object> paramMap) {
+		return sqlSession.selectOne("com.medical.mapper.memberMapper.pwSearch", paramMap);
+	}
 
 }

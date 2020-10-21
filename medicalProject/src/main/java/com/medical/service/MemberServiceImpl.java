@@ -1,6 +1,7 @@
 package com.medical.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,5 +41,9 @@ public class MemberServiceImpl implements MemberService{
 	public int emailCheckAction(MemberDto dto) {
 		int result = dao.emailCheck(dto);
 		return result;
+	}
+	@Override
+	public String getPw(Map<String, Object> paramMap) {
+		return dao.getPw(paramMap);
 	}
 }
