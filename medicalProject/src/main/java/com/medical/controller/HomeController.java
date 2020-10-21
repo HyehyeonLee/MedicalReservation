@@ -139,6 +139,15 @@ public class HomeController {
 		int result = ser.idCheckAction(dto);
 		return result;
 	}
+	
+	@ResponseBody
+	@RequestMapping("/emailCheckAction")
+	public int emailCheckAction(MemberDto dto) {
+		int email_result = ser.emailCheckAction(dto);
+		return email_result;
+	}
+	
+	
 	//비밀번호 암호화
 		@RequestMapping(value = "/reg", method = RequestMethod.POST)
 		   public String userRegPass(MemberDto dto, Model model, HttpServletRequest request) {

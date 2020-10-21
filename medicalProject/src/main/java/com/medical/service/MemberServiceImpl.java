@@ -35,4 +35,10 @@ public class MemberServiceImpl implements MemberService{
 		String id = dao.idSearch(name, email);
 		return id;
 	}
+
+	@Override
+	public int emailCheckAction(MemberDto dto) {
+		int result = dao.emailCheck(dto);
+		return result;
+	}
 }

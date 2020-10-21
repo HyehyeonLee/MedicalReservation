@@ -37,4 +37,10 @@ public class MemberDaoImpl implements MemberDao {
 		return sqlSession.selectOne("com.medical.mapper.memberMapper.idSearch",map);
 	}
 
+	@Override
+	public int emailCheck(MemberDto dto) {
+		int result = sqlSession.selectOne("com.medical.mapper.memberMapper.emailCheck", dto);
+		return result;
+	}
+
 }

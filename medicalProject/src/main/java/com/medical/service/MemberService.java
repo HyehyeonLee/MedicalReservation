@@ -9,4 +9,5 @@ public interface MemberService {
 	public boolean loginMemberAction(MemberDto dto);
 	public int idCheckAction(MemberDto dto);
 	public String idSearchAction(String name,String email);
+	public int emailCheckAction(MemberDto dto);
 }
