@@ -12,8 +12,8 @@
    <div class="wrap">
         <div class = "sub-menu">
             <ul>
-                <li><a href="#">로그인</a></li>   
-                <li><a href="#">회원가입</a></li>
+                <li><a href="${pageContext.request.contextPath }/L_loginform">로그인</a></li>   
+                <li><a href="${pageContext.request.contextPath }/L_joinform">회원가입</a></li>
             </ul>
         </div>
         
