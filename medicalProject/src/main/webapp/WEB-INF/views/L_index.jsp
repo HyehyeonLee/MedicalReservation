@@ -56,7 +56,7 @@
       </form>
    </div>
 </body>
-   <table style="margin: 10px auto 0;">> 
+   <table style="margin: 10px auto 0;">
       <c:forEach var="item2" items="${list2 }">
       <tr>
          <td style="border-right:inset;">확진자 수<br/>${item2.decideCnt}</td>
@@ -98,10 +98,6 @@
          </dl>         
       </div>
    </div>   
-	
-	
-	
-	
 	
 <script>
 
