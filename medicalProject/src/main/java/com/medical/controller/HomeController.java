@@ -3,6 +3,7 @@ package com.medical.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +14,7 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,7 +27,10 @@ import com.github.scribejava.core.model.OAuth2AccessToken;
 import com.google.protobuf.TextFormat.ParseException;
 import com.medical.dto.GrahpDto;
 import com.medical.dto.MemberDto;
+import com.medical.email.Email;
+import com.medical.email.EmailSender;
 import com.medical.service.MemberService;
+import com.medical.service.Sha256;
 import com.medical.xml.GrahpXml;
 import com.medical.xml.GrahpXml2;
 
@@ -49,7 +54,12 @@ public class HomeController {
 	GrahpXml grahpXml1;
 	GrahpXml2 grahpXml2;
 	
-//	@RequestMapping("/loginform")
+	@Autowired
+	private EmailSender emailSender;
+	@Autowired
+	private Email email;
+	
+//	@RequestMapping("/l  oginform")
 //	public String loginform() {
 //		return "loginform";
 //	}
@@ -76,9 +86,17 @@ public class HomeController {
 	}
 	@RequestMapping("/insertAction")
 	public String joinSuccess(@ModelAttribute("dto") MemberDto dto) {
-		
+		  // 암호 확인
+	      System.out.println("첫번째:" + dto.getPw());
+	      System.out.println("두번째:"+dto.getName());
+	      // 비밀번호 암호화 (sha256
+	      String encryPassword = Sha256.encrypt(dto.getPw());
+	      dto.setPw(encryPassword);
+	      System.out.println("두번째:" + dto.getPw());
+	      System.out.println("세번째 :"+dto.getDetailAddress());
+	      
 		//ser.insertMemberAction(dto);
-		ser.insertMemberAction(dto);
+	//	ser.insertMemberAction(dto);
 		int result=ser.idCheckAction(dto);
 		if(result==1) {
 			return "/J_joinform";
@@ -87,6 +105,31 @@ public class HomeController {
 		}
 		return "J_joinSuccess";
 	}
+	@RequestMapping("/L_idsearch")
+	public String idsearch() {
+		return "L_idsearch";
+	}
+	@RequestMapping("/idSearchAction")
+	public String idSearchAction(Model model, String name, String email, HttpSession session) {
+		String id = ser.idSearchAction(name, email);
+		model.addAttribute("find_id", id);
+		return "L_idsearch";
+	}
+	
+//	@RequestMapping("/idSearchAction")
+//	public String idSearchAction(Model model, HttpServletResponse res, String name, String email) {
+//		String id = ser.idSearchAction(name, email);
+//		res.setContentType("text/html; charset=UTF-8");
+//		try {
+//			PrintWriter out = res.getWriter();
+//			out.println("<script>alert('아이디는"+id+"입니다!');</script>");
+//			out.flush();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		return "redirect:/L_idsearch";
+//	}
+	
 	@RequestMapping("/loginAction")
 	public String loginAction(@ModelAttribute("dto") MemberDto dto, HttpSession session) {
 		boolean result = ser.loginMemberAction(dto);
@@ -103,6 +146,59 @@ public class HomeController {
 		int result = ser.idCheckAction(dto);
 		return result;
 	}
+	
+	@ResponseBody
+	@RequestMapping("/emailCheckAction")
+	public int emailCheckAction(MemberDto dto) {
+		int email_result = ser.emailCheckAction(dto);
+		return email_result;
+	}
+	
+	
+	//비밀번호 암호화
+		@RequestMapping(value = "/reg", method = RequestMethod.POST)
+		   public String userRegPass(MemberDto dto, Model model, HttpServletRequest request) {
+			//String encryptPw = URLDecoder.decode(dto.getPw());
+			
+		      // 암호 확인
+		      System.out.println("첫번째:" + dto.getPw());
+		      // 비밀번호 암호화 (sha256
+		      String encryPassword = Sha256.encrypt(dto.getPw());
+		      dto.setPw(encryPassword);
+		      System.out.println("두번째:" + dto.getPw());
+		     //  회원가입 메서드
+		      //ser.insertMemberAction(dto);
+		      // 인증 메일 보내기 메서드
+//		      mailsender.mailSendWithUserKey(userVO.getUser_email(), userVO.getUser_id(), request);
+
+		      return "redirect:/";
+		   }
+		@RequestMapping("/L_pwsearch")
+		public String pwSearch() {
+			return "L_pwsearch";
+		}
+		//email
+		@RequestMapping("/sendpw.do")
+	    public ModelAndView sendEmailAction (@RequestParam Map<String, Object> paramMap, ModelMap model) throws Exception {
+	        ModelAndView mav;
+	        String id=(String) paramMap.get("id");
+	        System.out.println(id);
+	        String e_mail=(String) paramMap.get("email");
+	        System.out.println(e_mail);
+	        String pw=ser.getPw(paramMap);
+	        System.out.println(pw);
+	        if(pw!=null) {
+	        	email.setContent("비밀번호는 "+pw+" 입니다.");
+	            email.setReceiver(e_mail);
+	            email.setSubject(id+"님 비밀번호 찾기 메일입니다.");
+	            emailSender.SendEmail(email);
+	            mav= new ModelAndView("redirect:/L_loginform");
+	            return mav;
+	        }else {
+	            mav=new ModelAndView("redirect:/L_index");
+	            return mav;
+	        }
+	    }
 	//로그인 첫 화면 요청 메소드
 	@RequestMapping(value = "/L_loginform", method = { RequestMethod.GET, RequestMethod.POST })
 	public String login(Model model, HttpSession session) {

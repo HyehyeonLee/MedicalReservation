@@ -9,10 +9,10 @@ public class MemberDto {
 	private String detailAddress;
 	private String extraAddress;
 	private String tel;
-	private int birth;
+	private String birth;
 	private String email;
 	private String grade;
-	
+
 	public MemberDto() {}
 
 //	public MemberDto(String id, String pw) {
@@ -32,7 +32,7 @@ public class MemberDto {
 	
 	
 	public MemberDto(String id, String pw, String name, String postcode, String addr, String detailAddress,
-			String extraAddress, String tel, int birth, String email) {
+			String extraAddress, String tel, String birth, String email) {
 		this.id = id;
 		this.pw = pw;
 		this.name = name;
@@ -42,6 +42,11 @@ public class MemberDto {
 		this.extraAddress = extraAddress;
 		this.tel = tel;
 		this.birth = birth;
+		this.email = email;
+	}
+
+	public MemberDto(String name, String email) {
+		this.name = name;
 		this.email = email;
 	}
 
@@ -113,11 +118,13 @@ public class MemberDto {
 		this.tel = tel;
 	}
 
-	public int getBirth() {
+	
+
+	public String getBirth() {
 		return birth;
 	}
 
-	public void setBirth(int birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 
@@ -135,6 +142,7 @@ public class MemberDto {
 
 	public void setGrade(String grade) {
 		this.grade = grade;
+		
 	}
 	
 	

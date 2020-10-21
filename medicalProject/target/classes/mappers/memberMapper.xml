@@ -6,14 +6,28 @@
 <mapper namespace="com.medical.mapper.memberMapper">
 	<!-- 회원가입 -->
 	<insert id="insertMember">
-		INSERT INTO medical(id,pw,name,postcode,addr,detailAddress,extraAddress,tel,birth,email) VALUES (#{id},#{pw},#{name},#{postcode},#{addr},#{detailAddress},#{extraAddress},#{tel},#{birth},#{email})
+		INSERT INTO medical.p_member(id,pw,name,postcode,addr,detailAddress,extraAddress,tel,birth,email) VALUES (#{id},#{pw},#{name},#{postcode},#{addr},#{detailAddress},#{extraAddress},#{tel},#{birth},#{email})
 	</insert>
 	<!-- 로그인 -->
 	<select id="loginMember" resultType="java.lang.Integer">
-		SELECT COUNT(*) FROM medical WHERE id=#{id} AND pw=#{pw}
+		SELECT COUNT(*) FROM medical.p_member WHERE id=#{id} AND pw=#{pw}
 	</select>
 	<!-- 아이디 중복체크  -->
 	<select id="idCheck" resultType="int">
-		SELECT COUNT(*) FROM medical WHERE id=#{id}
+		SELECT COUNT(*) FROM medical.p_member WHERE id=#{id}
+	</select>
+	
+	<!-- 이메일 중복체크  -->
+	<select id="emailCheck" resultType="int">
+		SELECT COUNT(*) FROM medical.p_member WHERE email = #{email}
+	</select>
+	
+	<!-- 아이디 찾기 -->
+	<select id="idSearch" resultType="java.lang.String">
+		SELECT id FROM p_member WHERE name=#{name} AND email=#{email}
+	</select>
+	<!-- pw 찾기 -->
+	<select id="pwSearch" resultType="java.lang.String">
+		SELECT pw FROM p_member WHERE id=#{id} AND email=#{email}
 	</select>
 </mapper>

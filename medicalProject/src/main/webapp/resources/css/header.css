@@ -1,65 +1,69 @@
 @charset "UTF-8";
 
-body{
-	margin : 0px;
-	padding : 0px;
+html,body{
+   margin : 0px;
+   padding : 0px;
+    overflow-x: hidden;
 }
 
 .sub-menu{
-	height : 40px;
-	margin-right : 0px;
-	width : 100%;
-	background-color: #4EB7DC;
+   height : 40px;
+   margin-right : 0px;
+   width : 100%;
+   background-color: #4EB7DC;
 }
 
 .sub-menu ul{
-	list-style : none;
-	float : right;
-	margin : 0;
+   list-style : none;
+   float : right;
+   margin : 0;
 }
 
 .sub-menu ul li{
-	display : inline;
-	margin : 0px;
-	padding : 10px 30px;
-	border-right: 1px solid white;
-	font-size : 10px;
+   display : inline;
+   margin : 0px;
+   padding : 10px 30px;
+   border-right: 1px solid white;
+   font-size : 10px;
 }
 
 .sub-menu ul li a{
-	text-decoration : none;
-	color : white;
+   text-decoration : none;
+   color : white;
 }
-
 .main-menu{
-	height : 70px;
-	margin-top : 40px;
-	margin : 0 auto;
-	padding : 10px;
-	width : 100%;
-	background-color: #4EB7DC;
-}
+    width: 100%;
+    height: 90px;
+    background-color: #4EB7DC;
+    }
 
 .main-menu ul{
-	list-style : none;
-	float : right;
-	width : calc(100% - 500px);
-	margin : 0 auto;
+   list-style : none;
+   float : right;
+    width: 100%;
+    height: 100%;
+    margin : 0 auto;
 }
 
 .main-menu ul li{
-	display : inline;
-	margin : 0px;
-	padding : 20px 40px;
-	font-size : 20px;
+    width: 24.85%;
+    height: 100%;
+    float: left;
+   font-size : 20px;
+    margin-top:20px ;
 }
 
 .main-menu ul li a{
-	text-decoration: none;
-	color : white;
+    display: inline-block;
+    text-align: center;
+    width: 100px;
+    height: 50px;
+    text-decoration: none;
+   color : white;
+    position: relative;
+    left: 150px;
 }
 
 .main-menu ul li a:hover{
-	color : #0099CB;
+   color : #0099CB;
 }
-
