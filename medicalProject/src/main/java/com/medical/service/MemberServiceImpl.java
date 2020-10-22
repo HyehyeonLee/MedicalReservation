@@ -43,7 +43,8 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 	@Override
-	public String getPw(Map<String, Object> paramMap) {
-		return dao.getPw(paramMap);
+	public int setPw(Map<String, String> paramMap) {
+		return dao.updatePw(paramMap);
 	}
+
 }

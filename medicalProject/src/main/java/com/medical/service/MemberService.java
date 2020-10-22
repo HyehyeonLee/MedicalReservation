@@ -11,5 +11,5 @@ public interface MemberService {
 	public int idCheckAction(MemberDto dto);
 	public String idSearchAction(String name,String email);
 	public int emailCheckAction(MemberDto dto);
-	public String getPw(Map<String, Object> paramMap);
+	public int setPw(Map<String,String> paramMap);
 }

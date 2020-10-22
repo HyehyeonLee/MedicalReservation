@@ -11,5 +11,5 @@ public interface MemberDao {
 	int idCheck(MemberDto dto);		//아이디 중복체크
 	int emailCheck(MemberDto dto);
 	String idSearch(String name, String email);	//아이디 찾기
-	public String getPw(Map<String, Object> paramMap);	//패스워드 찾기
+	public int updatePw(Map<String,String> paramMap);	//임시 비밀번호 전송&암호화
 }

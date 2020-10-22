@@ -43,8 +43,7 @@ public class MemberDaoImpl implements MemberDao {
 		return result;
 	}
 	@Override
-	public String getPw(Map<String, Object> paramMap) {
-		return sqlSession.selectOne("com.medical.mapper.memberMapper.pwSearch", paramMap);
+	public int updatePw(Map<String,String> paramMap) {
+		return sqlSession.update("com.medical.mapper.memberMapper.pwSearch",paramMap);
 	}
-
 }

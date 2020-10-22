@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -177,6 +178,54 @@ public class HomeController {
 		public String pwSearch() {
 			return "L_pwsearch";
 		}
+		//email
+		@RequestMapping("/sendpw.do")
+	    public ModelAndView sendEmailAction (@RequestParam Map<String, String> paramMap, ModelMap model,MemberDto dto,Model model1) throws Exception {
+	        ModelAndView mav;
+	        String id=(String) paramMap.get("id");
+	        System.out.println(id);
+	        String e_mail=(String) paramMap.get("email");
+	        System.out.println(e_mail);
+	        
+	        StringBuffer temp =new StringBuffer();
+	        Random rnd = new Random();
+	        for(int i=0;i<10;i++)
+	        {
+	            int rIndex = rnd.nextInt(3);
+	            switch (rIndex) {
+	            case 0:
+	                // a-z
+	                temp.append((char) ((int) (rnd.nextInt(26)) + 97));
+	                break;
+	            case 1:
+	                // A-Z
+	                temp.append((char) ((int) (rnd.nextInt(26)) + 65));
+	                break;
+	            case 2:
+	                // 0-9
+	                temp.append((rnd.nextInt(10)));
+	                break;
+	            }
+	        }
+	        String encryPassword = Sha256.encrypt(temp.toString());
+	        
+	        System.out.println("temp:"+temp);   // UKIiu12jr3
+	        paramMap.put ("pw", encryPassword);
+	        int pw=(int)ser.setPw(paramMap);
+	        if(pw!=0) {
+	            email.setContent("비밀번호는 "+temp+" 입니다.");
+	            email.setReceiver(e_mail);
+	            email.setSubject(id+"님 비밀번호 찾기 메일입니다.");
+	            emailSender.SendEmail(email);
+	            mav= new ModelAndView("redirect:/L_loginform");
+	            return mav;
+	        }else {
+	            mav=new ModelAndView("redirect:/L_index");
+	            return mav;
+	        }
+	        
+	    }
+
 		//email
 		@RequestMapping("/sendpw.do")
 	    public ModelAndView sendEmailAction (@RequestParam Map<String, Object> paramMap, ModelMap model) throws Exception {

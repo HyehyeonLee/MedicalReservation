@@ -27,7 +27,7 @@
 		SELECT id FROM p_member WHERE name=#{name} AND email=#{email}
 	</select>
 	<!-- pw 찾기 -->
-	<select id="pwSearch" resultType="java.lang.String">
-		SELECT pw FROM p_member WHERE id=#{id} AND email=#{email}
-	</select>
+	<update id="pwSearch">
+		UPDATE p_member SET pw=#{pw} WHERE id=#{id} AND email=#{email}
+	</update>
 </mapper>
