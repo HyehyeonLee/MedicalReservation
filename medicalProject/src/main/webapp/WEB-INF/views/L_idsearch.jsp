@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file = "./include_file.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <c:if test="${not empty find_id}">
 	<script>
 		alert('아이디 : ${find_id}');

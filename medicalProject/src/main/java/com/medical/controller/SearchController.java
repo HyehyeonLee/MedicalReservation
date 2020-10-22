@@ -27,7 +27,7 @@ public class SearchController {
 		
 		//가져온 기관 정보 리스트에서 검색어가 있는 리스트만 필터링
 		ArrayList<HospitalDto> filterList = new ArrayList<HospitalDto>();
-		keyword = getHospitalXml.keywordMath(keyword);
+		keyword = getHospitalXml.keywordMatch(keyword);
 		System.out.println(keyword);
 		for(int i = 0; i < list.size(); i++) {
 			if((list.get(i).getAddr()).contains(keyword)) {

@@ -90,11 +90,14 @@ public class GetHospitalXml {
 		return allList;
 	}
 	
-	public String keywordMath(String keyword) {
+	public String keywordMatch(String keyword) {
 		switch (keyword) {
 		case "서울특별시":
 		case "서울시":
 			return "서울";
+		case "인천광역시":
+		case "인천시":
+			return "인천";
 		case "경기도":
 			return "경기";
 		case "연천":

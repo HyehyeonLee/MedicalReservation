@@ -1,7 +1,10 @@
 package com.medical.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
@@ -69,10 +72,17 @@ public class HomeController {
 	public String index(Model model) {
 		GrahpXml grahpXml1 = new GrahpXml();
 		GrahpXml2 grahpXml2 = new GrahpXml2();
-		ArrayList<GrahpDto> list = grahpXml1.arrList();
-		model.addAttribute("list",grahpXml1.arrList());
-		ArrayList<GrahpDto> list2 = grahpXml2.arrList();
-		model.addAttribute("list2",grahpXml2.arrList());
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		cal.add(Calendar.DATE, -1);
+		String end = df.format(cal.getTime());
+		cal.add(Calendar.DATE, -5);
+		String start = df.format(cal.getTime());
+		ArrayList<GrahpDto> list = grahpXml1.arrList(start,end);
+		model.addAttribute("list",list);
+		ArrayList<GrahpDto> list2 = grahpXml2.arrList(end,end);
+		model.addAttribute("list2",list2);
 		return "L_index";
 	}
 
@@ -226,28 +236,7 @@ public class HomeController {
 	        
 	    }
 
-		//email
-		@RequestMapping("/sendpw.do")
-	    public ModelAndView sendEmailAction (@RequestParam Map<String, Object> paramMap, ModelMap model) throws Exception {
-	        ModelAndView mav;
-	        String id=(String) paramMap.get("id");
-	        System.out.println(id);
-	        String e_mail=(String) paramMap.get("email");
-	        System.out.println(e_mail);
-	        String pw=ser.getPw(paramMap);
-	        System.out.println(pw);
-	        if(pw!=null) {
-	        	email.setContent("비밀번호는 "+pw+" 입니다.");
-	            email.setReceiver(e_mail);
-	            email.setSubject(id+"님 비밀번호 찾기 메일입니다.");
-	            emailSender.SendEmail(email);
-	            mav= new ModelAndView("redirect:/L_loginform");
-	            return mav;
-	        }else {
-	            mav=new ModelAndView("redirect:/L_index");
-	            return mav;
-	        }
-	    }
+		
 	//로그인 첫 화면 요청 메소드
 	@RequestMapping(value = "/L_loginform", method = { RequestMethod.GET, RequestMethod.POST })
 	public String login(Model model, HttpSession session) {
