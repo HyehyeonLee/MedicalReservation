@@ -1,8 +1,5 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ include file = "./include_file.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,7 +8,6 @@
 </head>
 <body>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script>
     function sample6_execDaumPostcode() {
         new daum.Postcode({
