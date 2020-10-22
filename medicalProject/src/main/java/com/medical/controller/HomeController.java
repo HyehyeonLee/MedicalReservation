@@ -1,7 +1,10 @@
 package com.medical.controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
 
@@ -68,10 +71,17 @@ public class HomeController {
 	public String index(Model model) {
 		GrahpXml grahpXml1 = new GrahpXml();
 		GrahpXml2 grahpXml2 = new GrahpXml2();
-		ArrayList<GrahpDto> list = grahpXml1.arrList();
-		model.addAttribute("list",grahpXml1.arrList());
-		ArrayList<GrahpDto> list2 = grahpXml2.arrList();
-		model.addAttribute("list2",grahpXml2.arrList());
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(new Date());
+		cal.add(Calendar.DATE, -1);
+		String end = df.format(cal.getTime());
+		cal.add(Calendar.DATE, -5);
+		String start = df.format(cal.getTime());
+		ArrayList<GrahpDto> list = grahpXml1.arrList(start,end);
+		model.addAttribute("list",list);
+		ArrayList<GrahpDto> list2 = grahpXml2.arrList(end,end);
+		model.addAttribute("list2",list2);
 		return "L_index";
 	}
 

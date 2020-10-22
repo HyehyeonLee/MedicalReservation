@@ -92,13 +92,35 @@ $(function(){
 var chartLabels = [];
 var chartData1 = [];
 
-   <c:forEach var="item" items="${list }">
-      chartLabels.push(${item.stateDt});
+//현재 시간
+var today = new Date();	
+var hh= today.getHours();
+var mi = today.getMinutes();
+var ss = today.getSeconds();
+//현재 날짜
+var currentDay = new Date();
+var Year = currentDay.getFullYear();
+var Month = currentDay.getMonth();
+var theDate = currentDay.getDate();
+var dayOfWeek = currentDay.getDay();
+var thisWeek = [];
+//5일 간격으로 날짜 출력
+for(var i=0; i<5; i++){
+	var resultDay = new Date(Year, Month, theDate +(i - 4));
+	var yy = resultDay.getFullYear();
+	var mm  = Number(resultDay.getMonth()) + 1;
+	var dd = resultDay.getDate();
+
+	mm = String(mm).length === 1 ? '0' + mm : mm;
+	dd = String(dd).length === 1 ? '0' + dd : dd;
+}
+	<c:forEach var="item" items="${list }" varStatus="status">
       chartData1.push(${item.decideCnt});
-   </c:forEach>
+      thisWeek[${status.index}] = '${item.stateDt}';
+    </c:forEach>
 
 var lineChartData = {
-   labels : chartLabels,
+   labels : thisWeek,
    datasets : [
          {   
             label : "확진자 수",
@@ -117,7 +139,12 @@ var lineChartData = {
 }                     
    
    createChart();
-   
+   console.log(thisWeek);
+	
+   var timer = setInterval(function(){
+   	console.log(today);
+   	alert("1");
+   },7.56e+7) //21시간
 });      
 </script>
 

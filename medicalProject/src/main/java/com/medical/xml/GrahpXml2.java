@@ -32,12 +32,12 @@ public class GrahpXml2 {
 	   return nValue.getNodeValue();
 	}
 	
-	public ArrayList<GrahpDto> arrList(){
+	public ArrayList<GrahpDto> arrList(String dateStart, String dateEnd){
 		String serviceKey = "bmphZ9SJ%2F02KJq3CizDX9j%2Fvdad27EHo6n1nchgd2TWisSlfyk7%2BgG5lqTMDQcwV5nggjvjM4CMgW2SwouoPgQ%3D%3D";
 		int pageNo = 1;
 		int numOfRows = 20;
-		String startCreateDt = "20201018";
-		String endCreateDt = "20201018";
+		String startCreateDt = dateStart;
+		String endCreateDt = dateEnd;
 		String url = "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey="+serviceKey+"&pageNo="+pageNo
 			      + "&numOfRows="+numOfRows+"&startCreateDt="+startCreateDt+"&endCreateDt="+endCreateDt;
 
