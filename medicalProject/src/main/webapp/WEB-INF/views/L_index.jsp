@@ -143,8 +143,7 @@ var lineChartData = {
 	
    var timer = setInterval(function(){
    	console.log(today);
-   	alert("1");
-   },7.56e+7) //21시간
+    },7.56e+7) //21시간
 });      
 </script>
 
