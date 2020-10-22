@@ -143,6 +143,8 @@ public class HomeController {
 	
 	@RequestMapping("/loginAction")
 	public String loginAction(@ModelAttribute("dto") MemberDto dto, HttpSession session) {
+		String encryptedPw = Sha256.encrypt(dto.getPw());
+		dto.setPw(encryptedPw);
 		boolean result = ser.loginMemberAction(dto);
 		if(result==true) {
 			session.setAttribute("loginId", dto.getId());
