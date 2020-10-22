@@ -225,7 +225,7 @@ public class HomeController {
 	        paramMap.put ("pw", encryPassword);
 	        int pw=(int)ser.setPw(paramMap);
 	        if(pw!=0) {
-	            email.setContent("비밀번호는 "+temp+" 입니다.");
+	            email.setContent("임시비밀번호는 "+temp+" 입니다.");
 	            email.setReceiver(e_mail);
 	            email.setSubject(id+"님 비밀번호 찾기 메일입니다.");
 	            emailSender.SendEmail(email);
