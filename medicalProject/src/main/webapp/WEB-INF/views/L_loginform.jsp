@@ -15,7 +15,7 @@ pageEncoding="UTF-8"%>
 	<h3><a href="logout">로그아웃</a></h3>
 </c:when>
 <c:otherwise>
-<form action="loginAction" method="post" name="frm" style="width:470px;">
+<form action="${pageContext.request.contextPath }/loginAction" method="post" name="frm" style="width:470px;">
 	<h2>로그인</h2>
 	<input type="text" name="id" id="id" class="w3-input w3-border" placeholder="아이디" value="${id}"> <br>
 	<input type="password" id="pw" name="pw" class="w3-input w3-border" placeholder="비밀번호" > <br>

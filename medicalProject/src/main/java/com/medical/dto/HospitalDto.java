@@ -5,7 +5,16 @@ public class HospitalDto {
 	private String addr;
 	private String telno;
 	private String yadmNm;
+	private int reserve;
 	
+	public int getReserve() {
+		return reserve;
+	}
+
+	public void setReserve(int reserve) {
+		this.reserve = reserve;
+	}
+
 	public HospitalDto(String addr, String telno, String yadmNm) {
 		super();
 		this.addr = addr;

@@ -100,7 +100,14 @@
 			<td><c:out value = "${item.addr }" /></td><!-- onclick="window.open(this.href, '', 'width=500, height=500'); return false;" -->
 			<td><a href="https://map.kakao.com/link/search/${item.addr } ${item.yadmNm }" target="_blank"><c:out value = "${item.yadmNm }"/></a></td>
 			<td><a href="tel:${item.telno }"><c:out value = "${item.telno }"/></a></td>
-			<td><input type="button" id="reserveBtn" value="예약" class="btn btn-primary" /></td>
+			<c:choose>
+				<c:when test="${item.reserve == 1}">
+					<td><input type="button" id="reserveBtn" value="예약가능" class="btn btn-primary" /></td>				
+				</c:when>
+				<c:when test="${item.reserve == 0}">
+					<td><input type="button" id="reserveBtn" value="예약불가" class="btn btn-secondary" /></td>				
+				</c:when>
+			</c:choose>
 		</tr>
 		</c:forEach>
 </table>
