@@ -12,6 +12,8 @@
       padding-top : 50px;
    }
    
+   
+   
    #search_form{
       width : 80%; 
       margin : 0 auto;
