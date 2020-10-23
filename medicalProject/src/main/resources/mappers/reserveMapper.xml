@@ -7,4 +7,6 @@
 	<select id="reserveChk" resultType = "int">
 		SELECT count(*) FROM p_member WHERE name = #{name} AND grade = 'hospital';
 	</select>
+	
+	
 </mapper>
