@@ -69,7 +69,13 @@ public class HomeController {
 //	}
 	
 	@RequestMapping("/L_index")
-	public String index(Model model) {
+	public String index(Model model, HttpSession session) {
+		String id = (String)session.getAttribute("loginId");
+		session.setAttribute("loginId", id);
+		
+	//	String name = (String)response_obj.get("name");
+	//	session.setAttribute("sessionId",name); //세션 생성
+		
 		GrahpXml grahpXml1 = new GrahpXml();
 		GrahpXml2 grahpXml2 = new GrahpXml2();
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
@@ -148,7 +154,7 @@ public class HomeController {
 		boolean result = ser.loginMemberAction(dto);
 		if(result==true) {
 			session.setAttribute("loginId", dto.getId());
-			return "L_loginsuccess";
+			return "redirect:/L_index";
 		}else {
 			return "redirect:/L_loginform";
 		}
@@ -291,13 +297,13 @@ public class HomeController {
 			e.printStackTrace();
 		}
 		model.addAttribute("result", apiResult);
-		return "L_loginform";
+		return "redirect:/L_index";
 	}
 	@RequestMapping(value = "/login.do", produces = "application/json", method = { RequestMethod.GET, RequestMethod.POST }) 
-	public ModelAndView kakaoLogin(@RequestParam("code") String code,
-			HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception { 
+	public String  kakaoLogin(@RequestParam("code") String code,
+			HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) throws Exception { 
 		System.out.println(code);
-			ModelAndView mav = new ModelAndView(); 
+		//	ModelAndView mav = new ModelAndView(); 
 			// 결과값을 node에 담아줌 
 			JsonNode node = KakaoController.getAccessToken(code); 
 			System.out.println(node.toString());
@@ -320,17 +326,23 @@ public class HomeController {
 			kgender = kakao_account.path("gender").asText(); 
 			kbirthday = kakao_account.path("birthday").asText(); 
 			kage = kakao_account.path("age_range").asText(); 
-			mav.addObject("kemail", kemail);
-			mav.addObject("kname", kname); 
-			mav.addObject("kimage", kimage); 
-			mav.addObject("kgender", kgender); 
-			mav.addObject("kbirthday", kbirthday); 
-			mav.addObject("kage", kage); 
+			session.setAttribute("kemail", kemail);
+			session.setAttribute("kname",kname); //세션 생성
+			session.setAttribute("kimage", kimage);
+			session.setAttribute("kgender", kgender);
+			session.setAttribute("kbirthday", kbirthday);
+			session.setAttribute("kage", kage);
+//			mav.addObject("kemail", kemail);
+//			mav.addObject("kname", kname); 
+//			mav.addObject("kimage", kimage); 
+//			mav.addObject("kgender", kgender); 
+//			mav.addObject("kbirthday", kbirthday); 
+//			mav.addObject("kage", kage); 
 			System.out.println(kname);
 			
-			mav.setViewName("L_kakaosuccess"); 
-		return mav; 
-		
+//			mav.setViewName("redirect:/L_index"); 
+//		return mav; 
+			return "redirect:/L_index";
 	}// end kakaoLogin()
 	
 

@@ -59,7 +59,7 @@
    <table style="margin: 10px auto 0;">
       <c:forEach var="item2" items="${list2 }">
       <tr>
-         <td style="border-right:inset;">확진자 수<br/>${item2.decideCnt}</td>
+         <td style="border-right:inset;">누적 확진자 수<br/>${item2.decideCnt}</td>
          <td style="border-right:inset;">격리해제 수<br/>${item2.clearCnt}</td>
          <td>사망자 수<br/>${item2.deathCnt}</td>
       </tr>
