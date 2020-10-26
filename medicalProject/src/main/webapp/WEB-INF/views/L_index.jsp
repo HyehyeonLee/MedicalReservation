@@ -42,6 +42,35 @@
 </head>
 
 <body>
+<%
+	String pwchange = (String)request.getAttribute("pwchange");
+	String pwnotequal = (String)request.getAttribute("pwnotequal");
+	String addresschange = (String)request.getAttribute("addresschange");
+	String phonechange = (String)request.getAttribute("phonechange");
+	String emailchange = (String)request.getAttribute("emailchange");
+	
+	if("pwchange".equals((String)request.getAttribute("mode"))){
+%>
+	<script>alert("정보가 수정되었습니다!");</script>
+<%		
+	}else if("pwnotequal".equals((String)request.getAttribute("mode"))){
+%>
+	<script>alert("비밀번호가 일치하지않습니다! 다시해주세요!");</script>
+<%	
+	}else if("addresschange".equals((String)request.getAttribute("mode"))){
+%>
+	<script>alert("정보가 변경되었습니다!");</script>
+<%		
+	}else if("phonechange".equals((String)request.getAttribute("mode"))){		
+%>
+	<script>alert("정보가 변경되었습니다!")</script>
+<%
+	}else if("emailchange".equals((String)request.getAttribute("mode"))){
+%>
+	<script>alert("정보가 변경되었습니다!")</script>
+<%
+	}
+%>	
    <%@ include file="./header.jsp"%>
    <div class = "search_div">      
       <form action="./search/filter" method="get" id="search_form" class= "form-inline">

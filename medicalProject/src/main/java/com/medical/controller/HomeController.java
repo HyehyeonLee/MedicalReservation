@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.scribejava.core.model.OAuth2AccessToken;
@@ -102,7 +103,9 @@ public class HomeController {
 		return "J_joinform";
 	}
 	@RequestMapping("/insertAction")
-	public String joinSuccess(@ModelAttribute("dto") MemberDto dto) {
+	public String joinSuccess(@ModelAttribute("dto") MemberDto dto, HttpSession session) {
+		
+		String beforeEncryptedPw = dto.getPw();
 		  // 암호 확인
 	      System.out.println("첫번째:" + dto.getPw());
 	      System.out.println("두번째:"+dto.getName());
@@ -116,6 +119,7 @@ public class HomeController {
 	//	ser.insertMemberAction(dto);
 		int result=ser.idCheckAction(dto);
 		if(result==1) {
+			session.setAttribute("beforePw", beforeEncryptedPw);
 			return "/J_joinform";
 		}else if(result==0) {
 			ser.insertMemberAction(dto);
@@ -148,13 +152,23 @@ public class HomeController {
 //	}
 	
 	@RequestMapping("/loginAction")
-	public String loginAction(@ModelAttribute("dto") MemberDto dto, HttpSession session) {
-		String encryptedPw = Sha256.encrypt(dto.getPw());
-		dto.setPw(encryptedPw);
+	public String loginAction(@ModelAttribute("dto") MemberDto dto, HttpSession session,String id) {
+		
+		
+		//member_id---> return com.medical.vo.MemberVO
+		MemberDto dtoMember = ser.userInfoAction(id);
+		
 		boolean result = ser.loginMemberAction(dto);
 		if(result==true) {
-			session.setAttribute("loginId", dto.getId());
-			return "redirect:/L_index";
+			
+			session.setAttribute("dto", dtoMember);
+//			model.addAttribute("info", info);
+			
+			//mdto.setPw(dto.getPw());
+			
+			
+			
+			return "L_loginsuccess";
 		}else {
 			return "redirect:/L_loginform";
 		}
@@ -379,5 +393,68 @@ public class HomeController {
 			System.out.println("로그아웃 되었습니다.");
 			return "redirect:/L_index";
 		}
+	@RequestMapping(value="/mypage")
+	public String editPass() {
+		return "mypage";
+	}
+	@RequestMapping(value="/editPass")
+	public String editPassAction(@ModelAttribute("dto") MemberDto dto,HttpSession session, String pwchk, HttpServletRequest request) {
+//		boolean result = ser.loginMemberAction(dto);
+//		System.out.println(result);
+		System.out.println("넘어온pwchk: " + pwchk);
+//		String originalId = (String)session.getAttribute("loginId");
+//		dto.setId(originalId);
+		String encryPassword = Sha256.encrypt(dto.getPw());
+		String encryPassword1 = Sha256.encrypt(pwchk);
+//		System.out.println(encryPassword);
+//		System.out.println(encryPassword1);
+		dto.setId((String)session.getAttribute("loginId"));
+		if(encryPassword.equals(encryPassword1)) {
+			if(dto.getExtraAddress().length() <= 1) {
+				dto.setPw(encryPassword);
+				System.out.println("conditional statement satisfied..");
+				ser.editPasswordAction(dto); //UPDATE password table where id = #{id}
+				request.setAttribute("mode", "pwchange");
+			}else {
+				dto.setPw(encryPassword);
+				System.out.println(dto.toString());
+				request.setAttribute("mode","addresschange");
+				ser.editMypageAction(dto);
+			}
+			
+		}else {
+			request.setAttribute("mode", "pwnotequal");
+			request.setAttribute("mode", "phonechange");
+			request.setAttribute("mode", "emailchange");
+			System.out.println("fail...");
+		}
+			//String originalPw = (String)session.getAttribute("beforePw");
+		return "L_index";
+	}
+	@RequestMapping("/editMypage")
+	public String editMypage(@ModelAttribute("dto") MemberDto dto, HttpSession session) {
+		dto.setId((String)session.getAttribute("loginid"));
+		ser.editMypageAction(dto);
+		return "redirect:/mypage";
+	}
+	@RequestMapping("/memberDeletePage")
+	public String deletepage() {
+		return "memberDeletePage";
+	}
+	@RequestMapping("/deleteAction")
+	public String deleteAction(MemberDto dto,HttpSession session, RedirectAttributes rttr) {
+		System.out.println(dto.getId());
+		System.out.println(dto.getPw());
+	//	MemberDto loginId = (MemberDto)session.getAttribute("loginId");
+//		String sessionPw = loginId.getPw();
+//		String dtoPw = dto.getPw();
+//		if(!(sessionPw.equals(dtoPw))) {
+//			rttr.addFlashAttribute("msg",false);
+//			return "redirect:/memberDeletePage";
+//		}
+		session.invalidate();
+		ser.deleteMemberAction(dto);
+		return "redirect:/L_index";
+	}
 
 }

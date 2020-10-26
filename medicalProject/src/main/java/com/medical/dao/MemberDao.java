@@ -12,4 +12,8 @@ public interface MemberDao {
 	int emailCheck(MemberDto dto);
 	String idSearch(String name, String email);	//아이디 찾기
 	public int updatePw(Map<String,String> paramMap);	//임시 비밀번호 전송&암호화
+	void editPassword(MemberDto dto);	//패스워드 수정
+	void editMypage(MemberDto dto);
+	void deleteMember(MemberDto dto);	// 회원탈퇴
+	MemberDto userInfo(String id);
 }
