@@ -46,4 +46,22 @@ public class MemberDaoImpl implements MemberDao {
 	public int updatePw(Map<String,String> paramMap) {
 		return sqlSession.update("com.medical.mapper.memberMapper.pwSearch",paramMap);
 	}
+	@Override
+	public void editPassword(MemberDto dto) {
+		sqlSession.update("com.medical.mapper.memberMapper.editPass", dto);
+	}
+	@Override
+	public void editMypage(MemberDto dto) {
+		sqlSession.update("com.medical.mapper.memberMapper.editMypage",dto);
+	}
+
+	@Override
+	public void deleteMember(MemberDto dto) {
+		sqlSession.delete("com.medical.mapper.memberMapper.memberDelete",dto);
+	}
+
+	@Override
+	public MemberDto userInfo(String id) {
+		return sqlSession.selectOne("com.medical.mapper.memberMapper.userInfo", id);
+	}
 }

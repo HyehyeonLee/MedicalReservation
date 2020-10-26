@@ -46,5 +46,25 @@ public class MemberServiceImpl implements MemberService{
 	public int setPw(Map<String, String> paramMap) {
 		return dao.updatePw(paramMap);
 	}
+	@Override
+	public void editPasswordAction(MemberDto dto) {
+		dao.editPassword(dto);
+	}
+
+	@Override
+	public void editMypageAction(MemberDto dto) {
+		dao.editMypage(dto);
+	}
+
+	@Override
+	public void deleteMemberAction(MemberDto dto) {
+		dao.deleteMember(dto);
+	}
+
+	@Override
+	public MemberDto userInfoAction(String id) {
+		return dao.userInfo(id);
+	}
+	
 
 }
