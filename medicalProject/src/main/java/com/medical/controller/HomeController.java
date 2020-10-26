@@ -168,7 +168,7 @@ public class HomeController {
 			
 			
 			
-			return "L_loginsuccess";
+			return "redirect:/L_index";
 		}else {
 			return "redirect:/L_loginform";
 		}
