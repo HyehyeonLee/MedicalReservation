@@ -11,9 +11,8 @@
 </head>
 <body>
 <!-- 로그인전 페이지 -->
-<c:if test="${empty loginId && empty sessionId && empty kname}">
-   <div class="wrap">
-        <div class = "sub-menu">      
+<c:if test="${empty dto.id && empty sessionId && empty kname}">
+    <div class = "sub-menu">      
             <ul> 	         
                 <li><a href="${pageContext.request.contextPath }/L_loginform">로그인</a></li>   
                 <li><a href="${pageContext.request.contextPath }/J_joinform">회원가입</a></li>
@@ -22,42 +21,37 @@
 </c:if>   
 
 <!-- 로그인 성공시 페이지 -->
-<c:if test="${!empty loginId}">
-	 <div class="wrap">
+<c:if test="${!empty dto.id}">
         <div class = "sub-menu">      
             <ul> 	
-				${loginId }님 환영합니다            
-               <%--  <li><a href="${pageContext.request.contextPath }/L_loginform">로그인</a></li>   
+				<li>${dto.id }님 환영합니다</li>
+				<li><a href="${pageContext.request.contextPath }/logout">로그아웃</a></li>          
+              	 <%--  <li><a href="${pageContext.request.contextPath }/L_loginform">로그인</a></li>   
                 <li><a href="${pageContext.request.contextPath }/J_joinform">회원가입</a></li>
                 <button onclick="location.href='L_idsearch'">아이디찾기</button>
-				<button onclick="location.href='L_pwsearch'">비밀번호찾기</button> --%>
+				<button onclick="location.href='L_pwsearch'">비밀번호찾기</button> 
 				<form action="logout">
-					<input type="submit" value="로그아웃"/>
-				</form>
+					<input type="submit" value="로그아웃"/>--%>
+				
             </ul>
         </div>
 </c:if>    
 
 <c:if test="${!empty sessionId }">
-		 <div class="wrap">
         <div class = "sub-menu">      
-            <ul> 	
-				${sessionId }님 환영합니다            
-				<form action="logout">
-					<input type="submit" value="로그아웃"/>
-				</form>
+            <ul>
+				<li>${sessionId }님 환영합니다</li>
+				<li><a href="${pageContext.request.contextPath }/logout">로그아웃</a></li>              
             </ul>
         </div>
 </c:if> 
 
 <c:if test="${!empty kname }">
-		 <div class="wrap">
         <div class = "sub-menu">      
             <ul> 	
-				${kname }님 환영합니다            
-				<form action="logout">
-					<input type="submit" value="로그아웃"/>
-				</form>
+            	<li>${kname }님 환영합니다</li>
+            	<li><a href="${pageContext.request.contextPath }/logout">로그아웃</a></li>    
+				
             </ul>
         </div>
 </c:if> 
