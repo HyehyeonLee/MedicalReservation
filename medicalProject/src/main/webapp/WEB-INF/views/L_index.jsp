@@ -11,7 +11,7 @@
       height: 200px;
       padding-top : 50px;
    }
-   
+    
    #search_form{
       width : 80%; 
       margin : 0 auto;
@@ -84,7 +84,7 @@
          <input type="submit" value="검색" class = "btn btn-primary"/>
       </form>
    </div>
-</body>
+
    <table style="margin: 10px auto 0;">
       <c:forEach var="item2" items="${list2 }">
       <tr>
@@ -113,7 +113,7 @@
          </dl>         
       </div>
    </div>   
-	
+</body>
 <script>
 
 $(function(){

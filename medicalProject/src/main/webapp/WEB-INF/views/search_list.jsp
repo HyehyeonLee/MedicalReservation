@@ -56,6 +56,11 @@
 		}else if(input_option == "99"){
 			$("#99").attr("selected", "selected");
 		}
+
+		$(".reserveBtn").click(function(){
+			var yadmNm = $(this).parent().parent().find("input#yadmNm").val();
+			location.href = "${pageContext.request.contextPath }/reserve/reserveList?yadmNm="+yadmNm;
+		});
 		
 		});
 </script>
@@ -99,10 +104,12 @@
 			<td><%=i++ %></td>
 			<td><c:out value = "${item.addr }" /></td><!-- onclick="window.open(this.href, '', 'width=500, height=500'); return false;" -->
 			<td><a href="https://map.kakao.com/link/search/${item.addr } ${item.yadmNm }" target="_blank"><c:out value = "${item.yadmNm }"/></a></td>
-			<td><a href="tel:${item.telno }"><c:out value = "${item.telno }"/></a></td>
+			<td><a href="tel:${item.telno }"><c:out value = "${item.telno }"/></a>
+				<input type="hidden" class="yadmNm" id="yadmNm" value="${item.yadmNm }">
+			</td>
 			<c:choose>
 				<c:when test="${item.reserve == 1}">
-					<td><input type="button" id="reserveBtn" value="예약가능" class="btn btn-primary" /></td>				
+					<td><input type="button" id="reserveBtn" value="예약가능" class="reserveBtn btn btn-primary" /></td>				
 				</c:when>
 				<c:when test="${item.reserve == 0}">
 					<td><input type="button" id="reserveBtn" value="예약불가" class="btn btn-secondary" /></td>				

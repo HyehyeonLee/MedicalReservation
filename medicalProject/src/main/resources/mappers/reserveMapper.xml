@@ -7,4 +7,18 @@
 	<select id="reserveChk" resultType = "int">
 		SELECT count(*) FROM p_member WHERE name = #{name} AND grade = 'hospital';
 	</select>
+	
+	<insert id = "insertReserveInfo">
+		INSERT INTO hospital_reserve(hospital_id, `date`, `time`) VALUES (#{hospital_id}, #{date}, #{time});
+	</insert>
+	
+	<select id="getReserveInfo" resultType = "com.medical.dto.HospitalReserveDto">
+		SELECT * FROM hospital_reserve;
+	</select>
+	
+	<select id="getHospitalReserveInfo" resultType = "com.medical.dto.HospitalReserveDto">
+		SELECT hospital_reserve_id, hospital_id, `date`, `time` 
+		FROM hospital_reserve, p_member 
+		WHERE hospital_id = p_member.id and `name` = #{name};
+	</select>
 </mapper>
