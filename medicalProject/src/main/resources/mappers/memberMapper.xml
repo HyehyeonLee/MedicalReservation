@@ -30,4 +30,20 @@
 	<update id="pwSearch">
 		UPDATE p_member SET pw=#{pw} WHERE id=#{id} AND email=#{email}
 	</update>
+		<!-- pw 수정 -->
+	<update id="editPass">
+		UPDATE p_member SET pw=#{pw} WHERE id=#{id}
+	</update>
+	<!-- 정보 수정 -->
+	<update id="editMypage">
+		UPDATE p_member SET pw=#{pw},postcode=#{postcode},addr=#{addr},detailAddress=#{detailAddress},extraAddress=#{extraAddress},email=#{email},tel=#{tel} WHERE id=#{id}
+	</update>
+	<!-- 회원탈퇴 -->
+	<delete id="memberDelete">
+		DELETE FROM p_member WHERE id=#{id} AND pw=#{pw}
+	</delete>
+	<!-- 정보 불러오기 -->
+	<select id="userInfo" resultType="com.medical.dto.MemberDto">
+		SELECT * FROM p_member WHERE id=#{id}
+	</select>
 </mapper>
