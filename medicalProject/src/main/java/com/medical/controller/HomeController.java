@@ -168,6 +168,7 @@ public class HomeController {
 			
 			
 			
+			//return "L_index";
 			return "redirect:/L_index";
 		}else {
 			return "redirect:/L_loginform";

@@ -25,7 +25,8 @@
         <div class = "sub-menu">      
             <ul> 	
 				<li>${dto.id }님 환영합니다</li>
-				<li><a href="${pageContext.request.contextPath }/logout">로그아웃</a></li>          
+				<li><a href="${pageContext.request.contextPath }/logout">로그아웃</a></li>
+				<li><a href="${pageContext.request.contextPath }/mypage">마이페이지</a></li>           
               	 <%--  <li><a href="${pageContext.request.contextPath }/L_loginform">로그인</a></li>   
                 <li><a href="${pageContext.request.contextPath }/J_joinform">회원가입</a></li>
                 <button onclick="location.href='L_idsearch'">아이디찾기</button>
