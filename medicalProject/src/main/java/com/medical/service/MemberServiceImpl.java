@@ -22,6 +22,8 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public boolean loginMemberAction(MemberDto dto) {
+		String encryptPw = Sha256.encrypt(dto.getPw());
+		dto.setPw(encryptPw);
 		boolean result = dao.loginMember(dto);
 		return result;
 	}
