@@ -4,10 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title></title>
 </head>
 <body>
-<!-- 없어도 되는 페이지 -->
-	${dto.id }님 환영합니다!
+	<h1>예약 정보 등록 완료</h1>
+	<p>${dto.hospital_id }</p>
+	<p>${dto.date }</p>
+	<p>${dto.time }</p>
 </body>
 </html>

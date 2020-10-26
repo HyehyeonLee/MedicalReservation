@@ -7,7 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<!-- 없어도 되는 페이지 -->
-	${dto.id }님 환영합니다!
+	
 </body>
 </html>

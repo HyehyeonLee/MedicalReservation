@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "./include_file.jsp" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +10,57 @@
 <link href="${pageContext.request.contextPath }/resources/css/header.css" rel="stylesheet" >
 </head>
 <body>
+<!-- 로그인전 페이지 -->
+<c:if test="${empty loginId && empty sessionId && empty kname}">
    <div class="wrap">
-        <div class = "sub-menu">
-            <ul>
+        <div class = "sub-menu">      
+            <ul> 	         
                 <li><a href="${pageContext.request.contextPath }/L_loginform">로그인</a></li>   
                 <li><a href="${pageContext.request.contextPath }/J_joinform">회원가입</a></li>
             </ul>
         </div>
-        
+</c:if>   
+
+<!-- 로그인 성공시 페이지 -->
+<c:if test="${!empty loginId}">
+	 <div class="wrap">
+        <div class = "sub-menu">      
+            <ul> 	
+				${loginId }님 환영합니다            
+               <%--  <li><a href="${pageContext.request.contextPath }/L_loginform">로그인</a></li>   
+                <li><a href="${pageContext.request.contextPath }/J_joinform">회원가입</a></li>
+                <button onclick="location.href='L_idsearch'">아이디찾기</button>
+				<button onclick="location.href='L_pwsearch'">비밀번호찾기</button> --%>
+				<form action="logout">
+					<input type="submit" value="로그아웃"/>
+				</form>
+            </ul>
+        </div>
+</c:if>    
+
+<c:if test="${!empty sessionId }">
+		 <div class="wrap">
+        <div class = "sub-menu">      
+            <ul> 	
+				${sessionId }님 환영합니다            
+				<form action="logout">
+					<input type="submit" value="로그아웃"/>
+				</form>
+            </ul>
+        </div>
+</c:if> 
+
+<c:if test="${!empty kname }">
+		 <div class="wrap">
+        <div class = "sub-menu">      
+            <ul> 	
+				${kname }님 환영합니다            
+				<form action="logout">
+					<input type="submit" value="로그아웃"/>
+				</form>
+            </ul>
+        </div>
+</c:if> 
          <div class = "main-menu">
             <ul>
                 <li style="position: relative; bottom: 10px;"><a href="#"><img src="image/logo3.PNG" width="120px" height="66px"></a></li>                <li><a href="#">지원</a></li>
