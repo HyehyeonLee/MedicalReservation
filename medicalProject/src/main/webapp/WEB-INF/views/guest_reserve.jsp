@@ -56,14 +56,15 @@
 
 <h1>${yadmNm }의 예약 가능 정보입니다.</h1>
 <h3>내원 가능한 날짜와 시간을 선택해주세요</h3>	
-<form action="${pageContext.request.contextPath}/reserve/guestReserve" method="GET" id = "reserveForm">
-	<input type="hidden" name="yadmNm" class = "yadmNm"  id = "yadmNm" value = "${ yadmNm}"/>
+<input type="hidden" name="yadmNm" class = "yadmNm"  id = "yadmNm" value = "${ yadmNm}"/>
 	<select name="date" id="date">
 		<c:forEach var = "dateList" items = "${dateList }">
 			<option value="${dateList }">${dateList }</option>
 		</c:forEach>
 	</select>
 	<input type="button" value="날짜선택" class= "dateBtn" id = "dateBtn"/>
+<form action="${pageContext.request.contextPath}/reserve/guestReserve" method="GET" id = "reserveForm">
+	<input type="hidden" name="guest_id" value="${dto.id }" />
 	<div id = "timeDiv">
 		
 	</div>
