@@ -41,7 +41,7 @@ import com.medical.xml.GrahpXml2;
 
 
 @Controller
-public class HomeController {
+public class HomeController{
 
 	private NaverLoginBO naverLoginBO;
 	private String apiResult = null;

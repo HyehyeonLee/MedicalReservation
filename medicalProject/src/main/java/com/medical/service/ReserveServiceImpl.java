@@ -40,5 +40,15 @@ public class ReserveServiceImpl implements ReserveService{
 	public List<HospitalReserveDto> getHospitalReserveInfo(String yadmNm) {
 		return reDao.getHospitalReserve(yadmNm);
 	}
+	
+	@Override
+	public List<String> getHospitalDate(String yadmNm) {
+		return reDao.getDateList(yadmNm);
+	}
+
+	@Override
+	public List<HospitalReserveDto> getHospitalTime(String yadmNm, String selectedDate) {
+		return reDao.getTimeList(yadmNm, selectedDate);
+	}
 
 }
