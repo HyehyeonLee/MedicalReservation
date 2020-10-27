@@ -21,4 +21,18 @@
 		FROM hospital_reserve, p_member 
 		WHERE hospital_id = p_member.id and `name` = #{name};
 	</select>
+	
+	<select id = "getReserveDate" resultType="java.lang.String">
+		SELECT DISTINCT `date`
+		FROM hospital_reserve, p_member 
+		WHERE hospital_id = p_member.id and `name` = #{name}
+		ORDER BY `date` ASC;
+	</select>
+	
+	<select id = "getReserveTime" resultType="com.medical.dto.HospitalReserveDto">
+		SELECT hospital_reserve_id, `time`
+		FROM hospital_reserve, p_member 
+		WHERE hospital_id = p_member.id and `name` = #{name} and `date`=#{date}
+		ORDER BY `date` ASC;
+	</select>
 </mapper>

@@ -1,19 +1,27 @@
 package com.medical.dto;
 
 public class GuestReserveDto {
+	private int guest_reserve_id;
 	private String guest_id;
-	private String guestDate;
-	private String guestTime;
+	private int reserve_id;
 
-	public GuestReserveDto(String guest_id, String guestDate, String guestTime) {
+	public GuestReserveDto(int guest_reserve_id, String guest_id, int reserve_id) {
 		super();
+		this.guest_reserve_id = guest_reserve_id;
 		this.guest_id = guest_id;
-		this.guestDate = guestDate;
-		this.guestTime = guestTime;
+		this.reserve_id = reserve_id;
 	}
 
 	public GuestReserveDto() {
 		super();
+	}
+
+	public int getGuest_reserve_id() {
+		return guest_reserve_id;
+	}
+
+	public void setGuest_reserve_id(int guest_reserve_id) {
+		this.guest_reserve_id = guest_reserve_id;
 	}
 
 	public String getGuest_id() {
@@ -24,20 +32,12 @@ public class GuestReserveDto {
 		this.guest_id = guest_id;
 	}
 
-	public String getGuestDate() {
-		return guestDate;
+	public int getReserve_id() {
+		return reserve_id;
 	}
 
-	public void setGuestDate(String guestDate) {
-		this.guestDate = guestDate;
-	}
-
-	public String getGuestTime() {
-		return guestTime;
-	}
-
-	public void setGuestTime(String guestTime) {
-		this.guestTime = guestTime;
+	public void setReserve_id(int reserve_id) {
+		this.reserve_id = reserve_id;
 	}
 
 }
