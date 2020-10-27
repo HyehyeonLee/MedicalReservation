@@ -2,12 +2,15 @@ package com.medical.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.medical.dto.HospitalDto;
+import com.medical.dto.MemberDto;
 import com.medical.service.ReserveService;
 import com.medical.xml.GetHospitalXml;
 
@@ -17,9 +20,10 @@ public class SearchController {
 	@Autowired
 	ReserveService reserveSer;
 	GetHospitalXml getHospitalXml;
+
 	
 	@RequestMapping(value = "/filter")
-	public String filter(Model model, String spclAdmTyCd, String keyword) {
+	public String filter(Model model, String spclAdmTyCd, String keyword,HttpSession session) {
 		getHospitalXml = new GetHospitalXml();
 		ArrayList<HospitalDto> list = new ArrayList<HospitalDto>();
 		// type이 "all" 이면 xml 요청을 3번 날림
@@ -43,6 +47,7 @@ public class SearchController {
 			int reserveChk = reserveSer.search(filterList.get(i).getYadmNm());
 			if(reserveChk == 1) {
 				filterList.get(i).setReserve(1);
+
 			}else {
 				filterList.get(i).setReserve(0);
 			}

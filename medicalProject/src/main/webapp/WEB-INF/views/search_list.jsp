@@ -56,13 +56,19 @@
 		}else if(input_option == "99"){
 			$("#99").attr("selected", "selected");
 		}
-
+	
 		$(".reserveBtn").click(function(){
-			var yadmNm = $(this).parent().parent().find("input#yadmNm").val();
-			location.href = "${pageContext.request.contextPath }/reserve/reserveList?yadmNm="+yadmNm;
+			<% if(session.getAttribute("dto") != null || session.getAttribute("sessionId") != null || session.getAttribute("kname")!=null) { %> 
+				var yadmNm = $(this).parent().parent().find("input#yadmNm").val();
+				location.href = "${pageContext.request.contextPath }/reserve/reserveList?yadmNm="+yadmNm;
+			<% } else { %>
+				alert("로그인이 필요합니다");
+				location.href = "${pageContext.request.contextPath }/L_loginform";
+			<% } %>
 		});
 		
 		});
+	
 </script>
 </head>
 <body>
@@ -109,7 +115,7 @@
 			</td>
 			<c:choose>
 				<c:when test="${item.reserve == 1}">
-					<td><input type="button" id="reserveBtn" value="예약가능" class="reserveBtn btn btn-primary" /></td>				
+					<td><input type="button" id="reserveBtn" value="예약가능" class="reserveBtn btn btn-primary" /></td>
 				</c:when>
 				<c:when test="${item.reserve == 0}">
 					<td><input type="button" id="reserveBtn" value="예약불가" class="btn btn-secondary" /></td>				
