@@ -22,6 +22,18 @@
 			ajax_get_date(selectedDate, yadmNm);
 		});
 
+		function checkSubmit(){
+			alert("!");
+			var reserved = $(".hospital_reserve_id").is(':checked');
+			if(!reserved){
+					alert('시간을 선택해주세요');
+					return false;
+				}				
+			}
+		
+		//$(".submitBtn").click(function(){
+			//});
+
 	});
 
 	function ajax_get_date(selectedDate, yadmNm){
@@ -40,7 +52,7 @@
 							$("#timeDiv").html("");
 					for(var i = 0; i<list.length; i++){
 							var str = "";
-							str += "<input type = 'radio' name='hospital_reserve_id' value='"+list[i].hospital_reserve_id+"'/>";
+							str += "<input type = 'radio' name='hospital_reserve_id' class = 'hospital_reserve_id' value='"+list[i].hospital_reserve_id+"'/>";
 							str += list[i].time;
 							str += "<br />";
 							$("#timeDiv").append(str);	
@@ -58,20 +70,22 @@
 
 <h1>${yadmNm }의 예약 가능 정보입니다.</h1>
 <h3>내원 가능한 날짜와 시간을 선택해주세요</h3>	
+<form action="${pageContext.request.contextPath}/reserve/guestReserve" method="GET" id = "reserveForm" onsubmit="return checkSubmit()">
 <input type="hidden" name="yadmNm" class = "yadmNm"  id = "yadmNm" value = "${ yadmNm}"/>
 	<select name="date" id="date">
 		<c:forEach var = "dateList" items = "${dateList }">
 			<option value="${dateList }">${dateList }</option>
 		</c:forEach>
 	</select>
-	<input type="button" value="날짜선택" class= "dateBtn" id = "dateBtn"/>
-<form action="${pageContext.request.contextPath}/reserve/guestReserve" method="GET" id = "reserveForm">
+	
+	<input type="button" value="날짜선택" class= "dateBtn btn btn-primary" id = "dateBtn"/>
+	
 	<input type="hidden" name="guest_id" value="${dto.id }" />
 	<div id = "timeDiv">
 		
 	</div>
-	<br />
-	<input type="submit" value="예약완료" />
+
+	<input type="submit" value="예약완료" class = "submitBtn btn btn-success"/>
 </form>
 </body>
 </html>

@@ -12,6 +12,10 @@
 		INSERT INTO hospital_reserve(hospital_id, `date`, `time`) VALUES (#{hospital_id}, #{date}, #{time});
 	</insert>
 	
+	<insert id = "insertGuesetReserve">
+		INSERT INTO guest_reserve(guest_id, reserve_id) VALUES (#{guest_id}, #{reserve_id});
+	</insert>
+	
 	<select id="getReserveInfo" resultType = "com.medical.dto.HospitalReserveDto">
 		SELECT * FROM hospital_reserve;
 	</select>
@@ -25,14 +29,17 @@
 	<select id = "getReserveDate" resultType="java.lang.String">
 		SELECT DISTINCT `date`
 		FROM hospital_reserve, p_member 
-		WHERE hospital_id = p_member.id and `name` = #{name}
+		WHERE hospital_id = p_member.id AND `name` = #{name}
 		ORDER BY `date` ASC;
 	</select>
 	
 	<select id = "getReserveTime" resultType="com.medical.dto.HospitalReserveDto">
 		SELECT hospital_reserve_id, `time`
 		FROM hospital_reserve, p_member 
-		WHERE hospital_id = p_member.id and `name` = #{name} and `date`=#{date}
+		WHERE hospital_id = p_member.id 
+		AND `name` = #{name} 
+		AND `date`=#{date}
+		AND hospital_reserve_id NOT IN (SELECT reserve_id FROM guest_reserve)
 		ORDER BY `date` ASC;
 	</select>
 </mapper>

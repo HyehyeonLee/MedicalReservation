@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.medical.dao.ReserveDao;
+import com.medical.dto.GuestReserveDto;
 import com.medical.dto.HospitalReserveDto;
 
 @Service
@@ -49,6 +50,11 @@ public class ReserveServiceImpl implements ReserveService{
 	@Override
 	public List<HospitalReserveDto> getHospitalTime(String yadmNm, String selectedDate) {
 		return reDao.getTimeList(yadmNm, selectedDate);
+	}
+
+	@Override
+	public void insertGuestInfo(GuestReserveDto dto) {
+		reDao.insertGuest(dto);
 	}
 
 }
