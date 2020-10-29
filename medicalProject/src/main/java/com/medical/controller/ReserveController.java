@@ -27,14 +27,21 @@ public class ReserveController {
 	}
 	
 	@RequestMapping(value = "/guestReserve")
-	public String guestReserve(String guest_id, int hospital_reserve_id, String yadmNm, Model model) {
+	public String guestReserve(String guest_id, int hospital_reserve_id, String hospital_id, String date, String yadmNm, Model model) {
 		GuestReserveDto dto = new GuestReserveDto();
 		dto.setGuest_id(guest_id);
 		dto.setReserve_id(hospital_reserve_id);
 		reService.insertGuestInfo(dto);
+		model.addAttribute("hospital_reserve_id", hospital_reserve_id);
+		model.addAttribute("hospital_id", hospital_id);
 		model.addAttribute("yadmNm", yadmNm);
 		model.addAttribute("guest_id", guest_id);
 		return "guest_reserve_commit";
+	}
+	
+	@RequestMapping(value = "/admin")
+	public String admin() {
+		return "admin";
 	}
 
 }

@@ -92,12 +92,14 @@ public class HomeController{
 		model.addAttribute("list2",list2);
 		return "L_index";
 	}
+	
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
 		return "home";
 	}
+	
 	@RequestMapping(value = "/J_joinform", method = RequestMethod.GET)
 	public String joinform(MemberDto dto) {
 		return "J_joinform";
