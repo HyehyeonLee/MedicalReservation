@@ -57,4 +57,9 @@ public class ReserveServiceImpl implements ReserveService{
 		reDao.insertGuest(dto);
 	}
 
+	@Override
+	public String getHospitalId(String yadmNm) {
+		return reDao.getHospitalId(yadmNm);
+	}
+
 }

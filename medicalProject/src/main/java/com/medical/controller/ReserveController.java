@@ -19,7 +19,8 @@ public class ReserveController {
 	@RequestMapping(value = "/reserveList")
 	public String reserveList(String yadmNm, Model model) {
 		ArrayList<String> list = (ArrayList<String>) reService.getHospitalDate(yadmNm);
-
+		String hospital_id = reService.getHospitalId(yadmNm);
+		model.addAttribute("hospital_id", hospital_id);
 		model.addAttribute("dateList", list);
 		model.addAttribute("yadmNm", yadmNm);
 		return "guest_reserve";

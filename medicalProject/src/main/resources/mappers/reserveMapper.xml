@@ -35,6 +35,12 @@
 		ORDER BY `date` ASC;
 	</select>
 	
+	<select id = "getHospitalId" resultType = "java.lang.String">
+		SELECT id
+		FROM p_member
+		WHERE `name` = #{name};
+	</select>
+	
 	<select id = "getReserveTime" resultType="com.medical.dto.HospitalReserveDto">
 		SELECT hospital_reserve_id, `time`
 		FROM hospital_reserve, p_member 

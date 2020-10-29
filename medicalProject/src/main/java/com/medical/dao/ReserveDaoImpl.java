@@ -61,4 +61,9 @@ public class ReserveDaoImpl implements ReserveDao {
 		sqlSession.insert("com.medical.mapper.reserveMapper.insertGuesetReserve", dto);
 	}
 
+	@Override
+	public String getHospitalId(String yadmNm) {
+		return sqlSession.selectOne("com.medical.mapper.reserveMapper.getHospitalId", yadmNm);
+	}
+
 }

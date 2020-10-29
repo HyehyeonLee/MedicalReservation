@@ -16,4 +16,5 @@ public interface ReserveService {
 	public List<String> getHospitalDate(String yadmNm);
 	public List<HospitalReserveDto> getHospitalTime(String yadmNm, String selectedDate);
 	public void insertGuestInfo(GuestReserveDto dto);
+	public String getHospitalId(String yadmNm);
 }

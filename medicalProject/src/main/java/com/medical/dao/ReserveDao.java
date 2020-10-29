@@ -13,4 +13,5 @@ public interface ReserveDao {
 	public List<String> getDateList(String yadmNm);
 	public List<HospitalReserveDto> getTimeList(String yadmNm, String selectedDate);
 	public void insertGuest(GuestReserveDto dto);
+	public String getHospitalId(String yadmNm);
 }
