@@ -29,7 +29,9 @@
 	<select id = "getReserveDate" resultType="java.lang.String">
 		SELECT DISTINCT `date`
 		FROM hospital_reserve, p_member 
-		WHERE hospital_id = p_member.id AND `name` = #{name}
+		WHERE hospital_id = p_member.id 
+		AND `name` = #{name}
+		AND hospital_reserve_id NOT IN (SELECT reserve_id FROM guest_reserve)
 		ORDER BY `date` ASC;
 	</select>
 	
