@@ -34,17 +34,6 @@ $(function(){
 	
 		};
 	
-		$(".okBtn").click(function(){
-			let message = $("input.guest_id").val() + " - " + $("input.yadmNm").val() + " - " +
-			 $("input.hospital_id").val() + " - " + $("input.hospital_reserve_id").val();
-			webSocket.send(message);
-	
-		});
-
-		$(".noBtn").click(function(){
-			history.back(-1);
-		});
-	
 
 });
 </script>
