@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<meta http-equiv="refresh" content="URL=http://localhost:9096/www/reserve/admin">
 <style>
 	.float-left{
 		float:left;
@@ -57,5 +63,43 @@
 		});
 		
 	</script>	
+	<table class="table">
+		<tr>
+			<td><h1>id</h1></td>
+			<td><h1>name</h1></td>
+			<td><h1>date</h1></td>
+			<td><h1>time</h1></td>
+		</tr>
+		<c:forEach var="list" items="${dto }">
+			<tr>
+				<td>${list.id} </td>
+				<td>${list.name}</td>
+				<td>${list.date}</td>
+				<td>${list.time }</td>
+			</tr>
+		</c:forEach>
+	</table>
+<script>
+//현재 시간
+$(function(){
+/* var today = new Date();
+var hh = today.getHours();
+var mi = today.getMinutes();
+var ss = today.getSeconds(); */
+
+setTimeout(function(){
+	   window.location.reload(1);
+	 //  alert("!");
+	}, 500000);
+/* document.write(today);
+setTimeout("location.reload()",60000) */
+/* var timer = setInterval(function(){
+	console.log(today);
+	alert("1");
+},60000); */
+
+	
+});
+</script>	
 </body>
 </html>

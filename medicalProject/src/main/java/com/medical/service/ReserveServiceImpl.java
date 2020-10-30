@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.medical.dao.ReserveDao;
 import com.medical.dto.GuestReserveDto;
+import com.medical.dto.GuestReserveDto1;
 import com.medical.dto.HospitalReserveDto;
 
 @Service
@@ -61,5 +62,12 @@ public class ReserveServiceImpl implements ReserveService{
 	public String getHospitalId(String yadmNm) {
 		return reDao.getHospitalId(yadmNm);
 	}
+
+	@Override
+	public List<GuestReserveDto1> getGuestReserveAction() {
+		return reDao.getGuestReserveAll();
+	}
+
+	
 
 }
