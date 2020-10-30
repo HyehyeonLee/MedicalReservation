@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.medical.dto.GuestInfoDto;
 import com.medical.dto.GuestReserveDto;
 import com.medical.dto.HospitalReserveDto;
 
@@ -17,4 +18,5 @@ public interface ReserveService {
 	public List<HospitalReserveDto> getHospitalTime(String yadmNm, String selectedDate);
 	public void insertGuestInfo(GuestReserveDto dto);
 	public String getHospitalId(String yadmNm);
+	public GuestInfoDto getReserveInfo(String hospital_reserve_id);
 }

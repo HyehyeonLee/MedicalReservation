@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.medical.dao.ReserveDao;
+import com.medical.dto.GuestInfoDto;
 import com.medical.dto.GuestReserveDto;
 import com.medical.dto.HospitalReserveDto;
 
@@ -60,6 +61,11 @@ public class ReserveServiceImpl implements ReserveService{
 	@Override
 	public String getHospitalId(String yadmNm) {
 		return reDao.getHospitalId(yadmNm);
+	}
+	
+	@Override
+	public GuestInfoDto getReserveInfo(String hospital_reserve_id) {
+		return reDao.getGuestInfo(hospital_reserve_id);
 	}
 
 }

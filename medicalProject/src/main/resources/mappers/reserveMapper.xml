@@ -12,7 +12,7 @@
 		INSERT INTO hospital_reserve(hospital_id, `date`, `time`) VALUES (#{hospital_id}, #{date}, #{time});
 	</insert>
 	
-	<insert id = "insertGuesetReserve">
+	<insert id = "insertGuestReserve">
 		INSERT INTO guest_reserve(guest_id, reserve_id) VALUES (#{guest_id}, #{reserve_id});
 	</insert>
 	
@@ -49,5 +49,13 @@
 		AND `date`=#{date}
 		AND hospital_reserve_id NOT IN (SELECT reserve_id FROM guest_reserve)
 		ORDER BY `date` ASC;
+	</select>
+	
+	<select id="reservedInfo" resultType="com.medical.dto.GuestInfoDto">
+		SELECT `name`, `date`, `time`
+		FROM p_member, hospital_reserve, guest_reserve
+		WHERE p_member.id = guest_reserve.guest_id
+		AND guest_reserve.reserve_id = hospital_reserve.hospital_reserve_id
+		AND guest_reserve.reserve_id = #{hostpital_reserve_id};
 	</select>
 </mapper>

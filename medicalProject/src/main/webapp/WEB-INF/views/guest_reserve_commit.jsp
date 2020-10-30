@@ -5,12 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="./include_file.jsp"%>
+<%@ include file="./header.jsp"%>
 <script type="text/javascript">
 var webSocket;
 function sendMessage() {
-	let message = $("input.guest_id").val() + " - " + $("input.yadmNm").val() + " - " +
-	 $("input.hospital_id").val() + " - " + $("input.hospital_reserve_id").val();
+	let message = $("input.guest_id").val() + "-" 
+					+ $("input.hospital_id").val() + "-" + $("input.hospital_reserve_id").val();
 	webSocket.send(message);
 }
 
@@ -33,7 +33,6 @@ $(function(){
 		webSocket.onmessage = function(message) {
 	
 		};
-	
 
 });
 </script>
