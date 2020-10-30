@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.medical.dto.GuestInfoDto;
 import com.medical.dto.GuestReserveDto;
+import com.medical.dto.GuestReserveDto1;
 import com.medical.dto.HospitalReserveDto;
 
 public class ReserveDaoImpl implements ReserveDao {
@@ -70,6 +71,11 @@ public class ReserveDaoImpl implements ReserveDao {
 	@Override
 	public GuestInfoDto getGuestInfo(String hospital_reserve_id) {
 		return sqlSession.selectOne("com.medical.mapper.reserveMapper.reservedInfo", hospital_reserve_id);	
+	}
+
+	@Override
+	public List<GuestReserveDto1> getGuestReserveAll() {
+		return sqlSession.selectList("com.medical.mapper.reserveMapper.getGuestReserveAll");
 	}
 
 }

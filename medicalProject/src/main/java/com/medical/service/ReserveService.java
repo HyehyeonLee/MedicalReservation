@@ -19,9 +19,6 @@ public interface ReserveService {
 	public List<HospitalReserveDto> getHospitalTime(String yadmNm, String selectedDate);
 	public void insertGuestInfo(GuestReserveDto dto);
 	public String getHospitalId(String yadmNm);
-<<<<<<< HEAD
 	public List<GuestReserveDto1> getGuestReserveAction();
-=======
 	public GuestInfoDto getReserveInfo(String hospital_reserve_id);
->>>>>>> branch 'main' of https://github.com/HyehyeonLee/MedicalReservation.git
 }

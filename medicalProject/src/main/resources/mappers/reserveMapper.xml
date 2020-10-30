@@ -51,19 +51,18 @@
 		ORDER BY `date` ASC;
 	</select>
 	
-<<<<<<< HEAD
 	<select id="getGuestReserveAll" resultType = "com.medical.dto.GuestReserveDto1">
 		SELECT id, `name`, `date`, `time`
 		FROM p_member, hospital_reserve, guest_reserve
 		WHERE p_member.id = guest_reserve.guest_id
 		AND guest_reserve.reserve_id = hospital_reserve.hospital_reserve_id;
-=======
+	</select>
+
 	<select id="reservedInfo" resultType="com.medical.dto.GuestInfoDto">
 		SELECT `name`, `date`, `time`
 		FROM p_member, hospital_reserve, guest_reserve
 		WHERE p_member.id = guest_reserve.guest_id
 		AND guest_reserve.reserve_id = hospital_reserve.hospital_reserve_id
 		AND guest_reserve.reserve_id = #{hostpital_reserve_id};
->>>>>>> branch 'main' of https://github.com/HyehyeonLee/MedicalReservation.git
 	</select>
 </mapper>
