@@ -5,12 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <meta http-equiv="refresh" content="URL=http://localhost:9096/www/reserve/admin">
+=======
+<title>예약 정보 현황</title>
+>>>>>>> branch 'main' of https://github.com/HyehyeonLee/MedicalReservation.git
 <style>
 	.float-left{
 		float:left;
@@ -19,11 +23,17 @@
 </style>
 </head>
 <body>
-	<div class="template">		
+	<div class="template">
 		<textarea rows="10" cols="50" class="console" disabled="disabled"></textarea>
 	</div>
 	<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript">
+	let log;
+	function getGuestInfo(info){
+		//$div.find(".console").val(log+"(user)=>"+info+"\n");
+		alert(info);
+		$(".console").val(log + "(new) " + info + "\n");
+	}
 	
 		var webSocket = new WebSocket("ws://localhost:9096/www/admin");
 		webSocket.onopen = function(message){};
@@ -33,35 +43,48 @@
 			let node = JSON.parse(message.data);
 			
 			if(node.status === "visit"){
-				//let form = $(".template").html();
-				//form = $("<div class='float-left'></div>").attr("data-key",node.key).append(form);
-				//$("body").append(form);
+				
 			}else if(node.status==="message"){
-				//let $div = $("[data-key='"+node.key+"']");
 				let $div = $(".template");
-				let log = $div.find(".console").val();
-				$div.find(".console").val(log+"(user)=>"+node.message+"\n");
+				log = $div.find(".console").val();
+				var message = node.message;
+				var arr = message.split("-");
+				var hospital_reserve_id = arr[2];
+				//여기까진 성공함
+				ajax_get_reserveInfo(hospital_reserve_id);
+				
 			}else if(node.status==="bye"){
 				//$("[data-key='"+node.key+"']").remove();
 			}
 		};
-		$(document).on("click",".sendBtn", function(){
-			let $div = $(this).closest(".float-left");
-			let message = $div.find(".message").val();
-			let key = $div.data("key");
-			let log = $div.find(".console").val();
-			$div.find(".console").val(log+"(me)=>"+message+"\n");
-			$div.find(".message").val("");
-			webSocket.send(key+"####"+message);
-		});
-		$(document).on("keydown", ".message", function(){
-			if(event.keyCode === 13){
-				$(this).closest(".float-left").find(".sendBtn").trigger("click");
-				return false;
-			}
-			return true;
-		});
+
 		
+
+		
+		function ajax_get_reserveInfo(hospital_reserve_id){
+			var data = {
+					hospital_reserve_id : hospital_reserve_id,
+					}
+			
+			$.ajax({
+					url : '${pageContext.request.contextPath}/rest/guestInfo',
+					type : 'post',
+					data : JSON.stringify(data),
+					dataType : 'json',
+					contentType : 'application/json',
+					success : function(response){
+						name = response.name;
+						date = response.date;
+						time = response.time;
+						info = name + " - " + date + " - " + time;
+						getGuestInfo(info);
+//						return guestInfo;
+						},
+					error : function(xhr,status,error){
+						alert("!!err");
+						}
+				});
+			}
 	</script>	
 	<table class="table">
 		<tr>

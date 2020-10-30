@@ -40,7 +40,8 @@ public class ReserveController {
 	}
 	
 	@RequestMapping(value = "/admin")
-	public String admin() {
+	public String admin(Model model) {
+		model.addAttribute("dto",reService.getGuestReserveAction());
 		return "admin";
 	}
 

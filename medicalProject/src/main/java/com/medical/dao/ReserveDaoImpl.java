@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.medical.dto.GuestInfoDto;
 import com.medical.dto.GuestReserveDto;
 import com.medical.dto.HospitalReserveDto;
 
@@ -58,12 +59,17 @@ public class ReserveDaoImpl implements ReserveDao {
 
 	@Override
 	public void insertGuest(GuestReserveDto dto) {
-		sqlSession.insert("com.medical.mapper.reserveMapper.insertGuesetReserve", dto);
+		sqlSession.insert("com.medical.mapper.reserveMapper.insertGuestReserve", dto);
 	}
 
 	@Override
 	public String getHospitalId(String yadmNm) {
 		return sqlSession.selectOne("com.medical.mapper.reserveMapper.getHospitalId", yadmNm);
+	}
+	
+	@Override
+	public GuestInfoDto getGuestInfo(String hospital_reserve_id) {
+		return sqlSession.selectOne("com.medical.mapper.reserveMapper.reservedInfo", hospital_reserve_id);	
 	}
 
 }

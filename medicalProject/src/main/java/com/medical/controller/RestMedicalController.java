@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.medical.dto.GuestInfoDto;
 import com.medical.dto.HospitalReserveDto;
 import com.medical.service.ReserveService;
 
@@ -28,5 +29,14 @@ public class RestMedicalController {
 			System.out.println(dto.toString());
 		}
 		return list;
+	}
+	
+	@RequestMapping(value = "/guestInfo")
+	@ResponseBody
+	public GuestInfoDto guestInfo(@RequestBody Map<String, String> param) {
+		GuestInfoDto dto = reService.getReserveInfo(param.get("hospital_reserve_id"));
+		System.out.println(dto.toString());
+		//String info = dto.toString(); //여기까지 됨
+		return dto;
 	}
 }

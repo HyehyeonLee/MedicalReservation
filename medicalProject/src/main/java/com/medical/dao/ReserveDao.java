@@ -2,6 +2,7 @@ package com.medical.dao;
 
 import java.util.List;
 
+import com.medical.dto.GuestInfoDto;
 import com.medical.dto.GuestReserveDto;
 import com.medical.dto.GuestReserveDto1;
 import com.medical.dto.HospitalReserveDto;
@@ -15,5 +16,9 @@ public interface ReserveDao {
 	public List<HospitalReserveDto> getTimeList(String yadmNm, String selectedDate);
 	public void insertGuest(GuestReserveDto dto);
 	public String getHospitalId(String yadmNm);
+<<<<<<< HEAD
 	public List<GuestReserveDto1> getGuestReserveAll();
+=======
+	public GuestInfoDto getGuestInfo(String hospital_reserve_id);
+>>>>>>> branch 'main' of https://github.com/HyehyeonLee/MedicalReservation.git
 }
