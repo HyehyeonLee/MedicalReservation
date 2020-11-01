@@ -69,13 +69,16 @@ public class ReserveDaoImpl implements ReserveDao {
 	}
 	
 	@Override
-	public GuestInfoDto getGuestInfo(String hospital_reserve_id) {
-		return sqlSession.selectOne("com.medical.mapper.reserveMapper.reservedInfo", hospital_reserve_id);	
+	public GuestInfoDto getGuestInfo(String hospital_reserve_id, String id) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("hospital_reserve_id", hospital_reserve_id);
+		map.put("id", id);
+		return sqlSession.selectOne("com.medical.mapper.reserveMapper.reservedInfo", map);	
 	}
 
 	@Override
-	public List<GuestReserveDto1> getGuestReserveAll() {
-		return sqlSession.selectList("com.medical.mapper.reserveMapper.getGuestReserveAll");
+	public List<GuestReserveDto1> getGuestReserveAll(String id) {
+		return sqlSession.selectList("com.medical.mapper.reserveMapper.getGuestReserveAll", id);
 	}
 
 }

@@ -47,17 +47,19 @@
 				var message = node.message;
 				var arr = message.split("-");
 				var hospital_reserve_id = arr[2];
+				var id = '${id}';
 				//여기까진 성공함
-				ajax_get_reserveInfo(hospital_reserve_id);
+				ajax_get_reserveInfo(hospital_reserve_id, id);
 				
 			}else if(node.status==="bye"){
 				//$("[data-key='"+node.key+"']").remove();
 			}
 		};
 
-		function ajax_get_reserveInfo(hospital_reserve_id){
+		function ajax_get_reserveInfo(hospital_reserve_id, id){
 			var data = {
 					hospital_reserve_id : hospital_reserve_id,
+					id : id
 					}
 			
 			$.ajax({

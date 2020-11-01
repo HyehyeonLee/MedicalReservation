@@ -48,7 +48,7 @@
 			type="hidden" class="hospital_reserve_id"
 			value="${hospital_reserve_id }" />
 		<h1>${guest_id }님</h1>
-		<h1>${ yadmNm}예약완료되었습니다.</h1>
+		<h1>${ yadmNm} 예약 완료 되었습니다.</h1>
 	</div>
 
 	<div class="footer">

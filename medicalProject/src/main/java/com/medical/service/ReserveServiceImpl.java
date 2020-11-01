@@ -65,13 +65,13 @@ public class ReserveServiceImpl implements ReserveService{
 	}
 	
 	@Override
-	public GuestInfoDto getReserveInfo(String hospital_reserve_id) {
-		return reDao.getGuestInfo(hospital_reserve_id);
+	public GuestInfoDto getReserveInfo(String hospital_reserve_id, String id) {
+		return reDao.getGuestInfo(hospital_reserve_id, id);
 	}
 
 	@Override
-	public List<GuestReserveDto1> getGuestReserveAction() {
-		return reDao.getGuestReserveAll();
+	public List<GuestReserveDto1> getGuestReserveAction(String id) {
+		return reDao.getGuestReserveAll(id);
 	}
 
 	

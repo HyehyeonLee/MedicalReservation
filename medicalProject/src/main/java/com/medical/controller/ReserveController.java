@@ -1,6 +1,7 @@
 package com.medical.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.medical.dto.GuestReserveDto;
+import com.medical.dto.GuestReserveDto1;
+import com.medical.dto.HospitalReserveDto;
 import com.medical.service.ReserveService;
 
 @Controller
@@ -40,9 +43,27 @@ public class ReserveController {
 	}
 	
 	@RequestMapping(value = "/admin")
-	public String admin(Model model) {
-		model.addAttribute("dto",reService.getGuestReserveAction());
+	public String admin(String id, Model model) {
+		List<GuestReserveDto1> list = reService.getGuestReserveAction(id);
+		for(GuestReserveDto1 dto : list) {
+			System.out.println(dto.toString());
+		}
+		
+		model.addAttribute("dto", reService.getGuestReserveAction(id));
+		model.addAttribute("id", id);
 		return "admin";
+	}
+	
+	@RequestMapping(value = "/InsertReserveInfo")
+	public String InsertReserveInfo() {
+		return "hospital_reserve";
+	}
+	
+	@RequestMapping(value = "/ReserveInfo")
+	public String reserve(HospitalReserveDto dto, Model model) {
+		reService.insertReserveInfo(dto);
+		model.addAttribute("dto", dto);
+		return "hospital_reserve_commit";
 	}
 
 }

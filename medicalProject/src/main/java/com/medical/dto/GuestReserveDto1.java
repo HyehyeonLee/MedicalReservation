@@ -46,5 +46,12 @@ public class GuestReserveDto1 {
 	public void setTime(String time) {
 		this.time = time;
 	}
+
+	@Override
+	public String toString() {
+		return "GuestReserveDto1 [id=" + id + ", name=" + name + ", date=" + date + ", time=" + time + "]";
+	}
+	
+	
 	
 }
