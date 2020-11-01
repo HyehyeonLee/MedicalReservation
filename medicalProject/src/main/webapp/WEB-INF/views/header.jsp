@@ -7,6 +7,10 @@
 <link href="${pageContext.request.contextPath }/resources/css/header.css" rel="stylesheet" >
 <link href="${pageContext.request.contextPath }/resources/css/footer.css" rel="stylesheet" >
 <link href="${pageContext.request.contextPath }/resources/css/index.css" rel="stylesheet" >
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+  />
 </head>
 <!-- 로그인전 페이지 -->
 <c:if test="${empty dto.id && empty sessionId && empty kname}">
@@ -56,7 +60,9 @@
 </c:if> 
          <div class = "main-menu">
             <ul>
-                <li><!-- 로고 자리 --></li>                
+                <li>
+                <a href="${pageContext.request.contextPath }/index" style="color : white !important;">
+                <i class="fas fa-hospital" style="font-size : 50px"></i></a></li>
                 <li><a href="#">지원</a></li>
                 <li><a href="#">뉴스</a></li>
                 <li><a href="#">상담</a></li>

@@ -39,6 +39,15 @@ td {
 #keyword {
 	width: 70%;
 }
+
+.index-content{
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	display: inline-block;
+	margin-bottom: 220px;
+	margin-top: 130px;
+}
 </style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="resources/js/Chart.js"></script>
@@ -78,7 +87,7 @@ td {
 		<%@ include file="./header.jsp"%>
 	</div>
 	
-<div class="content">
+<div class="index-content">
 
 		<div class="search_div">
 			<form action="./search/filter" method="get" id="search_form"

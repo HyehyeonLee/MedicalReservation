@@ -91,7 +91,7 @@
 	<input type="submit" value="예약완료" class = "submitBtn btn btn-success"/>
 </form>
 </div>
-	<div class="footer">	
+	<div class="footer">
 		<%@ include file="./footer.jsp"%>
 	</div>
 </body>

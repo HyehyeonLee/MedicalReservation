@@ -32,6 +32,7 @@
 		WHERE hospital_id = p_member.id 
 		AND `name` = #{name}
 		AND hospital_reserve_id NOT IN (SELECT reserve_id FROM guest_reserve)
+		AND `date` >= now()
 		ORDER BY `date` ASC;
 	</select>
 	
@@ -55,7 +56,8 @@
 		SELECT id, `name`, `date`, `time`
 		FROM p_member, hospital_reserve, guest_reserve
 		WHERE p_member.id = guest_reserve.guest_id
-		AND guest_reserve.reserve_id = hospital_reserve.hospital_reserve_id;
+		AND guest_reserve.reserve_id = hospital_reserve.hospital_reserve_id
+		ORDER BY `date` ASC, `time` ASC;
 	</select>
 
 	<select id="reservedInfo" resultType="com.medical.dto.GuestInfoDto">
