@@ -110,7 +110,8 @@ var ss = today.getSeconds(); */
 setTimeout(function(){
 	   window.location.reload(1);
 	 //  alert("!");
-	}, 500000);
+	}, 60000); //1분  
+	//5분 300000
 /* document.write(today);
 setTimeout("location.reload()",60000) */
 /* var timer = setInterval(function(){
