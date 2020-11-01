@@ -104,6 +104,12 @@ public class HomeController {
 	public String joinHospitalForm(MemberDto dto) {
 		return "J_joinform_hospital";
 	}
+	
+	@RequestMapping(value = "/hospitalPage")
+	public String hospitalPage() {
+		
+		return "hospital_page";
+	}
 
 	@RequestMapping("/insertAction")
 	public String joinSuccess(@ModelAttribute("dto") MemberDto dto, HttpSession session) {

@@ -55,9 +55,6 @@
 			}
 		};
 
-		
-
-		
 		function ajax_get_reserveInfo(hospital_reserve_id){
 			var data = {
 					hospital_reserve_id : hospital_reserve_id,
@@ -75,7 +72,6 @@
 						time = response.time;
 						info = name + " - " + date + " - " + time;
 						getGuestInfo(info);
-//						return guestInfo;
 						},
 					error : function(xhr,status,error){
 						alert("!!err");
@@ -83,12 +79,12 @@
 				});
 			}
 	</script>	
-	<table class="table">
+	<table class="table table-hover">
 		<tr>
-			<td><h1>id</h1></td>
-			<td><h1>name</h1></td>
-			<td><h1>date</h1></td>
-			<td><h1>time</h1></td>
+			<th>ID</th>
+			<th>이름</th>
+			<th>날짜</th>
+			<th>시간</th>
 		</tr>
 		<c:forEach var="list" items="${dto }">
 			<tr>

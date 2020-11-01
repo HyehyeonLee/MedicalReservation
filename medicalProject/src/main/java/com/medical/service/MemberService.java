@@ -16,4 +16,5 @@ public interface MemberService {
 	public void editMypageAction(MemberDto dto);
 	public void deleteMemberAction(MemberDto dto);
 	public MemberDto userInfoAction(String id);
+	public String checkMember(String id);
 }

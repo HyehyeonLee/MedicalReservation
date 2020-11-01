@@ -67,6 +67,11 @@ public class MemberServiceImpl implements MemberService{
 	public MemberDto userInfoAction(String id) {
 		return dao.userInfo(id);
 	}
+
+	@Override
+	public String checkMember(String id) {
+		return dao.checkGrade(id);
+	}
 	
 
 }

@@ -16,4 +16,5 @@ public interface MemberDao {
 	void editMypage(MemberDto dto);
 	void deleteMember(MemberDto dto);	// 회원탈퇴
 	MemberDto userInfo(String id);
+	public String checkGrade(String id);
 }

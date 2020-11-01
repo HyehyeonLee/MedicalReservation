@@ -64,4 +64,9 @@ public class MemberDaoImpl implements MemberDao {
 	public MemberDto userInfo(String id) {
 		return sqlSession.selectOne("com.medical.mapper.memberMapper.userInfo", id);
 	}
+
+	@Override
+	public String checkGrade(String id) {
+		return sqlSession.selectOne("com.medical.mapper.memberMapper.checkGrade", id);
+	}
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.medical.dto.GuestInfoDto;
 import com.medical.dto.HospitalReserveDto;
+import com.medical.service.MemberService;
 import com.medical.service.ReserveService;
 
 
@@ -19,11 +20,12 @@ import com.medical.service.ReserveService;
 public class RestMedicalController {
 	@Autowired
 	ReserveService reService;
+	@Autowired
+	MemberService memService;
 	
 	@RequestMapping(value = "/dateSelect")
 	@ResponseBody
 	public List<HospitalReserveDto> dateSelect(@RequestBody Map<String, String> param) {
-		
 		List<HospitalReserveDto> list = reService.getHospitalTime(param.get("name"), param.get("date"));
 		for(HospitalReserveDto dto : list) {
 			System.out.println(dto.toString());
@@ -35,8 +37,15 @@ public class RestMedicalController {
 	@ResponseBody
 	public GuestInfoDto guestInfo(@RequestBody Map<String, String> param) {
 		GuestInfoDto dto = reService.getReserveInfo(param.get("hospital_reserve_id"));
-		System.out.println(dto.toString());
 		//String info = dto.toString(); //여기까지 됨
 		return dto;
+	}
+	
+	@RequestMapping(value = "/checkGrade")
+	@ResponseBody
+	public String checkGrade(@RequestBody Map<String, String> param) {
+		String grade = memService.checkMember(param.get("id"));
+		System.out.println("restController : " + grade); //여기까지 됨
+		return grade;
 	}
 }

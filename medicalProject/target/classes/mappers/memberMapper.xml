@@ -46,4 +46,8 @@
 	<select id="userInfo" resultType="com.medical.dto.MemberDto">
 		SELECT * FROM p_member WHERE id=#{id}
 	</select>
+	
+	<select id="checkGrade" resultType="java.lang.String">
+		SELECT grade FROM p_member WHERE id=#{id};
+	</select>
 </mapper>
