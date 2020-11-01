@@ -7,7 +7,7 @@ import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
-
+// 출처: https://nowonbun.tistory.com/748 [명월 일지]
 @ServerEndpoint("/admin")
 public class Admin {
 	private static Session admin = null;
