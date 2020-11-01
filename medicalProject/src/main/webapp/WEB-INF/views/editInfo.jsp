@@ -85,6 +85,12 @@ try{
 <%		
 	}
 %>
+<div class="header">
+		<%@ include file="./header.jsp"%>
+</div>
+<div class="content">
+
+
 <form action="${pageContext.request.contextPath}/editPass" method="post" onsubmit = "return confirm('회원정보를 수정하시겠습니까?');">
 	아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${dto.id}"/><br/>
 	새로운 패스워드 :<input type="password" name="pw" required = ""><br/>
@@ -98,6 +104,11 @@ try{
 	휴대전화 :<input type="text" id="tel" name="tel" value="${dto.tel}"/><br/>
 	<input type="submit" value="수정">
 </form>
+
 	<button type="submit" onclick="location.href='memberDeletePage'">회원탈퇴</button>
+</div>
+<div class="footer">
+		<%@ include file="./footer.jsp"%>
+</div>
 </body>
 </html>

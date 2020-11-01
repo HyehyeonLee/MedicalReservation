@@ -7,7 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>예약 정보 조회</title>
-<%@ include file="./header.jsp"%>
 <script>
 	$(function(){
 		$(".reserveBtn").click(function(){
@@ -67,7 +66,10 @@
 </script>
 </head>
 <body>
-
+<div class="header">
+		<%@ include file="./header.jsp"%>
+	</div>
+<div class="content">
 <h1>${yadmNm }의 예약 가능 정보입니다.</h1>
 <h3>내원 가능한 날짜와 시간을 선택해주세요</h3>	
 <form action="${pageContext.request.contextPath}/reserve/guestReserve" method="GET" id = "reserveForm" onsubmit="return checkSubmit()">
@@ -88,5 +90,9 @@
 
 	<input type="submit" value="예약완료" class = "submitBtn btn btn-success"/>
 </form>
+</div>
+	<div class="footer">	
+		<%@ include file="./footer.jsp"%>
+	</div>
 </body>
 </html>

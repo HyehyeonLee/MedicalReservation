@@ -72,7 +72,9 @@
 </script>
 </head>
 <body>
-	<%@ include file="./header.jsp" %>
+<div class="header">
+		<%@ include file="./header.jsp"%>
+</div>
 	<div class = "search_div"></div>
 	<form action="./filter" method="get" id="search_form" class= "form-inline">
 			<select name="spclAdmTyCd" class="form-control" id = "search_option">
@@ -127,5 +129,8 @@
 
 </c:otherwise>
 	</c:choose>
+	<div class="footer">	
+		<%@ include file="./footer.jsp"%>
+	</div>
 </body>
 </html>
