@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -48,7 +47,7 @@
 				var arr = message.split("-");
 				var hospital_reserve_id = arr[2];
 				var id = '${id}';
-				//여기까진 성공함
+				
 				ajax_get_reserveInfo(hospital_reserve_id, id);
 				
 			}else if(node.status==="bye"){
@@ -76,7 +75,7 @@
 						getGuestInfo(info);
 						},
 					error : function(xhr,status,error){
-						alert("!!err");
+						alert("!!err"+error);
 						}
 				});
 			}

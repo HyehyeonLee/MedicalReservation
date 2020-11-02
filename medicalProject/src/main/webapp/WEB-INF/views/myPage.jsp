@@ -14,13 +14,7 @@ $(function(){
 	});
 
 	function checkGradeMsg(grade){
-		if(grade == "hospital"){
-			location.href = "${pageContext.request.contextPath}/hospitalPage";
-		}else if(grade == "guest"){
-			alert('기관 회원만 이용 가능합니다.');
-		}else{
-			alert('회원 가입 후 이용 가능합니다.');
-		}
+		
 	}
 	
 });
@@ -34,15 +28,20 @@ function ajax_checkGrade(id){
 			url : '${pageContext.request.contextPath}/rest/checkGrade',
 			type : 'post',
 			data : JSON.stringify(data),
-			dataType : 'json',
+			dataType : 'text',
 			contentType : 'application/json',
 			success : function(response){
-				alert("!");
-				grade =  response;
-				alert(grade);
+				var grade = response;
+					if(grade == "hospital"){
+						location.href = "${pageContext.request.contextPath}/hospitalPage";
+					}else if(grade == "guest"){
+						alert('기관 회원만 이용 가능합니다.');
+					}else{
+						alert('회원 가입 후 이용 가능합니다.');
+					}
 				},
 			error : function(xhr,status,error){
-				alert("!!err");
+				alert("!!err" + error);
 				}
 		});
 	}

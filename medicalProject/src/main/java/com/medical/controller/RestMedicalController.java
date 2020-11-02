@@ -27,17 +27,12 @@ public class RestMedicalController {
 	@ResponseBody
 	public List<HospitalReserveDto> dateSelect(@RequestBody Map<String, String> param) {
 		List<HospitalReserveDto> list = reService.getHospitalTime(param.get("name"), param.get("date"));
-		for(HospitalReserveDto dto : list) {
-			System.out.println(dto.toString());
-		}
 		return list;
 	}
 	
 	@RequestMapping(value = "/guestInfo")
 	@ResponseBody
 	public GuestInfoDto guestInfo(@RequestBody Map<String, String> param) {
-		System.out.println(param.get("hospital_reserve_id"));
-		System.out.println(param.get("id"));
 		GuestInfoDto dto = reService.getReserveInfo(param.get("hospital_reserve_id"), param.get("id"));
 		//String info = dto.toString(); //여기까지 됨
 		return dto;
