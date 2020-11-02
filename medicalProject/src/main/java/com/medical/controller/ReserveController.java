@@ -45,10 +45,6 @@ public class ReserveController {
 	@RequestMapping(value = "/admin")
 	public String admin(String id, Model model) {
 		List<GuestReserveDto1> list = reService.getGuestReserveAction(id);
-		for(GuestReserveDto1 dto : list) {
-			System.out.println(dto.toString());
-		}
-		
 		model.addAttribute("dto", reService.getGuestReserveAction(id));
 		model.addAttribute("id", id);
 		return "admin";

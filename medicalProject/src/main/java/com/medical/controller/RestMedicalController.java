@@ -27,9 +27,6 @@ public class RestMedicalController {
 	@ResponseBody
 	public List<HospitalReserveDto> dateSelect(@RequestBody Map<String, String> param) {
 		List<HospitalReserveDto> list = reService.getHospitalTime(param.get("name"), param.get("date"));
-		for(HospitalReserveDto dto : list) {
-			System.out.println(dto.toString());
-		}
 		return list;
 	}
 	

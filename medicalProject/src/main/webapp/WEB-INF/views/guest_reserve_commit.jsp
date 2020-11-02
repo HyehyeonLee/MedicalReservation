@@ -49,6 +49,8 @@
 			value="${hospital_reserve_id }" />
 		<h1>${guest_id }님</h1>
 		<h1>${ yadmNm} 예약 완료 되었습니다.</h1>
+		<input type="button" value="메인화면" onclick="location.href='${pageContext.request.contextPath}/index'" class = "btn btn-info"/>
+		<input type="button" value="예약조회" onclick="location.href='#'" class = "btn btn-success"/>
 	</div>
 
 	<div class="footer">

@@ -73,7 +73,9 @@ public class ReserveDaoImpl implements ReserveDao {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("hospital_reserve_id", hospital_reserve_id);
 		map.put("id", id);
-		return sqlSession.selectOne("com.medical.mapper.reserveMapper.reservedInfo", map);	
+		GuestInfoDto dto = sqlSession.selectOne("com.medical.mapper.reserveMapper.reservedInfo", map);
+		System.out.println("DAOTest : " + dto.toString());
+		return dto;	
 	}
 
 	@Override
