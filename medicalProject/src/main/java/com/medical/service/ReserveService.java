@@ -21,4 +21,5 @@ public interface ReserveService {
 	public String getHospitalId(String yadmNm);
 	public List<GuestReserveDto1> getGuestReserveAction(String id);
 	public GuestInfoDto getReserveInfo(String hospital_reserve_id, String id);
+	public List<GuestReserveDto1> reserveCheking(String id);
 }
