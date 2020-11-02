@@ -16,6 +16,7 @@
 	<ul>
 		<li><a href="${pageContext.request.contextPath }/reserve/admin?id=${dto.id}" target="_blank">예약 정보 조회</a></li>
 		<li><a href="${pageContext.request.contextPath }/reserve/InsertReserveInfo" target="_blank">예약 정보 등록</a></li>
+		<li><a href="${pageContext.request.contextPath }/consultAdmin" target="_blank">실시간 상담</a></li>
 	</ul>		
 </div>
 <div class="footer">

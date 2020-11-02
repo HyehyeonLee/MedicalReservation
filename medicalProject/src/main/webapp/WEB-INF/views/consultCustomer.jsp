@@ -32,7 +32,7 @@
 		function openSocket(){ 
 			webSocket.onopen = messageTextArea.value += "Server connect...\n";
 	         let message = document.getElementById("textMessage");
-	         messageTextArea.value +="(me)=>"+ talk + "\n";
+	         messageTextArea.value +="${dto.id}"+"님 "+ talk + "\n";
 	        // message.value="대화요청";
 	        webSocket.send(talk);    // "상담이 요청되었습니다." 를 admin에 메시지 전송.
 		}
@@ -56,11 +56,11 @@
 //				$("#textMessage").attr("readonly",true);
 				removeReadonly();
 			}
-			messageTextArea.value += "(operator)=>"+message.data + "\n";
+			messageTextArea.value += "상담원 : "+message.data + "\n";
 		};
 		function sendMessage(){
 			let message = document.getElementById("textMessage");
-			messageTextArea.value +="(me)=>"+ message.value + "\n";
+			messageTextArea.value +="${dto.id}"+ message.value + "\n";
 			webSocket.send(message.value);
 			message.value="";
 		}
