@@ -8,7 +8,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
+	.table{
+		border:1px solid black;
+		width : 50px;
+	}
 </style>
 </head>
 <body>
@@ -16,12 +19,17 @@
 		<%@ include file="./header.jsp"%>
 	</div>
 	<div class="content">
-		<c:forEach var="list" items="${reserveDto }">
-			${list.id }<br/>
-			${list.name }<br/>
-			${list.date }<br/>
-			${list.time }<br/>
-		</c:forEach>
+		<table class="table">
+		
+			<c:forEach var="list" items="${reserveDto }">
+				<tr>
+					<%-- <td>${list.id }</td><br/> --%>
+					<td>${list.name }</td>
+					<td>${list.date }</td>
+					<td>${list.time }</td>
+				</tr>	
+			</c:forEach>
+		</table>
 	</div>
 	
 	<div class="footer">
