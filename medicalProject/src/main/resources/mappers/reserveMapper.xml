@@ -71,10 +71,10 @@
 	</select>
 	
 	<select id="reserveCheck" resultType="com.medical.dto.GuestReserveDto1">
-		SELECT id, `name`, `date`, `time`
-		FROM p_member, hospital_reserve, guest_reserve
-		WHERE p_member.id = guest_reserve.guest_id
-		AND guest_reserve.reserve_id = hospital_reserve.hospital_reserve_id
-		AND guest_reserve.guest_id = #{id}
+		select `name`, `time`, `date`
+		from guest_reserve, p_member, hospital_reserve
+		WHERE guest_reserve.reserve_id = hospital_reserve.hospital_reserve_id
+		and p_member.id = hospital_reserve.hospital_id
+		and guest_reserve.guest_id = #{id};
 	</select>
 </mapper>
