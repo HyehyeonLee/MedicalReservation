@@ -6,7 +6,7 @@
 <mapper namespace="com.medical.mapper.memberMapper">
 	<!-- 회원가입 -->
 	<insert id="insertMember">
-		INSERT INTO medical.p_member(id,pw,name,postcode,addr,detailAddress,extraAddress,tel,birth,email) VALUES (#{id},#{pw},#{name},#{postcode},#{addr},#{detailAddress},#{extraAddress},#{tel},#{birth},#{email})
+		INSERT INTO medical.p_member(id,pw,name,postcode,addr,detailAddress,extraAddress,tel,birth,email,grade) VALUES (#{id},#{pw},#{name},#{postcode},#{addr},#{detailAddress},#{extraAddress},#{tel},#{birth},#{email},#{grade})
 	</insert>
 	<!-- 로그인 -->
 	<select id="loginMember" resultType="java.lang.Integer">
