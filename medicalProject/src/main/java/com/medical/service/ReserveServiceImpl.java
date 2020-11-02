@@ -74,6 +74,11 @@ public class ReserveServiceImpl implements ReserveService{
 		return reDao.getGuestReserveAll(id);
 	}
 
+	@Override
+	public List<GuestReserveDto1> reserveCheking(String id) {
+		return reDao.reserveCherk(id);
+	}
+
 	
 
 }

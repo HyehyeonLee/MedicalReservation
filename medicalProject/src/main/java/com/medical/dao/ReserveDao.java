@@ -18,4 +18,5 @@ public interface ReserveDao {
 	public String getHospitalId(String yadmNm);
 	public List<GuestReserveDto1> getGuestReserveAll(String id);
 	public GuestInfoDto getGuestInfo(String hospital_reserve_id, String id);
+	public List<GuestReserveDto1> reserveCherk(String id);
 }

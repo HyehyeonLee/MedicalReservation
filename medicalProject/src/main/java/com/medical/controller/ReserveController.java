@@ -61,5 +61,14 @@ public class ReserveController {
 		model.addAttribute("dto", dto);
 		return "hospital_reserve_commit";
 	}
+	@RequestMapping(value="/reserveCheck")
+	public String check(String id,Model model) {
+		List<GuestReserveDto1> list = reService.reserveCheking(id);
+		model.addAttribute("reserveDto", reService.reserveCheking(id));
+		model.addAttribute("id",id);
+		System.out.println("id"+id);
+		return "reserveCheck";
+		
+	}
 
 }
