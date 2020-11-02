@@ -53,6 +53,7 @@ td {
     position: relative;
     right: 70px;
     top: 283px;
+	cursor:pointer;
 }
 </style>
 <script src="http://code.jquery.com/jquery-latest.js"></script>

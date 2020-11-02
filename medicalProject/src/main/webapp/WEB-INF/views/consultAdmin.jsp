@@ -92,7 +92,7 @@
 				let $div = $("[data-key='" + node.key + "']");
 				let log = $div.find(".console").val();
 				$div.find(".console").val(
-						log + "(user)=>" + node.message + "\n");
+						log + "${dto.id }"+"님께서 " + node.message + "\n");
 			} else if (node.status === "bye") {
 				$("[data-key='" + node.key + "']").remove();
 			}
