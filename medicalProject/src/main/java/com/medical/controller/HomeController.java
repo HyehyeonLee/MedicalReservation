@@ -163,8 +163,8 @@ public class HomeController {
 //	}
 
 	@RequestMapping("/loginAction")
-	public String loginAction(@ModelAttribute("dto") MemberDto dto, HttpSession session, String id) {
-
+	public ModelAndView loginAction(@ModelAttribute("dto") MemberDto dto, HttpSession session, String id) {
+		ModelAndView mav = new ModelAndView();
 		// member_id---> return com.medical.vo.MemberVO
 		MemberDto dtoMember = ser.userInfoAction(id);
 
@@ -177,10 +177,15 @@ public class HomeController {
 			// mdto.setPw(dto.getPw());
 
 			// return "L_index";
-			return "redirect:/index";
+			//return "redirect:/index";
+			mav.setViewName("index");
+			mav.addObject("msg", "success");
 		} else {
-			return "redirect:/L_loginform";
+			mav.setViewName("L_loginform");
+			mav.addObject("msg", "fail");
+			//return "redirect:/L_loginform";
 		}
+		return mav;
 	}
 
 	@ResponseBody

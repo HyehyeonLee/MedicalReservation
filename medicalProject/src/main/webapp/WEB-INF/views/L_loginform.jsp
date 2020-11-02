@@ -7,6 +7,7 @@ pageEncoding="UTF-8"%>
 <title>LOGIN</title>
 </head>
 <body>
+
 <center>
 <c:choose>
 <c:when test="${sessionId != null}">
@@ -20,6 +21,11 @@ pageEncoding="UTF-8"%>
 	<input type="text" name="id" id="id" class="w3-input w3-border" placeholder="아이디" value="${id}"> <br>
 	<input type="password" id="pw" name="pw" class="w3-input w3-border" placeholder="비밀번호" > <br>
 	<input type="submit" value="로그인"> <br>
+	<c:if test="${msg=='fail' }">
+		<script>
+		alert("입력하신 아이디 혹은 비밀번호가 다릅니다.")
+		</script>
+	</c:if>
 </form>
 <br>
 	<!-- 네이버 로그인 창으로 이동 -->
