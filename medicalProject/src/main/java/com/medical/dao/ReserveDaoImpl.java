@@ -88,5 +88,13 @@ public class ReserveDaoImpl implements ReserveDao {
 		return sqlSession.selectList("com.medical.mapper.reserveMapper.reserveCheck",id);
 	}
 
+	@Override
+	public void delete(String guest_reserve_id) {
+		sqlSession.selectList("com.medical.mapper.reserveMapper.delete",guest_reserve_id);
+	}
+
+
+
+	
 
 }

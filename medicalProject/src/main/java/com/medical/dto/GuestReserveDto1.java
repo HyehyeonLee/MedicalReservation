@@ -5,14 +5,24 @@ public class GuestReserveDto1 {
 	private String name;
 	private String date;
 	private String time;
+	private String guest_reserve_id;
 	
 	public GuestReserveDto1() {}
 
-	public GuestReserveDto1(String id, String name, String date, String time) {
+	public GuestReserveDto1(String id, String name, String date, String time,String guest_reserve_id) {
 		this.id = id;
 		this.name = name;
 		this.date = date;
 		this.time = time;
+		this.guest_reserve_id = guest_reserve_id;
+	}
+
+	public String getGuest_reserve_id() {
+		return guest_reserve_id;
+	}
+
+	public void setGuest_reserve_id(String guest_reserve_id) {
+		this.guest_reserve_id = guest_reserve_id;
 	}
 
 	public String getId() {

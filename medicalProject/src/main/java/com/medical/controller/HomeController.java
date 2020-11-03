@@ -178,7 +178,7 @@ public class HomeController {
 
 			// return "L_index";
 			//return "redirect:/index";
-			mav.setViewName("index");
+			mav.setViewName("redirect:/index");
 			mav.addObject("msg", "success");
 		} else {
 			mav.setViewName("L_loginform");

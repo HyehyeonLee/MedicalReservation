@@ -3,9 +3,12 @@ package com.medical.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.medical.dto.GuestReserveDto;
@@ -62,13 +65,26 @@ public class ReserveController {
 		return "hospital_reserve_commit";
 	}
 	@RequestMapping(value="/reserveCheck")
-	public String check(String id,Model model) {
+	public String check(String id,Model model,GuestReserveDto1 reserveDto) {
 		List<GuestReserveDto1> list = reService.reserveCheking(id);
 		model.addAttribute("reserveDto", reService.reserveCheking(id));
 		model.addAttribute("id",id);
-		System.out.println("id"+id);
-		return "reserveCheck";
+	//	System.out.println("id"+id);
 		
+	//	reService.deleteReserve(id);
+	//	reService.reUpdateAction(reserveDto, id);
+		
+		return "reserveCheck";
+	}
+	@RequestMapping(value="/delete")
+	public String del1(String guest_reserve_id ,Model model) {
+		model.addAttribute("id",guest_reserve_id);
+		return "reserveDelete";
+	}
+	@RequestMapping(value="/deleteAc")
+	public String del(String guest_reserve_id, HttpSession session,Model model) {
+		reService.deleteReserve(guest_reserve_id);
+		return "reserveDelete";
 	}
 
 }
