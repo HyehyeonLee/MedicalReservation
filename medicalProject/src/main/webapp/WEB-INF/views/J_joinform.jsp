@@ -4,7 +4,7 @@
 <html>
 <head>
 <link href="<c:url value="resources/css/joinCss.css" />" rel="stylesheet">
-	<title>Home</title>
+	<title>일반 회원 가입</title>
 </head>
 <body>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -123,21 +123,21 @@
     </script>
     
 	<form action="insertAction" method="post">
-		아이디 : <input type="text" id="id" name="id"/>
+		아이디 : <input type="text" id="id" name="id" required/>
 		<button class="idCheck" type="button" id="idChk" onclick="fn_idChk();" value="N">중복체크</button><br/>
-		패스워드 : <input type="password" id="pw" name="pw" onchange="check_pw()"/><br/>
-		패스워드 확인 :<input type="password" id="pw2" onchange="check_pw()"><span id="check"></span><br/>
-		이름 : <input type="text" name="name"/><br/>
-		이메일 : <input type="email" name="email" id = "email"/>
+		패스워드 : <input type="password" id="pw" name="pw" onchange="check_pw()" required/><br/>
+		패스워드 확인 :<input type="password" id="pw2" onchange="check_pw()" required><span id="check"></span><br/>
+		이름 : <input type="text" name="name" required/><br/>
+		이메일 : <input type="email" name="email" id = "email" required/>
 		<button class="emailCheck" type="button" id="emailChk" onclick="fn_emailChk();" value="N">중복체크</button>
 		<br/>
-		주소입력 : <input type="text" id="postcode" name="postcode" placeholder="우편번호" readonly="readonly">
+		주소입력 : <input type="text" id="postcode" name="postcode" placeholder="우편번호" readonly="readonly" required>
 		<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br/>
 		<input type="text" id="addr" name="addr" placeholder="주소" readonly="readonly"><br/>
 		<input type="text" id="extraAddress"name="extraAddress" placeholder="참고항목" readonly="readonly">
 		<input type="text" id="detailAddress"name="detailAddress" placeholder="상세주소"><br />
-		휴대전화 : <input type="text" name="tel"/><br/>
-		생년월일 : <input type="date" name="birth"/><br/>
+		휴대전화 : <input type="text" name="tel" required/><br/>
+		생년월일 : <input type="date" name="birth" required/><br/>
 		<input type="hidden" value="guest" name="grade"/>
 		<input type="submit" value="회원가입 완료!" onclick="pw()" />
 	</form>

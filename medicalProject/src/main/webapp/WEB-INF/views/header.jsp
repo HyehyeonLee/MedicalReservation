@@ -63,7 +63,7 @@
                 <li>
                 <a href="${pageContext.request.contextPath }/index" style="color : white !important;">
                 <i class="fas fa-hospital" style="font-size : 50px"></i></a></li>
-                <li><a href="#">지원</a></li>
+                <li><a href="${pageContext.request.contextPath }/supply/list">지원</a></li>
                 <li><a href="#">뉴스</a></li>
                 <li><a href="#">상담</a></li>
             </ul>

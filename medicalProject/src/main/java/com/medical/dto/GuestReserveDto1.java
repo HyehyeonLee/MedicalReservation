@@ -1,6 +1,7 @@
 package com.medical.dto;
 
 public class GuestReserveDto1 {
+	private int guest_reserve_id;
 	private String id;
 	private String name;
 	private String date;

@@ -51,8 +51,8 @@
 							$("#timeDiv").html("");
 					for(var i = 0; i<list.length; i++){
 							var str = "";
-							str += "<input type = 'radio' name='hospital_reserve_id' class = 'hospital_reserve_id' value='"+list[i].hospital_reserve_id+"'/>";
-							str += list[i].time;
+							str += "<label><input type = 'radio' name='hospital_reserve_id' class = 'hospital_reserve_id' value='"+list[i].hospital_reserve_id+" required'/>";
+							str += list[i].time+"</label>";
 							str += "<br />";
 							$("#timeDiv").append(str);	
 						}
