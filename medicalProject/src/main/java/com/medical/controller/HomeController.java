@@ -112,8 +112,9 @@ public class HomeController {
 	}
 
 	@RequestMapping("/insertAction")
-	public String joinSuccess(@ModelAttribute("dto") MemberDto dto, HttpSession session) {
-
+	public String joinSuccess(@ModelAttribute("dto") MemberDto dto, HttpSession session, HttpServletRequest request) {
+		//ModelAndView mav = new ModelAndView();
+		
 		String beforeEncryptedPw = dto.getPw();
 		// 암호 확인
 		System.out.println("첫번째:" + dto.getPw());
@@ -129,11 +130,13 @@ public class HomeController {
 		int result = ser.idCheckAction(dto);
 		if (result == 1) {
 			session.setAttribute("beforePw", beforeEncryptedPw);
+			request.setAttribute("message", "faill");
 			return "/J_joinform";
 		} else if (result == 0) {
+			request.setAttribute("message", "successs");
 			ser.insertMemberAction(dto);
 		}
-		return "J_joinSuccess";
+			return "L_loginform";
 	}
 
 	@RequestMapping("/L_idsearch")
