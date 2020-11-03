@@ -7,7 +7,9 @@ pageEncoding="UTF-8"%>
 <title>LOGIN</title>
 </head>
 <body>
-
+<%if(request.getAttribute("message")!=null){ %>
+		 	<script>alert("회원가입이 성공적으로 되었습니다! 다시 로그인 해주세요.");</script>
+		 <%} %>
 <center>
 <c:choose>
 <c:when test="${sessionId != null}">
@@ -23,7 +25,7 @@ pageEncoding="UTF-8"%>
 	<input type="submit" value="로그인"> <br>
 	<c:if test="${msg=='fail' }">
 		<script>
-		alert("입력하신 아이디 혹은 비밀번호가 다릅니다.")
+		alert("입력하신 아이디 혹은 비밀번호가 다릅니다.");
 		</script>
 	</c:if>
 </form>
