@@ -79,6 +79,13 @@ public class ReserveServiceImpl implements ReserveService{
 		return reDao.reserveCherk(id);
 	}
 
+	@Override
+	public void deleteReserve(String guest_reserve_id) {
+		reDao.delete(guest_reserve_id);
+	}
+
+
+
 	
 
 }

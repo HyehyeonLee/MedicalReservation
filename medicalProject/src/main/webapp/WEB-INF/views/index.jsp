@@ -138,12 +138,23 @@ td {
 	
 
 </body>
+<c:choose>
+	<c:when test="${empty dto.id}">
+	<script>
+	$(document).on('click','#consult',function(){
+		alert("로그인이 필요한 서비스입니다. 로그인 후 이용 부탁드립니다.");
+	});
+	</script>
+	</c:when>
+	<c:otherwise>
+		<script>
+		$(document).on('click','#consult',function(){
+		window.open('/www/consultCustomer','window','width=500,height=400');
+	}); 
+		</script>
+	</c:otherwise>
+</c:choose>
 <script>
-
-$(document).on('click','#consult',function(){
-	window.open('/www/consultCustomer','window','width=500,height=400');
-}); 
-
 $(function(){
    
 var chartLabels = [];
@@ -176,6 +187,7 @@ for(var i=0; i<5; i++){
       thisWeek[${status.index}] = '${item.stateDt}';
     </c:forEach>
 
+    
 var lineChartData = {
    labels : thisWeek,
    datasets : [
