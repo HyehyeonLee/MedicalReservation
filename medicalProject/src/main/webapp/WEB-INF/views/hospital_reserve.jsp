@@ -6,12 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <title>예약 정보 입력</title>
+<style>
+.sub-title {
+	padding: 20px;
+	color: #5c5c5c;
+}
+</style>
 </head>
 <body>
 <div class="header">
 	<%@ include file="./header.jsp"%>
 </div>
 <div class="content">
+<h2 class="sub-title">예약 정보 입력</h2>
 		<form action="${pageContext.request.contextPath }/reserve/ReserveInfo" method="post">
 			<input type="hidden" name="hospital_id" value="${dto.id }" /> <input
 				type="date" name="date" id="date" /><br /> <input type="time"

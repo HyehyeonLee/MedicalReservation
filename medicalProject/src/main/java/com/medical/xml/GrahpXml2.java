@@ -87,7 +87,7 @@ public class GrahpXml2 {
 		      }
 		      
 		      pageNo++;
-		      if(pageNo>2){
+		      if(pageNo>=2){ 
 		      	break;
 			}
 		}

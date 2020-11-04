@@ -51,7 +51,7 @@
 							$("#timeDiv").html("");
 					for(var i = 0; i<list.length; i++){
 							var str = "";
-							str += "<label><input type = 'radio' name='hospital_reserve_id' class = 'hospital_reserve_id' value='"+list[i].hospital_reserve_id+" required'/>";
+							str += "<label><input type = 'radio' name='hospital_reserve_id' class = 'hospital_reserve_id' value='"+list[i].hospital_reserve_id+"'/>";
 							str += list[i].time+"</label>";
 							str += "<br />";
 							$("#timeDiv").append(str);	
@@ -72,7 +72,7 @@
 <div class="content">
 <h1>${yadmNm }의 예약 가능 정보입니다.</h1>
 <h3>내원 가능한 날짜와 시간을 선택해주세요</h3>	
-<form action="${pageContext.request.contextPath}/reserve/guestReserve" method="GET" id = "reserveForm" onsubmit="return checkSubmit()">
+<form action="${pageContext.request.contextPath}/reserve/guestReserve" method="GET" id = "reserveForm">
 <input type="hidden" name="yadmNm" class = "yadmNm"  id = "yadmNm" value = "${ yadmNm}"/>
 <input type="hidden" name="hospital_id" value = "${ hospital_id}" />
 	<select name="date" id="date">

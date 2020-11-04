@@ -56,6 +56,7 @@ public class GrahpXml {
 		      System.out.println("파싱할 리스트 수 : " + nList.getLength());
 		      
 		      System.out.println("전체 결과 수 : " + doc.getElementsByTagName("totalCount"));
+System.out.println("for문 시작!");		      
 		      for(int i = 0; i < nList.getLength(); i++) {
 		         Node nNode = nList.item(i);
 		         if(nNode.getNodeType() == Node.ELEMENT_NODE) {
@@ -71,11 +72,15 @@ public class GrahpXml {
 					String deathCnt = getTagValue("deathCnt",eElement);	  			
 					GrahpDto vo = new GrahpDto(stateDt,decideCnt,clearCnt,deathCnt);
 		         	list.add(vo);
+		         	
+System.out.println(vo.getStateDt() + " / " + vo.getDecideCnt());
+		    		
+
 		         }
 		      }
 		      
 		      pageNo++;
-		      if(pageNo>2){
+		      if(pageNo>=2){
 		      	break;
 			}
 		}

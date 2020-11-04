@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 정보 수정</title>
 </head>
 <style>
 #consult{
@@ -17,6 +17,10 @@
     right: 67px;
     margin-top: 157px;
 }
+
+.sub-title {
+	padding: 20px;
+	color: #5c5c5c;
 }
 </style>
 <body>
@@ -103,7 +107,7 @@ try{
 </div>
 <div class="content">
 
-
+<h2 class="sub-title">회원 정보 수정</h2>
 <form action="${pageContext.request.contextPath}/editPass" method="post" onsubmit = "return confirm('회원정보를 수정하시겠습니까?');">
 	아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${dto.id}"/><br/>
 	새로운 패스워드 :<input type="password" name="pw" required = ""><br/>

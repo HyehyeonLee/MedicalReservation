@@ -81,10 +81,10 @@ public class ReserveController {
 		model.addAttribute("id",guest_reserve_id);
 		return "reserveDelete";
 	}
-	@RequestMapping(value="/deleteAc")
-	public String del(String guest_reserve_id, HttpSession session,Model model) {
-		reService.deleteReserve(guest_reserve_id);
-		return "reserveDelete";
-	}
+//	@RequestMapping(value="/deleteAc")
+//	public String del(String guest_reserve_id, HttpSession session,Model model) {
+//		reService.deleteReserve(guest_reserve_id);
+//		return "reserveDelete";
+//	}
 
 }

@@ -12,10 +12,6 @@ $(function(){
 		var id = '${dto.id}';
 		ajax_checkGrade(id);
 	});
-
-	function checkGradeMsg(grade){
-		
-	}
 	
 });
 
