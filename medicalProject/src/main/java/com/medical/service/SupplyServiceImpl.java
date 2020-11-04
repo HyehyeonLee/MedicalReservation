@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.medical.dao.SupplyDao;
+import com.medical.dto.MemberDto;
 import com.medical.dto.SupplyDto;
 
 @Service
@@ -25,5 +26,12 @@ public class SupplyServiceImpl implements SupplyService {
 	public List<SupplyDto> supplyAll() {
 		return sDao.supplyAll();
 	}
+
+	@Override
+	public MemberDto AddressAction(String id) {
+		return sDao.address(id);
+	}
+
+	
 
 }

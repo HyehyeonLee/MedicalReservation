@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.medical.dto.MemberDto;
 import com.medical.dto.SupplyDto;
 import com.medical.service.SupplyService;
 
@@ -21,5 +23,11 @@ public class SupplyController {
 		List<SupplyDto> list = suService.supplyAll();
 		model.addAttribute("supply", list);
 		return "supply_request";
+	}
+	@RequestMapping(value="/address")
+	public String address(@ModelAttribute("Adto")MemberDto dto, String id,Model model) {
+		suService.AddressAction(id);
+		model.addAttribute("Adto",dto);
+		return "address";
 	}
 }

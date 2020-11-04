@@ -80,13 +80,16 @@ public class HomeController {
 		cal.setTime(new Date());
 		cal.add(Calendar.DATE, -1);
 		String end = df.format(cal.getTime());
-		cal.add(Calendar.DATE, -5);
+		cal.add(Calendar.DATE, -8);
 		String start = df.format(cal.getTime());
 		ArrayList<GrahpDto> list = grahpXml1.arrList(start, end);
 		model.addAttribute("list", list);
 		ArrayList<GrahpDto> list2 = grahpXml2.arrList(end, end);
 		model.addAttribute("list2", list2);
 		
+		/*
+		 * for(GrahpDto dto : list) { System.out.println(dto.getStateDt()); }
+		 */
 		return "index";
 	}
 

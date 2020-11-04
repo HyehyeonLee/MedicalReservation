@@ -7,4 +7,9 @@
 	<select id = "supplyAll" resultType = "com.medical.dto.SupplyDto">
 		SELECT * FROM medical.supply;
 	</select>
+	
+	<select id = "addressCheck" resultType = "com.medical.dto.MemberDto"> 
+	select `name`,`addr`,`detailAddress`,`extraAddress`,`tel`
+		from p_member where id=${id}
+	</select>	
 </mapper>

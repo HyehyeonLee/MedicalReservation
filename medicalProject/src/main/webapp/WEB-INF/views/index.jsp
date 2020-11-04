@@ -175,8 +175,8 @@ var theDate = currentDay.getDate();
 var dayOfWeek = currentDay.getDay();
 var thisWeek = [];
 //5일 간격으로 날짜 출력
-for(var i=0; i<5; i++){
-	var resultDay = new Date(Year, Month, theDate +(i - 4));
+for(var i=0; i<8; i++){
+	var resultDay = new Date(Year, Month, theDate +(i - 7));
 	var yy = resultDay.getFullYear();
 	var mm  = Number(resultDay.getMonth()) + 1;
 	var dd = resultDay.getDate();
@@ -184,18 +184,26 @@ for(var i=0; i<5; i++){
 	mm = String(mm).length === 1 ? '0' + mm : mm;
 	dd = String(dd).length === 1 ? '0' + dd : dd;
 }
-	<c:forEach var="item" items="${list }" varStatus="status">
-      chartData1.push(${item.decideCnt});
-      thisWeek[${status.index}] = '${item.stateDt}';
-    </c:forEach>
 
-<<<<<<< HEAD
-    var todayCnt = chartData1[chartData1.length-1] - chartData1[chartData1.length-2];
-    alert(todayCnt)
-var todayCnt = [];  
+//전 누적확진자수 나오게 한 코드 -> 한 날 한 날 뿌려주는 코드
+	//<c:forEach var="item" items="${list }" varStatus="status">
+//      chartData1.push(${item.decideCnt});
+//	    var todayCnt = chartData1[chartData1.length-1] - chartData1[chartData1.length-2];
+//    </c:forEach>
+
+//1~5까지 반복ㅇ
+	thisWeek[0] = '${list[0].stateDt}';
+	<c:forEach var="cnt" begin="1" end="8">
+			chartData1.push(${list[cnt].decideCnt} - ${list[cnt-1].decideCnt});
+	      thisWeek[${cnt}] = '${list[cnt].stateDt}';
+	</c:forEach>
+
+//어제 엊그제를 빼는 코드를 임의로 만든거임
+    //var todayCnt = chartData1[chartData1.length-1] - chartData1[chartData1.length-2];
+    //alert(todayCnt)
+	//var todayCnt = [];  
        
-=======
->>>>>>> branch 'main' of https://github.com/HyehyeonLee/MedicalReservation.git
+
     
 var lineChartData = {
    labels : thisWeek,

@@ -26,7 +26,7 @@ img {
 		<br />
 		<h1>구호 물품 신청</h1>
 		<br />
-		<form action="/">
+		<form action="address">
 			<div class="supply-wrap">
 				<ul>
 				<c:forEach var="supply" items="${supply }">
