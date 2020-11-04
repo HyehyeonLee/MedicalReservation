@@ -58,8 +58,9 @@
 	<!-- NaverLoginBO Class에 대한 Bean설정 추가 
 	<bean id="naverLoginBO" class="com.dy.controller.NaverLoginBO"></bean>
 	-->
-	<bean id="reserveDao" class="com.medical.dao.ReserveDaoImpl">
-	</bean>
+	<bean id="reserveDao" class="com.medical.dao.ReserveDaoImpl" />
+	<bean id="supplyDao" class="com.medical.dao.SupplyDaoImpl" />
+	
 	
 	<context:component-scan base-package="com.medical.service" />
 </beans>

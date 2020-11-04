@@ -7,27 +7,58 @@
 <meta charset="UTF-8">
 <title>물품 신청</title>
 <style type="text/css">
-	#supplyList {
-		
-	}
-	
-	img{
-		width : 30%;
-	}
+.item {
+	width: 33%;
+	display: inline-block;
+	float: left;
+}
+
+img {
+	width: 50%;
+}
 </style>
 </head>
 <body>
-<div class="header">
-	<%@ include file="./header.jsp"%>
-</div>
-	<div class ="content">
-	<br />
-	<h1>구호 물품 신청</h1>
-	<br />
-	<form action="/">
-			<table class="table" id="supplyList">
+	<div class="header">
+		<%@ include file="./header.jsp"%>
+	</div>
+	<div class="content">
+		<br />
+		<h1>구호 물품 신청</h1>
+		<br />
+		<form action="/">
+			<div class="supply-wrap">
+				<ul>
+				<c:forEach var="supply" items="${supply }">
+					<li>
+						<div class = "item">
+						<img src="${pageContext.request.contextPath }/resources/img/${supply.code}.jpg" />
+						<br />
+						<!--  <img src="${supply.img}" /> -->
+						<label> <c:choose>
+								<c:when test="${supply.plural == 1 }">
+								<input type="checkbox" value="${supply.code }" />
+								<c:out value="${supply.title }" />
+								<br />
+									<input type="button" value="-" />
+									<input type="text" value = "1" width = "20px"/>
+									<input type="button" value="+" />
+								</c:when>
+								<c:when test="${supply.plural == 0 }">
+									<input type="radio" name="hobby" value="${supply.code }" />
+									<c:out value="${supply.title }" />
+								</c:when>
+							</c:choose> 
+						</label> <br />
+						</div>
+					</li>
+				</c:forEach>
+					</ul>
+			</div>
+			<%-- <table class="table" id="supplyList">
 				<tr>
 					<td><img src="${pageContext.request.contextPath }/resources/img/rice.jpg" alt="" />
+					${pageContext.request.contextPath }/resources/img/spam.jpg
 						<label><input type="checkbox" name="rice" id="rice" />&nbsp;&nbsp;즉석 밥</label>
 					</td>
 					<td><img src="${pageContext.request.contextPath }/resources/img/shin.jpg" alt="" />
@@ -70,14 +101,14 @@
 						<label><input type="radio" name="hobby" id="shrimp" />&nbsp;&nbsp;새우 키우기</label>
 					</td>
 				</tr>
-			</table>
-			<input type="submit" value="다음" class="btn btn-primary" style = "float : right"/>
+			</table> --%>
+			<input type="submit" value="다음" class="btn btn-primary"
+				style="float: right" />
 		</form>
-		<br />
-		<br />
+		<br /> <br />
 	</div>
-<div class="footer">
-	<%@ include file="./footer.jsp"%>
-</div>
+	<div class="footer">
+		<%@ include file="./footer.jsp"%>
+	</div>
 </body>
 </html>
