@@ -160,6 +160,8 @@ $(function(){
 var chartLabels = [];
 var chartData1 = [];
 
+
+
 //현재 시간
 var today = new Date();	
 var hh= today.getHours();
@@ -187,6 +189,11 @@ for(var i=0; i<5; i++){
       thisWeek[${status.index}] = '${item.stateDt}';
     </c:forEach>
 
+    var todayCnt = chartData1[chartData1.length-1] - chartData1[chartData1.length-2];
+    alert(todayCnt)
+var todayCnt = [];  
+       
+    
 var lineChartData = {
    labels : thisWeek,
    datasets : [
@@ -198,6 +205,7 @@ var lineChartData = {
             pointBorderColor : "rgba(0.0.0)",
             data : chartData1
          }
+         
       ]
    }
    

@@ -86,6 +86,7 @@ public class HomeController {
 		model.addAttribute("list", list);
 		ArrayList<GrahpDto> list2 = grahpXml2.arrList(end, end);
 		model.addAttribute("list2", list2);
+		
 		return "index";
 	}
 
