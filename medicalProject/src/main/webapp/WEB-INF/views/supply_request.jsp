@@ -16,6 +16,10 @@
 img {
 	width: 50%;
 }
+
+ul{
+	list-style: none;
+}
 </style>
 </head>
 <body>
@@ -23,9 +27,8 @@ img {
 		<%@ include file="./header.jsp"%>
 	</div>
 	<div class="content">
-		<br />
+	
 		<h1>구호 물품 신청</h1>
-		<br />
 		<form action="/">
 			<div class="supply-wrap">
 				<ul>
@@ -103,12 +106,14 @@ img {
 				</tr>
 			</table> --%>
 			<input type="submit" value="다음" class="btn btn-primary"
-				style="float: right" />
+				style="float: right; margin-top: -50px;" />
 		</form>
 		<br /> <br />
+		
 	</div>
-	<div class="footer">
-		<%@ include file="./footer.jsp"%>
-	</div>
+	<%-- <div style="margin-top: 700px;">
+	<%@ include file="./footer.jsp"%>
+	</div> --%>
 </body>
+
 </html>
