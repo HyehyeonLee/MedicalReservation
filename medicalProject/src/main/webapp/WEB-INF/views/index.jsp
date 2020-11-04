@@ -139,7 +139,7 @@ td {
 
 </body>
 <c:choose>
-	<c:when test="${empty dto.id}">
+	<c:when test="${empty dto.id}&& ${ empty sessionId} && ${empty kname}">
 	<script>
 	$(document).on('click','#consult',function(){
 		alert("로그인이 필요한 서비스입니다. 로그인 후 이용 부탁드립니다.");
@@ -189,10 +189,13 @@ for(var i=0; i<5; i++){
       thisWeek[${status.index}] = '${item.stateDt}';
     </c:forEach>
 
+<<<<<<< HEAD
     var todayCnt = chartData1[chartData1.length-1] - chartData1[chartData1.length-2];
     alert(todayCnt)
 var todayCnt = [];  
        
+=======
+>>>>>>> branch 'main' of https://github.com/HyehyeonLee/MedicalReservation.git
     
 var lineChartData = {
    labels : thisWeek,
