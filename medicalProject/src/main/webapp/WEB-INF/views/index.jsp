@@ -139,7 +139,7 @@ td {
 
 </body>
 <c:choose>
-	<c:when test="${empty dto.id}">
+	<c:when test="${empty dto.id}&& ${ empty sessionId} && ${empty kname}">
 	<script>
 	$(document).on('click','#consult',function(){
 		alert("로그인이 필요한 서비스입니다. 로그인 후 이용 부탁드립니다.");
