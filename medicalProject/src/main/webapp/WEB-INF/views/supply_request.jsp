@@ -15,6 +15,7 @@
 
 img {
 	width: 50%;
+	margin-left:30px;
 }
 
 ul{
@@ -69,6 +70,7 @@ ul{
 		</form>
 		<br /> <br />
 	</div>
+	
 </body>
 
 </html>
