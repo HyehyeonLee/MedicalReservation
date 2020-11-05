@@ -65,6 +65,6 @@
                 <i class="fas fa-hospital" style="font-size : 50px"></i></a></li>
                 <li><a href="${pageContext.request.contextPath }/supply/list">지원</a></li>
                 <li><a href="#">뉴스</a></li>
-                <li><a href="#">상담</a></li>
+                <li><a href="${pageContext.request.contextPath}/suggestionsEmail.do">건의사항</a></li>
             </ul>
         </div>
