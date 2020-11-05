@@ -78,18 +78,15 @@ public class HomeController {
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
-		cal.add(Calendar.DATE, -1);
+		cal.add(Calendar.DATE, 0);
 		String end = df.format(cal.getTime());
-		cal.add(Calendar.DATE, -8);
+		cal.add(Calendar.DATE, -9);
 		String start = df.format(cal.getTime());
 		ArrayList<GrahpDto> list = grahpXml1.arrList(start, end);
 		model.addAttribute("list", list);
 		ArrayList<GrahpDto> list2 = grahpXml2.arrList(end, end);
 		model.addAttribute("list2", list2);
 		
-		/*
-		 * for(GrahpDto dto : list) { System.out.println(dto.getStateDt()); }
-		 */
 		return "index";
 	}
 
