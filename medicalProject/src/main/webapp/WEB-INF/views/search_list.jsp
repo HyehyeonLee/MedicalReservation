@@ -46,7 +46,7 @@
 </style>
 <script>
 	$(function(){
-		var input_option = '${search_option}';
+		var input_option = '${search_option}'; //이전 페이지에서 선택한 검색 옵션을 세팅
 		if(input_option == "all"){
 			$("#all").attr("selected", "selected");
 		}else if(input_option == "A0"){
@@ -91,7 +91,7 @@
 	</form>
 	<br />
 	<c:choose>
-		<c:when test = "${empty list }">
+		<c:when test = "${empty list }"><!-- 검색 결과가 없을 시 -->
 		<div class = "inform">
 			<p class = "">"${keyword }"에 대한 검색 결과가 없습니다. 다시 입력해주세요.</p>
 			<p>ex) "OO" → "OO시/군/구"로 바꾸어 입력.</p>				
@@ -119,7 +119,7 @@
 				<input type="hidden" class="yadmNm" id="yadmNm" value="${item.yadmNm }">
 			</td>
 			<c:choose>
-				<c:when test="${item.reserve == 1}">
+				<c:when test="${item.reserve == 1}"><!-- 사이트에 가입한 병원만 예약 가능 -->
 					<td><input type="button" id="reserveBtn" value="예약가능" class="reserveBtn btn btn-primary" /></td>
 				</c:when>
 				<c:when test="${item.reserve == 0}">

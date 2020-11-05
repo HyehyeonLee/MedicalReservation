@@ -5,63 +5,80 @@
   
 <mapper namespace="com.medical.mapper.reserveMapper">
 	<select id="reserveChk" resultType = "int">
+	<!-- 검색 필터링 -->
+	<!-- 병원 이름으로 가입한 정보가 있으면 예약 가능함 -->
 		SELECT count(*) FROM p_member WHERE name = #{name} AND grade = 'hospital';
 	</select>
 	
 	<insert id = "insertReserveInfo">
+	<!-- 병원 측에서 예약 가능한 정보를 입력 -->
 		INSERT INTO hospital_reserve(hospital_id, `date`, `time`) VALUES (#{hospital_id}, #{date}, #{time});
 	</insert>
 	
 	<insert id = "insertGuestReserve">
+	<!-- 환자 측에서 예약 가능한 정보를 입력 (안 씀) -->
 		INSERT INTO guest_reserve(guest_id, reserve_id) VALUES (#{guest_id}, #{reserve_id});
 	</insert>
 	
 	<select id="getReserveInfo" resultType = "com.medical.dto.HospitalReserveDto">
+	<!-- 예약 가능한 모든 정보를 가져옴 (안 씀) -->
 		SELECT * FROM hospital_reserve;
 	</select>
 	
 	<select id="getHospitalReserveInfo" resultType = "com.medical.dto.HospitalReserveDto">
+	<!-- 안 씀 -->
 		SELECT hospital_reserve_id, hospital_id, `date`, `time` 
 		FROM hospital_reserve, p_member 
 		WHERE hospital_id = p_member.id and `name` = #{name};
 	</select>
 	
 	<select id = "getReserveDate" resultType="java.lang.String">
+	<!-- 환자 측 -->
+	<!-- 예약 가능한 날짜들을 불러옴 -->
 		SELECT DISTINCT `date`
 		FROM hospital_reserve, p_member 
 		WHERE hospital_id = p_member.id 
 		AND `name` = #{name}
 		AND hospital_reserve_id NOT IN (SELECT reserve_id FROM guest_reserve)
 		AND `date` >= now()
+		<!-- 오늘 이후의 날짜들만 불러옴 -->
 		ORDER BY `date` ASC;
 	</select>
 	
 	<select id = "getHospitalId" resultType = "java.lang.String">
+	<!-- 병원명에 일치하는 병원 id를 불러옴 -->
 		SELECT id
 		FROM p_member
 		WHERE `name` = #{name};
 	</select>
 	
 	<select id = "getReserveTime" resultType="com.medical.dto.HospitalReserveDto">
+	<!-- 환자 측 -->
+	<!-- 선택한 병원명, 날짜에 맞는 예약 가능 시간들을 불러옴 -->
 		SELECT hospital_reserve_id, `time`
 		FROM hospital_reserve, p_member 
 		WHERE hospital_id = p_member.id 
 		AND `name` = #{name} 
 		AND `date`=#{date}
 		AND hospital_reserve_id NOT IN (SELECT reserve_id FROM guest_reserve)
+		<!-- 다른 환자가 예약한 예약 정보는 불러오지 않음 -->
 		ORDER BY `date` ASC;
 	</select>
 	
 	<select id="getGuestReserveAll" resultType = "com.medical.dto.GuestReserveDto1">
+	<!-- 병원 측 -->
+	<!-- 환자의 모든 예약 정보를 불러옴 -->
 		SELECT id, `name`, `date`, `time`
 		FROM p_member, hospital_reserve, guest_reserve
 		WHERE p_member.id = guest_reserve.guest_id
 		AND guest_reserve.reserve_id = hospital_reserve.hospital_reserve_id
 		AND hospital_reserve.hospital_id = #{id}
+		<!-- 로그인한 병원 아이디가 일치하는 -->
 		ORDER BY `date` ASC, `time` ASC;
 	</select>
 
 	<select id="reservedInfo" resultType="com.medical.dto.GuestInfoDto">
+	<!-- ajax에 사용 admin.jsp 참고 -->
 		SELECT `name`, `date`, `time`
 		FROM p_member, hospital_reserve, guest_reserve
 		WHERE p_member.id = guest_reserve.guest_id
@@ -71,6 +88,7 @@
 	</select>
 	
 	<select id="reserveCheck" resultType="com.medical.dto.GuestReserveDto1">
+	<!-- 환자 측에서 자신이 예약한 예약 정보를 조회 -->
 		SELECT guest_reserve_id ,`name`, `time`, `date`
 		FROM guest_reserve, p_member, hospital_reserve
 		WHERE guest_reserve.reserve_id = hospital_reserve.hospital_reserve_id
@@ -80,6 +98,7 @@
 	</select>
 	
 	<delete id="delete">
+	<!-- 예약 취소 -->
 		DELETE FROM guest_reserve WHERE guest_reserve_id= #{guest_reserve_id}
 	</delete>
 	

@@ -27,7 +27,11 @@ public class GetHospitalXml {
 		return nValue.getNodeValue();
 	}
 	
+	//검색 옵션 설정 시
 	public ArrayList<HospitalDto> getTypeList(String spclAdmTyCd){
+		//공공데이터 포털에서 발급 받은 정보들
+		//https://data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15043078
+		//spclAdmTyCd - A0: 국민안심병원/97: 코로나검사 실시기관/99: 코로나 선별진료소 운영기관
 		String serviceKey = "Ps5ZYencIjs9%2B9VuoKvLz9jNgu5N23yQFI8symcgauDrVQ3z8PEUf1DuxIxfjbwQs%2FpxEQ7qkPVmsDs1Q2bKxw%3D%3D";
 		int pageNo = 1;
 		int numOfRows = 10000;
@@ -82,6 +86,7 @@ public class GetHospitalXml {
 		
 	}
 	
+	//검색 옵션 - 전체로 선택 시
 	public ArrayList<HospitalDto> getAllList(){
 		ArrayList<HospitalDto> allList = new ArrayList<HospitalDto>();
 		allList.addAll(getTypeList("A0"));

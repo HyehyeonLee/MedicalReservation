@@ -28,6 +28,7 @@ public class RestMedicalController {
 	@RequestMapping(value = "/dateSelect")
 	@ResponseBody
 	public List<HospitalReserveDto> dateSelect(@RequestBody Map<String, String> param) {
+		//환자가 선택한 병원과 날짜에 해당하는 시간을 불러옴
 		List<HospitalReserveDto> list = reService.getHospitalTime(param.get("name"), param.get("date"));
 		return list;
 	}
@@ -35,14 +36,15 @@ public class RestMedicalController {
 	@RequestMapping(value = "/guestInfo")
 	@ResponseBody
 	public GuestInfoDto guestInfo(@RequestBody Map<String, String> param) {
+		//예약 번호와 로그인된 병원 id에 해당하는 예약 정보를 불러옴 (admin.jsp 참고)
 		GuestInfoDto dto = reService.getReserveInfo(param.get("hospital_reserve_id"), param.get("id"));
-		// String info = dto.toString(); //여기까지 됨
 		return dto;
 	}
 
 	@RequestMapping(value = "/checkGrade")
 	@ResponseBody
 	public String checkGrade(@RequestBody Map<String, String> param) {
+		//grade가 hospital인지 체크 (myPage.jsp 참고)
 		String grade = memService.checkMember(param.get("id"));
 		System.out.println("restController : " + grade); // 여기까지 됨
 		return grade;
@@ -50,6 +52,7 @@ public class RestMedicalController {
 
 	@RequestMapping(value = "/deleteAc")
 	public String del(@RequestBody Map<String, String> param) {
+		//환자 측 예약 취소
 		String guest_reserve_id = param.get("guest_reserve_id");
 		reService.deleteReserve(guest_reserve_id);
 		return "success";
