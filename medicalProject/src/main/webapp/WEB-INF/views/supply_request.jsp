@@ -167,7 +167,9 @@ $(function(){
 		</form>
 		<br /> <br />
 	</div>
-	
+<div class="footer">
+	<%@ include file = "./footer.jsp" %>
+</div>
 </body>
 
 </html>
