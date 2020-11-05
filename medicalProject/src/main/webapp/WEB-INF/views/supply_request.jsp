@@ -28,11 +28,60 @@ ul{
 }
 </style>
 <script>
-	$(function(){
-			if($(".supplyChk").is(":checked")){
-					alert('체크됨!');
+$(function(){
+	/* 			if($("input:checkbox[class='supplyChk']").is(":checked") == false){
+					alert("!");
 				}
-		})
+	 */
+	 		$("input.supplyChk").click(function() {
+				if($(this).is(":checked") == true){
+					$(this).parent().find(".qty").removeAttr("disabled");
+					$(this).parent().find(".qty").val(1);
+					$(this).parent().find(".plusBtn").removeAttr("disabled");
+					$(this).parent().find(".minusBtn").removeAttr("disabled");
+
+				}else{
+						$(this).parent().find(".qty").attr("disabled","disabled");
+						$(this).parent().find(".qty").val("");
+						$(this).parent().find(".plusBtn").attr("disabled","disabled");
+						$(this).parent().find(".minusBtn").attr("disabled","disabled");
+				};
+	 	 	});
+				$(".plusBtn").click(function(){
+					var price = $(this).parent().find(".price").val();
+					var qty = $(this).parent().find(".qty").val();
+					
+					if(qty < 10){
+							qty++;
+							var mul = price * qty;
+							$(this).parent().find(".totalPrice").val(mul);
+							$(this).parent().find(".qty").val(qty);
+						}
+					if(qty == 10){
+						alert("10개까지 선택 가능합니다");
+						}
+				});
+
+				
+				$(".minusBtn").click(function(){
+					var totalPrice = $(this).parent().find(".totalPrice").val();
+					var price = $(this).parent().find(".price").val();
+					var qty = $(this).parent().find(".qty").val();
+					if(qty > 1){
+							--qty;
+							var div = totalPrice / qty;
+							
+							if(qty == 1){
+								$(this).parent().find(".totalPrice").val(price);
+								$(this).parent().find(".qty").val(qty);
+							}else{
+								$(this).parent().find(".totalPrice").val(div);
+								$(this).parent().find(".qty").val(qty);
+							}
+						}
+				});
+				
+			})
 </script>
 </head>
 <body>
@@ -52,15 +101,17 @@ ul{
 						<img src="${pageContext.request.contextPath }/resources/img/${supply.code}.jpg" />
 						<br />
 						<!--  <img src="${supply.img}" /> -->
-						<label> <c:choose>
+						<label><c:choose>
 								<c:when test="${supply.plural == 1 }">
 								<input type="checkbox" value="${supply.code }" class="supplyChk"/>
 								<c:out value="${supply.title }" />
 								<br />
-									<input type="text" name="" id="" value="${supply.price }" /><br />
-									<input type="button" value="-" />
-									<input type="text" value = "1" width = "20px"/>
-									<input type="button" value="+" />
+									<input type="hidden" name="" class="price" value="${supply.price }" />
+									<input type="text" name="" id="totalPrice" class="totalPrice" value="${supply.price }" readonly="readonly"/><br />
+									<input type="button" value="-" class = "minusBtn" disabled="disabled"/>
+									<input type="text" width = "20px" class="qty" disabled="disabled" readonly="readonly"/>
+									<input type="button" value="+" class = "plusBtn" disabled="disabled"/>
+									<br />
 								</c:when>
 								<c:when test="${supply.plural == 0 }">
 									<input type="radio" name="hobby" value="${supply.code }" />
