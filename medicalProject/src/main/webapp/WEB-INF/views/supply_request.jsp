@@ -29,8 +29,8 @@ ul{
 </style>
 <script>
 	$(function(){
-			if($("input:checkbox").is(":checked") == true){
-					alert("체크!");
+			if($(".supplyChk").is(":checked")){
+					alert('체크됨!');
 				}
 		})
 </script>
@@ -54,7 +54,7 @@ ul{
 						<!--  <img src="${supply.img}" /> -->
 						<label> <c:choose>
 								<c:when test="${supply.plural == 1 }">
-								<input type="checkbox" value="${supply.code }" />
+								<input type="checkbox" value="${supply.code }" class="supplyChk"/>
 								<c:out value="${supply.title }" />
 								<br />
 									<input type="text" name="" id="" value="${supply.price }" /><br />

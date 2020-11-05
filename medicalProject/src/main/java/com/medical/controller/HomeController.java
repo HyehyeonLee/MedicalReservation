@@ -488,5 +488,28 @@ public class HomeController {
 	public String mypage() {
 		return "myPage";
 	}
+	
+	
+	@RequestMapping("/suggestionsEmail.do")
+	public String emailWrite() {
+		return "SuggestionsEmail";
+	}
+	@RequestMapping("/SuggSend.do")
+	public String send(@ModelAttribute Email dto,Model model,HttpServletRequest request) {
+		try {
+			ser.sendMail(dto);
+			//model.addAttribute("message", "이메일이 발송되었습니다.");
+			request.setAttribute("messageSend", "successSend");
+			//System.out.println("이메일 성공");
+			return "index";
+		}catch(Exception e) {
+			//model.addAttribute("message", "이메일 발송이 실패하였습니다.");
+			request.setAttribute("messageSend", "failSend");
+			//System.out.println("이메일 전송 실패!");
+			e.printStackTrace();
+		}
+		return "SuggestionsEmail";
+	}
+	
 
 }

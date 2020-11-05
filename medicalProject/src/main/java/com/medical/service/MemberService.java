@@ -1,9 +1,9 @@
 package com.medical.service;
 
-import java.util.List;
 import java.util.Map;
 
 import com.medical.dto.MemberDto;
+import com.medical.email.Email;
 
 public interface MemberService {
 	public void insertMemberAction(MemberDto dto);
@@ -17,4 +17,5 @@ public interface MemberService {
 	public void deleteMemberAction(MemberDto dto);
 	public MemberDto userInfoAction(String id);
 	public String checkMember(String id);
+	public void sendMail(Email dto);
 }

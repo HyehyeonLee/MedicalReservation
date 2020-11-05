@@ -71,6 +71,7 @@
                 <li>
                 <a href="${pageContext.request.contextPath }/index" style="color : white !important;">
                 <i class="fas fa-hospital" style="font-size : 50px"></i></a></li>
+<<<<<<< HEAD
                 <li><a href="${pageContext.request.contextPath }/supply/list">지원
                 <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-box-seam" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
@@ -87,5 +88,10 @@
   <path fill-rule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
 </svg>
                 </a></li>
+=======
+                <li><a href="${pageContext.request.contextPath }/supply/list">지원</a></li>
+                <li><a href="#">뉴스</a></li>
+                <li><a href="${pageContext.request.contextPath}/suggestionsEmail.do">건의사항</a></li>
+>>>>>>> branch 'main' of https://github.com/HyehyeonLee/MedicalReservation.git
             </ul>
         </div>
