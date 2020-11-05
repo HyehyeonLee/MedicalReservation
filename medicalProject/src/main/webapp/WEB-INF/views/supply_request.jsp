@@ -27,6 +27,13 @@ ul{
 	color: #5c5c5c;
 }
 </style>
+<script>
+	$(function(){
+			if($("input:checkbox").is(":checked") == true){
+					alert("체크!");
+				}
+		})
+</script>
 </head>
 <body>
 	<div class="header">
@@ -50,6 +57,7 @@ ul{
 								<input type="checkbox" value="${supply.code }" />
 								<c:out value="${supply.title }" />
 								<br />
+									<input type="text" name="" id="" value="${supply.price }" /><br />
 									<input type="button" value="-" />
 									<input type="text" value = "1" width = "20px"/>
 									<input type="button" value="+" />
