@@ -51,7 +51,6 @@ public class RestMedicalController {
 	@RequestMapping(value = "/deleteAc")
 	public String del(@RequestBody Map<String, String> param) {
 		String guest_reserve_id = param.get("guest_reserve_id");
-		System.out.println(guest_reserve_id);
 		reService.deleteReserve(guest_reserve_id);
 		return "success";
 	}

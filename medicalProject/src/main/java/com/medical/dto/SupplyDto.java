@@ -4,14 +4,24 @@ public class SupplyDto {
 	private int id;
 	private String title;
 	private String code;
+	private int price;
 	private String img;
 	private int plural;
 
-	public SupplyDto(int id, String title, String code, String img, int plural) {
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public SupplyDto(int id, String title, String code, int price, String img, int plural) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.code = code;
+		this.price = price;
 		this.img = img;
 		this.plural = plural;
 	}

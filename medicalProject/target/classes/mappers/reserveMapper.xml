@@ -71,11 +71,12 @@
 	</select>
 	
 	<select id="reserveCheck" resultType="com.medical.dto.GuestReserveDto1">
-		select guest_reserve_id ,`name`, `time`, `date`
-		from guest_reserve, p_member, hospital_reserve
+		SELECT guest_reserve_id ,`name`, `time`, `date`
+		FROM guest_reserve, p_member, hospital_reserve
 		WHERE guest_reserve.reserve_id = hospital_reserve.hospital_reserve_id
-		and p_member.id = hospital_reserve.hospital_id
-		and guest_reserve.guest_id = #{id};
+		AND p_member.id = hospital_reserve.hospital_id
+		AND guest_reserve.guest_id = #{id}
+		ORDER BY `date` DESC;
 	</select>
 	
 	<delete id="delete">
