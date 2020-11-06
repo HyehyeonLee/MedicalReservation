@@ -47,6 +47,7 @@ ul{
 }
 </style>
 <script>
+	var sum = 0;
 	var titleArray = new Array();
 	<c:forEach var="supply" items="${supply }">
 		titleArray.push("${supply.title}");
@@ -65,6 +66,19 @@ function getIndex(title){
 	return index;
 }
 
+function priceCalc(){ //총합계를 구하는 함수
+	sum = 0;
+	for(var i = 0; i<totalArray.length; i++){
+			sum = sum + Number(totalArray[i]);
+			if(sum > 20000){
+				alert("20,000원 이하로 선택 가능합니다.");
+				return false;
+				}
+		}
+	$(".total").html(sum);
+		return true;
+	}
+
 $(function(){
 	//하나만 체크하는 상품인 경우
 	$("input.oneChk").click(function(){
@@ -73,7 +87,10 @@ $(function(){
 				var title = $(this).parent().find(".title").html();
 				index = getIndex(title);
 				totalArray[index] = price;
-				priceCalc();
+				
+				if(priceCalc() == false) { 
+					$(this).attr('checked', false );
+				}
 			}else{
 				var title = $(this).parent().find(".title").html();
 				index = getIndex(title);
@@ -123,7 +140,13 @@ $(function(){
 							var mul = price * qty;
 							$(this).parent().find(".totalPrice").val(mul);
 							totalArray[index] = mul;
-							priceCalc();
+							if(priceCalc() == false) { 
+								qty--; 
+								var mul = price * qty;
+								$(this).parent().find(".totalPrice").val(mul);
+								totalArray[index] = mul;
+								priceCalc();
+							 }
 							$(this).parent().find(".qty").val(qty);
 						}
 					if(qty == 10){ //수량은 10개만 선택 가능
@@ -154,19 +177,7 @@ $(function(){
 						}
 				});
 			});
-			
-			function priceCalc(){
-				var sum = 0;
-				for(var i = 0; i<totalArray.length; i++){
-						sum = sum + Number(totalArray[i]);
-						if(sum > 16500){
-							alert("20,000원 이하로 선택 가능합니다.");
-							break;
-							}
-					}
-				$(".total").html(sum);
-					
-				}
+		
 </script>
 </head>
 <body>
@@ -212,6 +223,7 @@ $(function(){
 				</c:forEach>
 					</ul>
 			</div>
+			<span></span>
 			<div class="total"></div>/20,000
 			<input type="submit" value="다음" class="btn btn-primary"
 				style="float: right;" />
