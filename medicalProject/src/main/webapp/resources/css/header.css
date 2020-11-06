@@ -70,7 +70,7 @@ html,body{
 }
 #suggEmail:hover{
 	color:#0099CB;
-	cursor:pointer;
+	cursor:pointer; 
 }
 #suggEmail{
 	color : white;
