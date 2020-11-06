@@ -44,14 +44,11 @@ public class ReserveController {
 	
 	@RequestMapping(value = "/admin")
 	public String admin(String id, Model model) {
-<<<<<<< HEAD
 		List<GuestReserveDto1> list = reService.getGuestReserveAction(id);	//예약현황 불러오는 sql컬럼이 섞여있어서 새로운 Dto1을 만들어서  사용
 		model.addAttribute("dto", reService.getGuestReserveAction(id));
-=======
 		//병원 측에서 예약 정보를 불러옴
-		List<GuestReserveDto1> list = reService.getGuestReserveAction(id);
+		
 		model.addAttribute("dto", list);
->>>>>>> branch 'main' of https://github.com/HyehyeonLee/MedicalReservation.git
 		model.addAttribute("id", id);
 		return "admin";
 	}
@@ -70,14 +67,10 @@ public class ReserveController {
 	}
 	@RequestMapping(value="/reserveCheck")
 	public String check(String id,Model model,GuestReserveDto1 reserveDto) {
-<<<<<<< HEAD
 		List<GuestReserveDto1> list = reService.reserveCheking(id); 	//예약현황 불러오는 sql컬럼이 섞여있어서 새로운 Dto1을 만들어서  사용
 		model.addAttribute("reserveDto", reService.reserveCheking(id));
-=======
 		//환자 측에서 자신이 예약한 정보를 조회
-		List<GuestReserveDto1> list = reService.reserveCheking(id);
 		model.addAttribute("reserveDto", list);
->>>>>>> branch 'main' of https://github.com/HyehyeonLee/MedicalReservation.git
 		model.addAttribute("id",id);
 		return "reserveCheck";
 	}
