@@ -47,7 +47,40 @@ ul{
 }
 </style>
 <script>
+	var titleArray = new Array();
+	<c:forEach var="supply" items="${supply }">
+		titleArray.push("${supply.title}");
+	</c:forEach>
+
+	var totalArray = new Array(titleArray.length);
+	totalArray.fill(0);
+
+//상품명을 매개변수로 받아 배열의 인덱스를 구함
+function getIndex(title){
+	var index;
+	for(index = 0; index<titleArray.length; index++){
+		if(titleArray[index] === title)
+			break;
+		};
+	return index;
+}
+
 $(function(){
+	//하나만 체크하는 상품인 경우
+	$("input.oneChk").click(function(){
+		if($(this).is(":checked") == true){
+				var price = $(this).parent().find(".price").val();
+				var title = $(this).parent().find(".title").html();
+				index = getIndex(title);
+				totalArray[index] = price;
+				priceCalc();
+			}else{
+				var title = $(this).parent().find(".title").html();
+				index = getIndex(title);
+				totalArray[index] = 0;
+				priceCalc();
+				}
+		});
 	
 	 //체크박스가 선택 되어야 수량을 조절할 수 있음
 	 		$("input.supplyChk").click(function() {
@@ -56,6 +89,11 @@ $(function(){
 					$(this).parent().find(".qty").val(1);
 					$(this).parent().find(".plusBtn").removeAttr("disabled");
 					$(this).parent().find(".minusBtn").removeAttr("disabled");
+
+					var title = $(this).parent().find(".title").html();
+					index = getIndex(title);
+					totalArray[index] = $(this).parent().find(".totalPrice").val();
+					priceCalc();
 					
 				}else{ //체크박스가 풀리면 수량 조절을 못하게 함(disabled 속성 추가)
 						$(this).parent().find(".totalPrice").val($(this).parent().find(".price").val());
@@ -63,6 +101,13 @@ $(function(){
 						$(this).parent().find(".qty").val("");
 						$(this).parent().find(".plusBtn").attr("disabled","disabled");
 						$(this).parent().find(".minusBtn").attr("disabled","disabled");
+
+						var title = $(this).parent().find(".title").html();
+						index = getIndex(title);
+						totalArray[index] = 0;
+						priceCalc();
+
+						
 				};
 	 	 	});
 
@@ -70,10 +115,15 @@ $(function(){
 				$(".plusBtn").click(function(){
 					var price = $(this).parent().find(".price").val();
 					var qty = $(this).parent().find(".qty").val();
+					var title = $(this).parent().find(".title").html();
+					/* alert(getIndex(title)); */
+					index = getIndex(title);
 					if(qty < 10){ //수량이 10개 미만일 때까지만 수량 조절 가능
 							qty++;
 							var mul = price * qty;
 							$(this).parent().find(".totalPrice").val(mul);
+							totalArray[index] = mul;
+							priceCalc();
 							$(this).parent().find(".qty").val(qty);
 						}
 					if(qty == 10){ //수량은 10개만 선택 가능
@@ -86,11 +136,14 @@ $(function(){
 					var totalPrice = $(this).parent().find(".totalPrice").val();
 					var price = $(this).parent().find(".price").val();
 					var qty = $(this).parent().find(".qty").val();
+					var title = $(this).parent().find(".title").html();
+					index = getIndex(title);
 					if(qty > 1){ //수량은 1개 이상으로만 조절 가능
 							qty--;
 							var minus = totalPrice - price;
-							
 							$(this).parent().find(".totalPrice").val(minus);
+							totalArray[index] = minus;
+							priceCalc();
 							$(this).parent().find(".qty").val(qty);
 							/* if(qty == 1){
 								$(this).parent().find(".totalPrice").val(price);
@@ -100,21 +153,18 @@ $(function(){
 							} */
 						}
 				});
-				
 			});
 			
 			function priceCalc(){
-				/* var supplyChk = $("input:checkbox[name=supplyChk]:checked").length;
-				var hobbyChk = $("input:checkbox[name=hobbyChk]:checked").length;
-				var sumChk = supplyChk + hobbyChk; */
-				var total = 0;
-				$("input:checkbox[name=supplyChk]:checked").each(function(){
-					var toPrice = $("input:checkbox[name=supplyChk]:checked").parent().find(".totalPrice").val();
-					total = total + Number(toPrice);
-				});
-				
-				alert(total);
-				
+				var sum = 0;
+				for(var i = 0; i<totalArray.length; i++){
+						sum = sum + Number(totalArray[i]);
+						if(sum > 16500){
+							alert("20,000원 이하로 선택 가능합니다.");
+							break;
+							}
+					}
+				$(".total").html(sum);
 					
 				}
 </script>
@@ -138,7 +188,9 @@ $(function(){
 						<label><c:choose>
 								<c:when test="${supply.plural == 1 }"><!-- 여러 개 선택 가능한 경우 -->
 								<input type="checkbox" value="${supply.code }" class="supplyChk" name="supplyChk"/>
-								<c:out value="${supply.title }" />
+								<p class="title"><c:out value="${supply.title }" /></p>
+								<%-- <input type="text" class="title" value="${supply.title }" readonly="readonly"/> --%>
+								
 								<br />
 									<input type="hidden" name="" class="price" value="${supply.price }" />
 									<input type="text" name="" id="totalPrice" class="totalPrice" value="${supply.price }" readonly="readonly"/><br />
@@ -148,8 +200,8 @@ $(function(){
 									<br />
 								</c:when>
 								<c:when test="${supply.plural == 0 }"><!-- 하나만 선택 가능한 경우 -->
-									<input type="checkbox" value="${supply.code }" class="supplyChk" name="supplyChk"/>
-									<c:out value="${supply.title }" /><br />
+									<input type="checkbox" value="${supply.code }" class="oneChk" name="supplyChk"/>
+									<p class="title"><c:out value="${supply.title }" /></p>									
 									<input type="hidden" name="" class="price" value="${supply.price }" />
 									<input type="text" name="" id="totalPrice" class="totalPrice" value="${supply.price }" readonly="readonly"/><br />
 								</c:when>
@@ -160,8 +212,7 @@ $(function(){
 				</c:forEach>
 					</ul>
 			</div>
-			<input type="button" value="계산" onclick="priceCalc();"/>
-			<div class="total"></div>/150,000
+			<div class="total"></div>/20,000
 			<input type="submit" value="다음" class="btn btn-primary"
 				style="float: right;" />
 		</form>
