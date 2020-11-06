@@ -16,12 +16,14 @@
     position: fixed;
     right: 67px;
     margin-top: 157px;
+    cursor:pointer;
 }
 
 .sub-title {
 	padding: 20px;
 	color: #5c5c5c;
 }
+
 </style>
 <body>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

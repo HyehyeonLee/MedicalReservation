@@ -151,57 +151,7 @@ td {
 	
 
 </body>
-<!-- 상담 제한 -->
-<c:choose>
-	<c:when test="${empty dto.id && empty sessionId && empty kname}">
-	<script>
-	$(document).on('click','#consult',function(){
-		alert("로그인이 필요한 서비스입니다. 로그인 후 이용 부탁드립니다.");
-	});
-	</script>
-	</c:when>
-	<c:otherwise>
-		<script>
-		$(document).on('click','#consult',function(){
-			window.open('/www/consultCustomer','window','width=500,height=400');
-		}); 
-		</script>
-	</c:otherwise>
-</c:choose>
-<!-- 건의사항 제한 -->
-<c:choose>
-	<c:when test="${empty dto.id && empty sessionId && empty kname}">
-		<script>
-			$(document).on('click','#suggEmail',function(){
-				alert("로그인이 필요한 서비스입니다. 로그인 후 이용 부탁드립니다.");
-			});
-		</script>
-	</c:when>
-	<c:otherwise>
-		<script>
-			$(document).on('click','#suggEmail',function(){
-				location.href="${pageContext.request.contextPath }/suggestionsEmail.do";
-			});
-		</script>
-	</c:otherwise>
-</c:choose>
-<!-- 공지사항 제한 -->
-<c:choose>
-	<c:when test="${empty dto.id && empty sessionId && empty kname}">
-		<script>
-			$(document).on('click','#service',function(){
-				alert("로그인이 필요한 서비스입니다. 로그인 후 이용 부탁드립니다.");
-			});
-		</script>
-	</c:when>
-	<c:otherwise>
-		<script>
-			$(document).on('click','#service',function(){
-				location.href="${pageContext.request.contextPath }/suggestionsEmail.do";
-			});
-		</script>
-	</c:otherwise>
-</c:choose>
+
 
 <% if( request.getAttribute("messageSend") != null) { %>
 <%if( ((String)(request.getAttribute("messageSend"))).equals("successSend")){ %>
