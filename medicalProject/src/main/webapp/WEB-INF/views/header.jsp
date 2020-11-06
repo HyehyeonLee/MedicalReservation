@@ -13,7 +13,7 @@
   />
 </head>
 <!-- 로그인전 페이지 -->
-<c:if test="${empty dto.id && empty sessionId && empty kname}">
+<c:if test="${empty dto.id && empty sessionId && empty kname}">		<!-- 일반로그인,네이버,카카오 로그인 정보가 null값일 때 -->
     <div class = "sub-menu">      
             <ul> 	         
                 <li><a href="${pageContext.request.contextPath }/L_loginform">로그인</a></li>   
@@ -23,7 +23,7 @@
 </c:if>   
 
 <!-- 로그인 성공시 페이지 -->
-<c:if test="${!empty dto.id}">
+<c:if test="${!empty dto.id}">				<!-- 일반로그인 정보가 담겨져있을 때 -->
         <div class = "sub-menu">      
             <ul> 	
 				<li>${dto.id }님 환영합니다</li>
@@ -48,7 +48,7 @@
         </div>
 </c:if>    
 
-<c:if test="${!empty sessionId }">
+<c:if test="${!empty sessionId }">			<!-- 네이버로그인 정보가 담겨져있을 때 -->
         <div class = "sub-menu">      
             <ul>
 				<li>${sessionId }님 환영합니다</li>
@@ -57,7 +57,7 @@
         </div>
 </c:if> 
 
-<c:if test="${!empty kname }">
+<c:if test="${!empty kname }">			<!-- 카카오톡 로그인 정보가 담겨져있을 때 -->
         <div class = "sub-menu">      
             <ul> 	
             	<li>${kname }님 환영합니다</li>

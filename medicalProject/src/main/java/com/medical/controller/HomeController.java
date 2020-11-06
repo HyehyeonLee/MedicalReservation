@@ -73,18 +73,18 @@ public class HomeController {
 		// String name = (String)response_obj.get("name");
 		// session.setAttribute("sessionId",name); //세션 생성
 
-		GrahpXml grahpXml1 = new GrahpXml();
-		GrahpXml2 grahpXml2 = new GrahpXml2();
-		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+		GrahpXml grahpXml1 = new GrahpXml();	//확진자수만 날짜별로 표시하기위해 
+		GrahpXml2 grahpXml2 = new GrahpXml2();	//확진자,격리해제,사망자만 현재날만 불러오기위해
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");	//그래프 원하는 날짜 적용을 위해
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
-		cal.add(Calendar.DATE, 0);
-		String end = df.format(cal.getTime());
-		cal.add(Calendar.DATE, -9);
-		String start = df.format(cal.getTime());
-		ArrayList<GrahpDto> list = grahpXml1.arrList(start, end);
+		cal.add(Calendar.DATE, 0);					//오늘날짜
+		String end = df.format(cal.getTime());		//오늘날짜를 end에 담음
+		cal.add(Calendar.DATE, -9);					//9일전날짜
+		String start = df.format(cal.getTime());	//9일전날을 start에 담음
+		ArrayList<GrahpDto> list = grahpXml1.arrList(start, end);	//9일전부터~오늘까지
 		model.addAttribute("list", list);
-		ArrayList<GrahpDto> list2 = grahpXml2.arrList(end, end);
+		ArrayList<GrahpDto> list2 = grahpXml2.arrList(end, end);	//오늘만(xml파일에 날짜설정이 두개로 정해져있어서 end, end로 함)
 		model.addAttribute("list2", list2);
 		
 		return "index";
@@ -182,7 +182,7 @@ public class HomeController {
 
 			// return "L_index";
 			//return "redirect:/index";
-			mav.setViewName("redirect:/index");
+			mav.setViewName("redirect:/index");		//redirect 안해주면 메인페이지 돌아갔을때 그래프가 안나옴
 			mav.addObject("msg", "success");
 		} else {
 			mav.setViewName("L_loginform");
@@ -330,7 +330,7 @@ public class HomeController {
 			e.printStackTrace();
 		}
 		model.addAttribute("result", apiResult);
-		return "redirect:/index";
+		return "redirect:/index";						//redirect 안해주면 로그인뒤 메인페이지로 돌아갔을경우 그래프가 안뜸
 	}
 
 	@RequestMapping(value = "/login.do", produces = "application/json", method = { RequestMethod.GET,
@@ -361,8 +361,8 @@ public class HomeController {
 		kgender = kakao_account.path("gender").asText();
 		kbirthday = kakao_account.path("birthday").asText();
 		kage = kakao_account.path("age_range").asText();
-		session.setAttribute("kemail", kemail);
-		session.setAttribute("kname", kname); // 세션 생성
+		session.setAttribute("kemail", kemail);				//session으로 담아줘야 redirect가 가능
+		session.setAttribute("kname", kname); // 세션 생성		//redirect 해줘야 로그인 후 그래프가 잘 나옴
 		session.setAttribute("kimage", kimage);
 		session.setAttribute("kgender", kgender);
 		session.setAttribute("kbirthday", kbirthday);

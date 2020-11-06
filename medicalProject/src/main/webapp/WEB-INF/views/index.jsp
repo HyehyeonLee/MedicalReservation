@@ -116,7 +116,7 @@ td {
 		</div>
 		
 		<table style="margin: 10px auto 0;">
-			<c:forEach var="item2" items="${list2 }">
+			<c:forEach var="item2" items="${list2 }">	<!-- 현재 당일 날짜 정보만 출력(누적확진자,격리해제,사망자) -->
 				<tr>
 					<td style="border-right: inset;">누적 확진자 수<br />
 					<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bar-chart-line" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -176,11 +176,8 @@ td {
 <script>
 $(function(){
    
-var chartLabels = [];
-var chartData1 = [];
-
-
-
+var chartLabels = [];	
+var chartData1 = [];	//누적 확진자 수가 담아져 있음
 //현재 시간
 var today = new Date();	
 var hh= today.getHours();
@@ -192,12 +189,12 @@ var Year = currentDay.getFullYear();
 var Month = currentDay.getMonth();
 var theDate = currentDay.getDate();
 var dayOfWeek = currentDay.getDay();
-var thisWeek = [];
+var thisWeek = [];		//현재 날짜정보를 thisWeek에 담아줌
 //8일 간격으로 날짜 출력
 for(var i=0; i<8; i++){
 	var resultDay = new Date(Year, Month, theDate +(i - 7));
 	var yy = resultDay.getFullYear();
-	var mm  = Number(resultDay.getMonth()) + 1;
+	var mm  = Number(resultDay.getMonth()) + 1;		//Month를 쓸때는 +1을  해줘야 한다고 함
 	var dd = resultDay.getDate();
 
 	mm = String(mm).length === 1 ? '0' + mm : mm;
@@ -213,7 +210,7 @@ for(var i=0; i<8; i++){
 	//1~8까지 반복
 	thisWeek[0] = '${list[0].stateDt}';
 	<c:forEach var="cnt" begin="1" end="8">
-			chartData1.push(${list[cnt].decideCnt} - ${list[cnt-1].decideCnt});
+			chartData1.push(${list[cnt].decideCnt} - ${list[cnt-1].decideCnt});		//누적 확진자 수
 	      thisWeek[${cnt}] = '${list[cnt].stateDt}';
 	</c:forEach>
 	chartData1.push(${list[9].decideCnt} - ${list[8].decideCnt});	//그래프에서 하루 빈 공간으로 뜨는거 잡은 코드
@@ -226,7 +223,7 @@ for(var i=0; i<8; i++){
 //alert(thisWeek);
     
 var lineChartData = {
-   labels : thisWeek,
+   labels : thisWeek,					//그래프 밑에 날짜를 뿌려주는 곳
    datasets : [
          {   
             label : "확진자 수",
@@ -234,7 +231,7 @@ var lineChartData = {
             borderColor : "rgba(111, 143, 163)",
             pointBackgroundColor : "rgba(224, 34, 34)",
             pointBorderColor : "rgba(0.0.0)",
-            data : chartData1
+            data : chartData1								//누적 확진자수를 그래프로 보여줌
          }
          
       ]

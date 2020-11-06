@@ -27,7 +27,7 @@ public class SupplyController {
 
 	@RequestMapping(value = "/address")
 	public String address(String id, Model model) {
-		MemberDto memDto = suService.AddressAction(id);
+		MemberDto memDto = suService.AddressAction(id);		//회원가입시 사용하는 멤버Dto 정보 불러옴
 		model.addAttribute("memDto", memDto);
 		return "supply_address";
 	}

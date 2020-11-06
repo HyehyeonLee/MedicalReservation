@@ -9,7 +9,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<meta http-equiv="refresh" content="URL=http://localhost:9096/www/reserve/admin">
+<meta http-equiv="refresh" content="URL=http://localhost:9096/www/reserve/admin">	<!--업그레이드 setTimeOut코드를 사용하기 위해 필요함
+																						시간이 되면 자동으로 새로고침이 되면서 지정한 경로로 감-->
+
 <title>예약 정보 현황</title>
 <style>
 	.float-left{
@@ -87,7 +89,7 @@
 			<th>날짜</th>
 			<th>시간</th>
 		</tr>
-		<c:forEach var="list" items="${dto }">
+		<c:forEach var="list" items="${dto }">		<!-- 예약현황 보여주는 코드 -->
 			<tr>
 				<td>${list.id} </td>
 				<td>${list.name}</td>
@@ -104,7 +106,7 @@ var hh = today.getHours();
 var mi = today.getMinutes();
 var ss = today.getSeconds(); */
 
-setTimeout(function(){
+setTimeout(function(){				//1분마다 새로고침 되는 코드
 	   window.location.reload(1);
 	 //  alert("!");
 	}, 60000); //1분  

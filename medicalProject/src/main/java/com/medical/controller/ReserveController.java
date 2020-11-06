@@ -47,7 +47,7 @@ public class ReserveController {
 	
 	@RequestMapping(value = "/admin")
 	public String admin(String id, Model model) {
-		List<GuestReserveDto1> list = reService.getGuestReserveAction(id);
+		List<GuestReserveDto1> list = reService.getGuestReserveAction(id);	//예약현황 불러오는 sql컬럼이 섞여있어서 새로운 Dto1을 만들어서  사용
 		model.addAttribute("dto", reService.getGuestReserveAction(id));
 		model.addAttribute("id", id);
 		return "admin";
@@ -66,7 +66,7 @@ public class ReserveController {
 	}
 	@RequestMapping(value="/reserveCheck")
 	public String check(String id,Model model,GuestReserveDto1 reserveDto) {
-		List<GuestReserveDto1> list = reService.reserveCheking(id);
+		List<GuestReserveDto1> list = reService.reserveCheking(id); 	//예약현황 불러오는 sql컬럼이 섞여있어서 새로운 Dto1을 만들어서  사용
 		model.addAttribute("reserveDto", reService.reserveCheking(id));
 		model.addAttribute("id",id);
 	//	System.out.println("id"+id);
@@ -78,7 +78,7 @@ public class ReserveController {
 	}
 	@RequestMapping(value="/delete")
 	public String del1(String guest_reserve_id ,Model model) {
-		model.addAttribute("id",guest_reserve_id);
+		model.addAttribute("id",guest_reserve_id);		
 		return "reserveDelete";
 	}
 //	@RequestMapping(value="/deleteAc")
