@@ -19,4 +19,5 @@ public interface MemberService {
 	public String checkMember(String id);
 	public void sendMail(Email dto);
 	public void insertNaverAction(MemberDto dto);
+	public int socialIdCheckAction(MemberDto dto);
 }

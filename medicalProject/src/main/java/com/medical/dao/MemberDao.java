@@ -18,4 +18,5 @@ public interface MemberDao {
 	MemberDto userInfo(String id);		//회원정보 불러오기
 	public String checkGrade(String id);
 	public void insertNaver(MemberDto dto);// 네이버 로그인 DB저장
+	public int socialIdCheck(MemberDto dto);	// 네이버 아이디 중복 검사
 }

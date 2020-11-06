@@ -334,7 +334,11 @@ public class HomeController {
 			naverDto.setName(name);
 			
 			System.out.println(naverDto.toString());
-			ser.insertNaverAction(naverDto);
+			if(ser.socialIdCheckAction(naverDto)>0) {
+				// login성공.
+			} else {
+				ser.insertNaverAction(naverDto);
+			}
 		} catch (org.json.simple.parser.ParseException e) {
 			e.printStackTrace();
 		}
@@ -500,8 +504,11 @@ public class HomeController {
 	
 	
 	@RequestMapping("/suggestionsEmail.do")
-	public String emailWrite() {
-		return "SuggestionsEmail";
+	public String emailWrite(HttpSession session) {
+		
+		
+			return "SuggestionsEmail";
+		
 	}
 	@RequestMapping("/SuggSend.do")
 	public String send(@ModelAttribute Email dto,Model model,HttpServletRequest request) {

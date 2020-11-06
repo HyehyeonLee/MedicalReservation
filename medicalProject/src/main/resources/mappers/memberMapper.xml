@@ -49,8 +49,13 @@
 	<!-- grade가 hospital인 회원만 병원 페이지에 접근 (myPage.jsp 참고) -->
 	<select id="checkGrade" resultType="java.lang.String">
 		SELECT grade FROM p_member WHERE id=#{id};
+	<!-- 네이버 로그인 DB담기 -->
 	</select>
 	<insert id="insertNaver">
 		INSERT INTO medical.p_member(id,name) VALUES (#{id},#{name})
 	</insert>
+	<!-- 네이버 로그인 아이디 중복 검사 -->
+	<select id="socialIdCheck" resultType="int">
+		SELECT COUNT(*) FROM medical.p_member WHERE id=#{id}
+	</select>
 </mapper>
