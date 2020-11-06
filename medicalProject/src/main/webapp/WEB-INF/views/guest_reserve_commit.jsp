@@ -13,6 +13,7 @@
 				+ $("input.hospital_id").val() + "-"
 				+ $("input.hospital_reserve_id").val();
 		webSocket.send(message);
+		//환자 예약 번호, 병원 예약 번호를 웹소켓으로 admin.jsp에 전송
 	}
 
 	$(function() {

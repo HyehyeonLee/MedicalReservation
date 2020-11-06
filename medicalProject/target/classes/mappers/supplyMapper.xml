@@ -5,10 +5,12 @@
   
 <mapper namespace="com.medical.mapper.supplyMapper">
 	<select id = "supplyAll" resultType = "com.medical.dto.SupplyDto">
+	<!-- 구호 물품 리스트를 불러옴 -->
 		SELECT * FROM medical.supply;
 	</select>
 	
-	<select id = "addressCheck" resultType = "com.medical.dto.MemberDto"> 
+	<select id = "addressCheck" resultType = "com.medical.dto.MemberDto">
+	<!-- 구호 물품을 보내기 위한 주소를 불러옴 -->
 		select `name`,`addr`,`detailAddress`,`extraAddress`,`tel`
 		from p_member where id=#{id};
 	</select>	

@@ -43,6 +43,8 @@ public class SearchController {
 			}
 		}
 		
+		//예약 가능 여부 판단
+		//해당 병원 명으로 회원가입한 정보가 있으면 예약 가능
 		for(int i = 0; i<filterList.size(); i++) {
 			int reserveChk = reserveSer.search(filterList.get(i).getYadmNm());
 			if(reserveChk == 1) {
