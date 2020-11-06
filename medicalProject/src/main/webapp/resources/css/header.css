@@ -60,11 +60,18 @@ html,body{
     width: 100px;
     height: 50px;
     text-decoration: none;
-   color : white;
+    color : white;
     position: relative;
     left: 150px;
 }
 
 .main-menu ul li a:hover{
    color : #0099CB;
+}
+#suggEmail:hover{
+	color:#0099CB;
+	cursor:pointer;
+}
+#suggEmail{
+	color : white;
 }

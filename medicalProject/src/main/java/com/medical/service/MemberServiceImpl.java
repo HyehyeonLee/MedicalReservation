@@ -125,4 +125,10 @@ public class MemberServiceImpl implements MemberService{
 		dao.insertNaver(dto);
 	}
 
+	@Override
+	public int socialIdCheckAction(MemberDto dto) {
+		int result = dao.socialIdCheck(dto);
+		return result;
+	}
+
 }

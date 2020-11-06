@@ -74,4 +74,11 @@ public class MemberDaoImpl implements MemberDao {
 	public void insertNaver(MemberDto dto) {
 		sqlSession.insert("com.medical.mapper.memberMapper.insertNaver",dto);
 	}
+
+	@Override
+	public int socialIdCheck(MemberDto dto) {
+		int result = sqlSession.selectOne("com.medical.mapper.memberMapper.socialIdCheck",dto);
+		return result;
+		
+	}
 }
