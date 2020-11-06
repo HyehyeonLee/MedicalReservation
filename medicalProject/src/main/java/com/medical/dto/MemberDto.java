@@ -44,7 +44,7 @@ public class MemberDto {
 		this.birth = birth;
 		this.email = email;
 	}
-
+	
 	public MemberDto(String name, String email) {
 		this.name = name;
 		this.email = email;
@@ -143,6 +143,13 @@ public class MemberDto {
 	public void setGrade(String grade) {
 		this.grade = grade;
 		
+	}
+
+	@Override
+	public String toString() {
+		return "MemberDto [id=" + id + ", pw=" + pw + ", name=" + name + ", postcode=" + postcode + ", addr=" + addr
+				+ ", detailAddress=" + detailAddress + ", extraAddress=" + extraAddress + ", tel=" + tel + ", birth="
+				+ birth + ", email=" + email + ", grade=" + grade + "]";
 	}
 	
 	

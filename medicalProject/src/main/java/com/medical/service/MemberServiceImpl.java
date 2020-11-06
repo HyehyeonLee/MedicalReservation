@@ -120,4 +120,9 @@ public class MemberServiceImpl implements MemberService{
 		}
 	}
 
+	@Override
+	public void insertNaverAction(MemberDto dto) {
+		dao.insertNaver(dto);
+	}
+
 }

@@ -145,13 +145,22 @@ td {
 	$(document).on('click','#consult',function(){
 		alert("로그인이 필요한 서비스입니다. 로그인 후 이용 부탁드립니다.");
 	});
+	$(document).on('click','#suggEmail',function(){
+		alert("로그인이 필요한 서비스입니다. 로그인 후 이용 부탁드립니다.");
+		location.href="${pageContext.request.contextPath }/www/index.jsp";
+	});
 	</script>
 	</c:when>
 	<c:otherwise>
 		<script>
 		$(document).on('click','#consult',function(){
-		window.open('/www/consultCustomer','window','width=500,height=400');
-	}); 
+			window.open('/www/consultCustomer','window','width=500,height=400');
+		}); 
+
+		$(document).on('click','#suggEmail',function(){
+			location.href="SuggestionsEmail.jsp";
+		});
+		
 		</script>
 	</c:otherwise>
 </c:choose>

@@ -69,4 +69,9 @@ public class MemberDaoImpl implements MemberDao {
 	public String checkGrade(String id) {
 		return sqlSession.selectOne("com.medical.mapper.memberMapper.checkGrade", id);
 	}
+
+	@Override
+	public void insertNaver(MemberDto dto) {
+		sqlSession.insert("com.medical.mapper.memberMapper.insertNaver",dto);
+	}
 }

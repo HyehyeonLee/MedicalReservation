@@ -18,4 +18,5 @@ public interface MemberService {
 	public MemberDto userInfoAction(String id);
 	public String checkMember(String id);
 	public void sendMail(Email dto);
+	public void insertNaverAction(MemberDto dto);
 }

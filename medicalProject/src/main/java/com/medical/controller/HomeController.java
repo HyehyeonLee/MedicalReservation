@@ -326,9 +326,18 @@ public class HomeController {
 			JSONObject response_obj = (JSONObject) jsonObj.get("response");
 			// response의 nickname값 파싱
 			String name = (String) response_obj.get("name");
+			String email = (String)response_obj.get("email");
 			System.out.println(name);
+			System.out.println(email);
 			// 4.파싱 닉네임 세션으로 저장
 			session.setAttribute("sessionId", name); // 세션 생성
+			session.setAttribute("sessionEmail", email);
+			MemberDto naverDto = new MemberDto();
+			naverDto.setId("n_"+email.substring(0, email.indexOf("@")));
+			naverDto.setName(name);
+			
+			System.out.println(naverDto.toString());
+			ser.insertNaverAction(naverDto);
 		} catch (org.json.simple.parser.ParseException e) {
 			e.printStackTrace();
 		}
@@ -510,8 +519,8 @@ public class HomeController {
 			request.setAttribute("messageSend", "failSend");
 			//System.out.println("이메일 전송 실패!");
 			e.printStackTrace();
+			return "SuggestionsEmail";
 		}
-		return "SuggestionsEmail";
 	}
 	
 

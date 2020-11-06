@@ -50,4 +50,7 @@
 	<select id="checkGrade" resultType="java.lang.String">
 		SELECT grade FROM p_member WHERE id=#{id};
 	</select>
+	<insert id="insertNaver">
+		INSERT INTO medical.p_member(id,name) VALUES (#{id},#{name})
+	</insert>
 </mapper>
