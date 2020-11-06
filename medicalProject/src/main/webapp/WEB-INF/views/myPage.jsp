@@ -9,6 +9,7 @@
 <script>
 $(function(){
 	$("#checkGrade").click(function(){
+		//DB에서 입력된 id에 해당하는 grade를 불러온다.
 		var id = '${dto.id}';
 		ajax_checkGrade(id);
 	});
@@ -28,7 +29,7 @@ function ajax_checkGrade(id){
 			contentType : 'application/json',
 			success : function(response){
 				var grade = response;
-					if(grade == "hospital"){
+					if(grade == "hospital"){ //grade가 hospital인 회원만 기관 회원 페이지 접근 가능
 						location.href = "${pageContext.request.contextPath}/hospitalPage";
 					}else if(grade == "guest"){
 						alert('기관 회원만 이용 가능합니다.');

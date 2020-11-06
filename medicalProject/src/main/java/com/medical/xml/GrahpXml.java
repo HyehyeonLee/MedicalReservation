@@ -16,7 +16,7 @@ import org.xml.sax.SAXException;
 
 import com.medical.dto.GrahpDto;
 
-
+//시작 날짜와 끝날짜의 확진자 그래프 불러오는 페이지
 public class GrahpXml {
 	static String getTagValue(String tag, Element eElement) {
 		   if(eElement.getElementsByTagName(tag).item(0)==null) System.out.println("getTagValue()에서 null!");
@@ -39,8 +39,6 @@ public class GrahpXml {
 		String endCreateDt = dateEnd;
 		String url = "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey="+serviceKey+"&pageNo="+pageNo
 		      + "&numOfRows="+numOfRows+"&startCreateDt="+startCreateDt+"&endCreateDt="+endCreateDt;
-		System.out.println("url:"+url);
-		
 		ArrayList<GrahpDto> list = new ArrayList<GrahpDto>();
 		
 		try {
@@ -50,22 +48,14 @@ public class GrahpXml {
 		      Document doc = dBuilder.parse(url);
 		      
 		      doc.getDocumentElement().normalize();
-		      System.out.println("Root element : " + doc.getDocumentElement().getNodeName());
 		    	 
 		      NodeList nList = doc.getElementsByTagName("item");
-		      System.out.println("파싱할 리스트 수 : " + nList.getLength());
 		      
-		      System.out.println("전체 결과 수 : " + doc.getElementsByTagName("totalCount"));
-System.out.println("for문 시작!");		      
+		      //System.out.println("for문 시작!");		      
 		      for(int i = 0; i < nList.getLength(); i++) {
 		         Node nNode = nList.item(i);
 		         if(nNode.getNodeType() == Node.ELEMENT_NODE) {
 		            Element eElement = (Element) nNode;
-		    		System.out.println("######################");
-					System.out.println("기준일  : " + getTagValue("stateDt", eElement));
-					System.out.println("확진자 수  : " + getTagValue("decideCnt", eElement));
-					System.out.println("격리해제 수  : " + getTagValue("clearCnt", eElement));
-					System.out.println("사망자 수  : " + getTagValue("deathCnt", eElement));
 					String stateDt = getTagValue("stateDt",eElement);	  			
 					String decideCnt = getTagValue("decideCnt",eElement);	  			
 					String clearCnt = getTagValue("clearCnt",eElement);	  			
@@ -73,7 +63,7 @@ System.out.println("for문 시작!");
 					GrahpDto vo = new GrahpDto(stateDt,decideCnt,clearCnt,deathCnt);
 		         	list.add(vo);
 		         	
-System.out.println(vo.getStateDt() + " / " + vo.getDecideCnt());
+//System.out.println(vo.getStateDt() + " / " + vo.getDecideCnt());
 		    		
 
 		         }

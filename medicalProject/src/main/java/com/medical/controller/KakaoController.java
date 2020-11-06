@@ -73,7 +73,8 @@ class KakaoController {
 			// JSON 형태 반환값 처리
 			ObjectMapper mapper = new ObjectMapper();
 			returnNode = mapper.readTree(response.getEntity().getContent());
-			System.out.println(returnNode.toString());
+			System.out.println("리턴노드:"+returnNode.toString());
+			System.out.println("리턴노드 카카오계정:"+returnNode.get("kakao_account"));
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

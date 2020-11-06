@@ -17,7 +17,7 @@ import org.xml.sax.SAXException;
 import com.medical.dto.GrahpDto;
 
 
-
+//당일 날짜만 불러오는 페이지(누적확진자,격리해제,사망자)
 public class GrahpXml2 {
 	static String getTagValue(String tag, Element eElement) {
 		   if(eElement.getElementsByTagName(tag).item(0)==null) System.out.println("getTagValue()에서 null!");
@@ -41,7 +41,6 @@ public class GrahpXml2 {
 		String url = "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson?serviceKey="+serviceKey+"&pageNo="+pageNo
 			      + "&numOfRows="+numOfRows+"&startCreateDt="+startCreateDt+"&endCreateDt="+endCreateDt;
 
-		System.out.println("url:"+url);
 		
 		ArrayList<GrahpDto> list2 = new ArrayList<GrahpDto>();
 		
@@ -52,21 +51,14 @@ public class GrahpXml2 {
 		      Document doc = dBuilder.parse(url);
 		      
 		      doc.getDocumentElement().normalize();
-		      System.out.println("Root element : " + doc.getDocumentElement().getNodeName());
 		    	 
 		      NodeList nList = doc.getElementsByTagName("item");
-		      System.out.println("파싱할 리스트 수 : " + nList.getLength());
 		      
-		      System.out.println("전체 결과 수 : " + doc.getElementsByTagName("totalCount"));
 		      for(int i = 0; i < nList.getLength(); i++) {
 		         Node nNode = nList.item(i);
 		         if(nNode.getNodeType() == Node.ELEMENT_NODE) {
 		            Element eElement = (Element) nNode;
-		    		System.out.println("######################");
-					System.out.println("기준일  : " + getTagValue("stateDt", eElement));
-					System.out.println("확진자 수  : " + getTagValue("decideCnt", eElement));
-					System.out.println("격리해제 수  : " + getTagValue("clearCnt", eElement));
-					System.out.println("사망자 수  : " + getTagValue("deathCnt", eElement));
+		    		
 					//System.out.println(eElement.getTextContent());
 		//			System.out.println("결과코드  : " + getTagValue("resultCode", eElement));
 		//			System.out.println("결과메세지  : " + getTagValue("resultMsg", eElement));

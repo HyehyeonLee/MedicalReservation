@@ -9,29 +9,17 @@
 <title>예약 정보 조회</title>
 <script>
 	$(function(){
-		$(".reserveBtn").click(function(){
+		/* $(".reserveBtn").click(function(){
 			var reserve_id = $(this).parent().find("#hospital_reserve_id").val();
 			location.href = "${pageContext.request.contextPath}/reserveCommit?hospital_reserve_id="+reserve_id;
-			//var id = $("#reserveBtn").prev().prev().prev().prev().val();
-		});
+		}); */
 
+		//날짜 선택 버튼 클릭시, ajax로 해당 날짜에 예약 가능한 시간을 가져온다.
 		$(".dateBtn").click(function(){
 			var selectedDate = $("select#date").val();
 			var yadmNm = $("input#yadmNm").val();
 			ajax_get_date(selectedDate, yadmNm);
 		});
-
-		function checkSubmit(){
-			alert("!");
-			var reserved = $(".hospital_reserve_id").is(':checked');
-			if(!reserved){
-					alert('시간을 선택해주세요');
-					return false;
-				}				
-			}
-		
-		//$(".submitBtn").click(function(){
-			//});
 
 	});
 
@@ -50,7 +38,7 @@
 					list = response;
 							$("#timeDiv").html("");
 					for(var i = 0; i<list.length; i++){
-							var str = "";
+							var str = "";	//가져온 시간들을 radio 버튼으로 출력한다.
 							str += "<label><input type = 'radio' name='hospital_reserve_id' class = 'hospital_reserve_id' value='"+list[i].hospital_reserve_id+"'/>";
 							str += list[i].time+"</label>";
 							str += "<br />";

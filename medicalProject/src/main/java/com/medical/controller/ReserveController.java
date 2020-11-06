@@ -3,12 +3,9 @@ package com.medical.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.medical.dto.GuestReserveDto;
@@ -47,8 +44,14 @@ public class ReserveController {
 	
 	@RequestMapping(value = "/admin")
 	public String admin(String id, Model model) {
-		List<GuestReserveDto1> list = reService.getGuestReserveAction(id);
+<<<<<<< HEAD
+		List<GuestReserveDto1> list = reService.getGuestReserveAction(id);	//예약현황 불러오는 sql컬럼이 섞여있어서 새로운 Dto1을 만들어서  사용
 		model.addAttribute("dto", reService.getGuestReserveAction(id));
+=======
+		//병원 측에서 예약 정보를 불러옴
+		List<GuestReserveDto1> list = reService.getGuestReserveAction(id);
+		model.addAttribute("dto", list);
+>>>>>>> branch 'main' of https://github.com/HyehyeonLee/MedicalReservation.git
 		model.addAttribute("id", id);
 		return "admin";
 	}
@@ -60,31 +63,30 @@ public class ReserveController {
 	
 	@RequestMapping(value = "/ReserveInfo")
 	public String reserve(HospitalReserveDto dto, Model model) {
+		//병원 측에서 예약 정보를 입력
 		reService.insertReserveInfo(dto);
 		model.addAttribute("dto", dto);
 		return "hospital_reserve_commit";
 	}
 	@RequestMapping(value="/reserveCheck")
 	public String check(String id,Model model,GuestReserveDto1 reserveDto) {
-		List<GuestReserveDto1> list = reService.reserveCheking(id);
+<<<<<<< HEAD
+		List<GuestReserveDto1> list = reService.reserveCheking(id); 	//예약현황 불러오는 sql컬럼이 섞여있어서 새로운 Dto1을 만들어서  사용
 		model.addAttribute("reserveDto", reService.reserveCheking(id));
+=======
+		//환자 측에서 자신이 예약한 정보를 조회
+		List<GuestReserveDto1> list = reService.reserveCheking(id);
+		model.addAttribute("reserveDto", list);
+>>>>>>> branch 'main' of https://github.com/HyehyeonLee/MedicalReservation.git
 		model.addAttribute("id",id);
-	//	System.out.println("id"+id);
-		
-	//	reService.deleteReserve(id);
-	//	reService.reUpdateAction(reserveDto, id);
-		
 		return "reserveCheck";
 	}
+	
 	@RequestMapping(value="/delete")
 	public String del1(String guest_reserve_id ,Model model) {
-		model.addAttribute("id",guest_reserve_id);
+		model.addAttribute("id",guest_reserve_id);		
 		return "reserveDelete";
 	}
-//	@RequestMapping(value="/deleteAc")
-//	public String del(String guest_reserve_id, HttpSession session,Model model) {
-//		reService.deleteReserve(guest_reserve_id);
-//		return "reserveDelete";
-//	}
+
 
 }
