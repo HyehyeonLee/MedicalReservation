@@ -36,7 +36,7 @@
 	</update>
 	<!-- 정보 수정 -->
 	<update id="editMypage">
-		UPDATE p_member SET pw=#{pw},postcode=#{postcode},addr=#{addr},detailAddress=#{detailAddress},extraAddress=#{extraAddress},email=#{email},tel=#{tel} WHERE id=#{id}
+		UPDATE medical.p_member SET pw=#{pw},postcode=#{postcode},addr=#{addr},detailAddress=#{detailAddress},extraAddress=#{extraAddress},email=#{email},tel=#{tel} WHERE id=#{id}
 	</update>
 	<!-- 회원탈퇴 -->
 	<delete id="memberDelete">
@@ -49,8 +49,8 @@
 	<!-- grade가 hospital인 회원만 병원 페이지에 접근 (myPage.jsp 참고) -->
 	<select id="checkGrade" resultType="java.lang.String">
 		SELECT grade FROM p_member WHERE id=#{id};
-	<!-- 네이버 로그인 DB담기 -->
 	</select>
+	<!-- 네이버 로그인 DB담기 -->
 	<insert id="insertNaver">
 		INSERT INTO medical.p_member(id,name) VALUES (#{id},#{name})
 	</insert>

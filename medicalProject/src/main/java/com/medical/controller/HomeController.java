@@ -70,6 +70,7 @@ public class HomeController {
 		String id = (String) session.getAttribute("loginId");
 		session.setAttribute("loginId", id);
 
+		
 		// String name = (String)response_obj.get("name");
 		// session.setAttribute("sessionId",name); //세션 생성
 
@@ -330,7 +331,9 @@ public class HomeController {
 			session.setAttribute("sessionId", name); // 세션 생성
 			session.setAttribute("sessionEmail", email);
 			MemberDto naverDto = new MemberDto();
-			naverDto.setId("n_"+email.substring(0, email.indexOf("@")));
+			String nId = "n_"+email.substring(0, email.indexOf("@"));
+			session.setAttribute("sessionNid", nId);
+			naverDto.setId(nId);
 			naverDto.setName(name);
 			
 			System.out.println(naverDto.toString());
@@ -380,6 +383,11 @@ public class HomeController {
 		session.setAttribute("kgender", kgender);
 		session.setAttribute("kbirthday", kbirthday);
 		session.setAttribute("kage", kage);
+		MemberDto kakaoDto = new MemberDto();
+		String kId = "k_"+kemail.substring(0, kemail.indexOf("@"));
+		session.setAttribute("sessionKid", kId);
+		kakaoDto.setId(kId);
+		kakaoDto.setName(kname);
 //			mav.addObject("kemail", kemail);
 //			mav.addObject("kname", kname); 
 //			mav.addObject("kimage", kimage); 
@@ -387,6 +395,12 @@ public class HomeController {
 //			mav.addObject("kbirthday", kbirthday); 
 //			mav.addObject("kage", kage); 
 		System.out.println(kname);
+		System.out.println(kakaoDto.toString());
+		if(ser.socialIdCheckAction(kakaoDto)>0) {
+			// login성공.
+		} else {
+			ser.insertNaverAction(kakaoDto);
+		}
 
 //			mav.setViewName("redirect:/L_index"); 
 //		return mav; 
@@ -428,8 +442,10 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/editInfo")
-	public String editPass() {
-
+	public String editPass(HttpSession session, String id,Model model) {
+		MemberDto editDto = ser.userInfoAction(id);
+		model.addAttribute("editDto",editDto);
+		session.setAttribute("loginId", id);
 		return "editInfo";
 	}
 
@@ -471,9 +487,14 @@ public class HomeController {
 
 	@RequestMapping("/editMypage")
 	public String editMypage(@ModelAttribute("dto") MemberDto dto, HttpSession session) {
-		dto.setId((String) session.getAttribute("loginid"));
+		//dto.setId((String) session.getAttribute("loginid"));
+		String encryPassword = Sha256.encrypt(dto.getPw());
+		//String encryPassword1 = Sha256.encrypt(pwchk);
+		dto.setPw(encryPassword);
 		ser.editMypageAction(dto);
-		return "redirect:/mypage";
+		System.out.println(dto.getId());
+		System.out.println("컨트롤러:"+dto.toString());
+		return "redirect:/index";
 	}
 
 	@RequestMapping("/memberDeletePage")
@@ -525,6 +546,14 @@ public class HomeController {
 			e.printStackTrace();
 			return "SuggestionsEmail";
 		}
+	}
+	
+	@RequestMapping("/redirect/index")
+	public String redirectingToOriginal() {
+		System.out.println("들어왔음...ayo city");
+		
+		return "index";
+		
 	}
 	
 

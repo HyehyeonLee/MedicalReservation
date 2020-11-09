@@ -4,6 +4,11 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style>
+#btn{
+	margin:350px;
+}
+</style>
 <title>LOGIN</title>
 </head>
 <body>
@@ -41,9 +46,10 @@ pageEncoding="UTF-8"%>
 </c:otherwise>
 </c:choose>
 </center>
-
-<button onclick="location.href='L_idsearch'">아이디찾기</button>
-<button onclick="location.href='L_pwsearch'">비밀번호찾기</button>
+<span id=btn>
+	<button onclick="location.href='L_idsearch'">아이디찾기</button>
+	<button onclick="location.href='L_pwsearch'">비밀번호찾기</button>
+</span>
 
 <!-- 
 <form action="joinform">

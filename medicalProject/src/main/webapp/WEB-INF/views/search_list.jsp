@@ -42,9 +42,78 @@
 		font-size: 20px;
 		text-align: center;
 	}
-	
+	#consult {
+		float:right;
+		right:-50px;
+		position: absolute;
+		height: 400px;
+		top: 10px;
+		cursor:pointer;
+	}
+	#scrollTop {
+	    position: fixed;
+	    right: 2%;
+	    bottom: 50px;
+	    display: none;
+	    z-index: 999;
+	    width:35px;
+	    height:35px;
+	    cursor:pointer;
+	}
+
+
+
 </style>
 <script>
+//상담버튼 따라다니게 하는 제이쿼리
+$(document).ready(function() {
+
+	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+	var floatPosition = parseInt($("#consult").css('top'));
+	// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+
+	$(window).scroll(function() {
+		// 현재 스크롤 위치를 가져온다.
+		var scrollTop = $(window).scrollTop();
+		var newPosition = scrollTop + floatPosition + "px";
+
+		/* 애니메이션 없이 바로 따라감
+		 $("#floatMenu").css('top', newPosition);
+		 */
+
+		$("#consult").stop().animate({
+			"top" : newPosition
+		}, 500);
+
+	}).scroll();
+});
+
+//스크롤탑
+	
+	$(function() {
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 500) {
+                $('#scrollTop').fadeIn();
+            } else {
+                $('#scrollTop').fadeOut();
+            }
+        });
+         
+        $("#scrollTop").click(function() {
+            $('html, body').animate({
+                scrollTop : 0
+            }, 400);
+            return false;
+        });
+    });
+
+
+
+
+
+
+
+
 	$(function(){
 		var input_option = '${search_option}'; //이전 페이지에서 선택한 검색 옵션을 세팅
 		if(input_option == "all"){
@@ -132,6 +201,16 @@
 
 </c:otherwise>
 	</c:choose>
+	<div class="chat-doot">
+		<svg width="50px" height="50px" float="right" viewBox="0 0 16 16" id="consult" onclick="nwindow();" class="bi bi-chat-dots-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+	 		<path fill-rule="evenodd" d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+		</svg>
+	</div>
+	<div class="scrolltop">
+	<svg width="1em" height="1em" viewBox="0 0 16 16" id="scrollTop" class="bi bi-arrow-up-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  		<path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 11.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+	</svg>
+	</div>
 </div>
 	<div class="footer">	
 		<%@ include file="./footer.jsp"%>
