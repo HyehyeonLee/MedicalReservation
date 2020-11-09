@@ -58,7 +58,16 @@
         <div class = "sub-menu">      
             <ul>
 				<li>${sessionId }님 환영합니다</li>
-				<li><a href="${pageContext.request.contextPath }/logout">로그아웃</a></li>              
+				<li><a href="${pageContext.request.contextPath }/logout">로그아웃
+				<svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-door-open-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2v13h1V2.5a.5.5 0 0 0-.5-.5H11zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
+</svg>
+				</a></li>             
+        <li><a href="${pageContext.request.contextPath }/mypage">마이페이지
+				<svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-file-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11z"/>
+</svg>
+				</a></li>    
             </ul>
         </div>
 </c:if> 
@@ -67,8 +76,17 @@
         <div class = "sub-menu">      
             <ul> 	
             	<li>${kname }님 환영합니다</li>
-            	<li><a href="${pageContext.request.contextPath }/logout">로그아웃</a></li>    
+            	<li><a href="${pageContext.request.contextPath }/logout">로그아웃
+				<svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-door-open-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path fill-rule="evenodd" d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2v13h1V2.5a.5.5 0 0 0-.5-.5H11zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
+</svg>
+				</a></li> 
 				
+        <li><a href="${pageContext.request.contextPath }/mypage">마이페이지
+			<svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-file-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  				<path fill-rule="evenodd" d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm-1 7a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 4c2.623 0 4.146.826 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-1.245C3.854 11.825 5.377 11 8 11z"/>
+			</svg>
+				</a></li>    
             </ul>
         </div>
 </c:if> 

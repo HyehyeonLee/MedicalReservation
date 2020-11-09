@@ -53,6 +53,7 @@ public class MemberDaoImpl implements MemberDao {
 	@Override
 	public void editMypage(MemberDto dto) {
 		sqlSession.update("com.medical.mapper.memberMapper.editMypage",dto);
+		System.out.println("다오:"+dto.toString());
 	}
 
 	@Override
