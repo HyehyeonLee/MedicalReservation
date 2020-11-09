@@ -6,24 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 정보 수정</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <style>
-#consult{
-	float: right;
-    position: relative;
-    right: 70px;
-    top: 283px;
-    position: fixed;
-    right: 67px;
-    margin-top: 157px;
-    cursor:pointer;
-}
-
-.sub-title {
-	padding: 20px;
-	color: #5c5c5c;
-}
-
+	p{
+		text-align:center;
+		font-weight:lighter;
+	}
 </style>
 <body>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -107,31 +99,57 @@ try{
 <div class="header">
 		<%@ include file="./header.jsp"%>
 </div>
-<div class="content">
 
-<h2 class="sub-title">회원 정보 수정</h2>
-<form action="${pageContext.request.contextPath}/editPass" method="post" onsubmit = "return confirm('회원정보를 수정하시겠습니까?');">
-	아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${dto.id}"/><br/>
-	새로운 패스워드 :<input type="password" name="pw" required = ""><br/>
-	새로운 패스워드 확인 :<input type="password" name="pwchk" required = "" /><br/>
-	주소 :<input type="text" id="postcode" name="postcode" value="${dto.postcode} "readonly="readonly"/>
-	<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br/>
-	<input type="text" id="addr" name="addr" value="${dto.addr}" readonly="readonly"/><br/>
-	상세주소 :<input type="text" id="detailAddress" name="detailAddress" value="${dto.detailAddress}" ><br/>
-	참고사항 :<input type="text" id="extraAddress" name="extraAddress" value="${dto.extraAddress}" readonly="readonly"/><br/>
-	이메일 :<input type="text" id="email" name="email" value="${dto.email }"/><br/>
-	휴대전화 :<input type="text" id="tel" name="tel" value="${dto.tel}"/><br/>
-	<input type="submit" value="수정">
-</form>
+<div class="container" style="margin-top:145px; width:35%;">
 
-	<button type="submit" onclick="location.href='memberDeletePage'">회원탈퇴</button>
+<table class="table table-bordered table-sm" style="font-family:monospace;">
+
+	<form action="${pageContext.request.contextPath}/editPass" method="post" onsubmit = "return confirm('회원정보를 수정하시겠습니까?');">
+		
+		<tr><p class="text-secondary">회원 정보 수정</p></tr>
+			<tr>
+				<td>아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${dto.id}"/></td>
+			</tr>
+			<tr>
+				<td>새로운 패스워드 :<input type="password" name="pw" required = ""></td>
+			</tr>
+			<tr>
+				<td>새로운 패스워드 확인 :<input type="password" name="pwchk" required = "" /></td>
+			</tr>
+			<tr>
+				<td>주소 :<input type="text" id="postcode" name="postcode" value="${dto.postcode} "readonly="readonly"/>
+				<input type="button" class="btn btn-secondary" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="font-size:x-small";>
+				<tr>
+				<td>기본주소:<input type="text" id="addr" name="addr" value="${dto.addr}" readonly="readonly"/></td>
+				</tr>
+			</tr>
+			<tr>
+				<td>상세(동/호) :<input type="text" id="detailAddress" name="detailAddress" value="${dto.detailAddress}" ></td>
+			</tr>
+			<tr>
+				<td>참고사항 :<input type="text" id="extraAddress" name="extraAddress" value="${dto.extraAddress}" readonly="readonly"/></td>
+			</tr>
+			<tr>
+				<td>이메일 :<input type="text" id="email" name="email" value="${dto.email }"/></td>
+			</tr>
+			<tr>
+				<td>휴대전화 :<input type="text" id="tel" name="tel" value="${dto.tel}"/></td>
+			</tr>
+			<tr>	
+			<td><input type="submit" value="수정" class="btn btn-outline-primary" style="margin-left:150px; font-size:x-small;"/>
+			<button type="submit" class="btn btn-outline-info" onclick="location.href='memberDeletePage'" style="font-size:x-small;">회원탈퇴</button></td>
+			</tr>
+	</form>
+</table>
+</div>	
 	<div class="chat-doot">
-		<svg width="50px" height="50px" float="right" viewBox="0 0 16 16" id="consult" onclick="nwindow();" class="bi bi-chat-dots-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+		<svg width="50px" height="50px" style="float:right;" viewBox="0 0 16 16" id="consult" onclick="nwindow();" class="bi bi-chat-dots-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 	 		<path fill-rule="evenodd" d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
 		</svg>
 	</div>
-</div>
-<div class="footer">
+
+
+<div class="footer" style="margin-bottom:-190px;">
 		<%@ include file="./footer.jsp"%>
 </div>
 </body>
