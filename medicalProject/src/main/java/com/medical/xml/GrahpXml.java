@@ -19,8 +19,9 @@ import com.medical.dto.GrahpDto;
 //시작 날짜와 끝날짜의 확진자 그래프 불러오는 페이지
 public class GrahpXml {
 	static String getTagValue(String tag, Element eElement) {
-		   if(eElement.getElementsByTagName(tag).item(0)==null) System.out.println("getTagValue()에서 null!");
-		   System.out.println("tag:" + tag + "/length:" + eElement.getElementsByTagName(tag).getLength());
+		   if(eElement.getElementsByTagName(tag).item(0)==null);
+		   //System.out.println("getTagValue()에서 null!")
+		   //System.out.println("tag:" + tag + "/length:" + eElement.getElementsByTagName(tag).getLength());
 	  		 NodeList nList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
 	   
 	   Node nValue = (Node) nList.item(0);
