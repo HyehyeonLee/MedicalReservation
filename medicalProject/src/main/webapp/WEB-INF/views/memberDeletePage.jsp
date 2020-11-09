@@ -14,9 +14,9 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			// 취소
-			$(".cencle").on("click", function(){
+			$("#cancel").on("click", function(){
 				
-				location.href = "/";
+				location.href = "/www/index";
 						    
 			})
 		
@@ -46,7 +46,7 @@
 				
 				<div class="form-group has-feedback">
 					<button class="btn btn-success" type="submit" id="submit">회원탈퇴</button>
-					<button class="cencle btn btn-danger" type="button">취소</button>
+					<button class="cencle btn btn-danger" type="button" id="cancel">취소</button>
 				</div>
 			</form>
 			<div>

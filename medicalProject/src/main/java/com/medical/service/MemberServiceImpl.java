@@ -66,6 +66,7 @@ public class MemberServiceImpl implements MemberService{
 
 	@Override
 	public void editMypageAction(MemberDto dto) {
+		System.out.println("service " + dto.toString());
 		dao.editMypage(dto);
 	}
 
