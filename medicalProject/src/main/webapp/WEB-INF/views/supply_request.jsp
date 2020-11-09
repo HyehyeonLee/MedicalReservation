@@ -53,6 +53,14 @@ ul{
 	box-shadow: 2px 2px 2px 2px #8c8c8c;
 }
 
+#consult {
+	float:right;
+	right:-60px;
+	position: absolute;
+	height: 400px;
+	top: 10px;
+	cursor:pointer;
+}
 </style>
 <script>
 	var sum = 0;
@@ -64,12 +72,6 @@ ul{
 	var totalArray = new Array(titleArray.length);
 	totalArray.fill(0);
 
-//함수 form action페이지로의 이동을 막고 로그인 페이지로 이동.
-function goToLoginPage() {
-	alert("로그인이 필요한 서비스입니다. 로그인 후 이용 부탁드립니다.");
-	//location.href="${pageContext.request.contextPath }/L_loginform";
-}
-	
 //상품명을 매개변수로 받아 배열의 인덱스를 구함
 function getIndex(title){
 	var index;
@@ -215,6 +217,29 @@ $(function(){
 				});
 			});
 
+//상담버튼 따라다니게 하는 제이쿼리
+$(document).ready(function() {
+
+	// 기존 css에서 플로팅 배너 위치(top)값을 가져와 저장한다.
+	var floatPosition = parseInt($("#consult").css('top'));
+	// 250px 이런식으로 가져오므로 여기서 숫자만 가져온다. parseInt( 값 );
+
+	$(window).scroll(function() {
+		// 현재 스크롤 위치를 가져온다.
+		var scrollTop = $(window).scrollTop();
+		var newPosition = scrollTop + floatPosition + "px";
+
+		/* 애니메이션 없이 바로 따라감
+		 $("#floatMenu").css('top', newPosition);
+		 */
+
+		$("#consult").stop().animate({
+			"top" : newPosition
+		}, 500);
+
+	}).scroll();
+});
+		
 </script>
 </head>
 <body>
@@ -224,15 +249,7 @@ $(function(){
 	<div class="content">
 		<h2 class="sub-title">구호 물품 신청</h2>
 		<br />
-			<c:choose>
-				<c:when test="${empty dto.id && empty sessionId && empty kname}">
-					<form action="${pageContext.request.contextPath }/L_loginform" onsubmit="goToLoginPage()" method="get">
-					<!-- 무슨짓을 해도 로그인 페이지로 넘어갈거임 -->
-				</c:when>
-				<c:otherwise>
-					<form action="${pageContext.request.contextPath }/supply/address" method="get">
-				</c:otherwise>
-			</c:choose>
+		<form action="${pageContext.request.contextPath }/supply/address" method="get">
 		<input type="hidden" name="id" value="${dto.id }" />
 				<ul>
 				<c:forEach var="supply" items="${supply }">
@@ -268,9 +285,9 @@ $(function(){
 
 
 			
-			  <input type="submit" id="next" value="다음" class="btn btn-primary"
-				style="float: right;" />
-			 	
+			  <input type="submit" id="next" value="다음" class="btn btn-primary" />
+
+
 		</form>
 			<div class="receipt">
 			물품 금액<br />
@@ -279,19 +296,17 @@ $(function(){
 			<span style="float : right;">/100,000</span>
 			</div>
  		<br /> <br />
+		<br /> <br />
+		<!-- 상담 채팅 아이콘 -->
+		<div class="chat-doot">
+		<svg width="50px" height="50px" float="right" viewBox="0 0 16 16" id="consult" onclick="nwindow();" class="bi bi-chat-dots-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+	 		<path fill-rule="evenodd" d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+		</svg>
+	</div>
 	</div>
 <div class="footer">
 	<%@ include file = "./footer.jsp" %>
 </div>
 </body>
+
 </html>
-<%--
-	<c:if test="${empty dto.id && empty sessionId && empty kname}">
-		<script>
-		$(document).on('click','#next',function(){
-			alert("로그인이 필요한 서비스입니다. 로그인 후 이용 부탁드립니다.");
-			location.href="${pageContext.request.contextPath }/L_loginform";
-		});
-		</script>
-	</c:if>
- --%>

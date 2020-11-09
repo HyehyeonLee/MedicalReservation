@@ -54,7 +54,7 @@ table tr td a{
 				실시간 상담</a>
 			</td>
 		</tr>
-	</table>	
+	</table>
 </div>
 <div class="footer">
 	<%@ include file="./footer.jsp"%>

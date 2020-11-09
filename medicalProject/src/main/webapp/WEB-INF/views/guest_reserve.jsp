@@ -5,6 +5,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+	#consult{
+		float: right;
+	    position: relative;
+	    right: 70px;
+	    top: 283px;
+	    position: fixed;
+	    right: 60px;
+	    margin-top: 90px;
+	    cursor:pointer;
+	}
+</style>
 <meta charset="UTF-8">
 <title>예약 정보 조회</title>
 <script>
@@ -86,6 +98,12 @@
 	<input type="submit" value="예약완료" class = "submitBtn btn btn-success" style="float : right;"/>
 </form>
 <div style="height : 50px;"></div>
+		<!-- 상담 채팅 아이콘 -->
+		<div class="chat-doot">
+		<svg width="50px" height="50px" float="right" viewBox="0 0 16 16" id="consult" onclick="nwindow();" class="bi bi-chat-dots-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+	 		<path fill-rule="evenodd" d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+		</svg>
+	</div>
 </div>
 	<div class="footer">
 		<%@ include file="./footer.jsp"%>

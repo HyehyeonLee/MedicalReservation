@@ -84,9 +84,9 @@
 	String detailAddress = "abd";
 try{
 	detailAddress = (String)session.getAttribute("loginDetailAddress");
-	System.out.println(detailAddress);
+	//System.out.println("디테일"+detailAddress);
 }catch(Exception e){
-	System.out.println(detailAddress);
+	//System.out.println("디테일"+detailAddress);
 }
 	
 	
@@ -110,17 +110,33 @@ try{
 <div class="content">
 
 <h2 class="sub-title">회원 정보 수정</h2>
-<form action="${pageContext.request.contextPath}/editPass" method="post" onsubmit = "return confirm('회원정보를 수정하시겠습니까?');">
-	아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${dto.id}"/><br/>
-	새로운 패스워드 :<input type="password" name="pw" required = ""><br/>
-	새로운 패스워드 확인 :<input type="password" name="pwchk" required = "" /><br/>
-	주소 :<input type="text" id="postcode" name="postcode" value="${dto.postcode} "readonly="readonly"/>
+<form action="${pageContext.request.contextPath}/editMypage" method="post" onsubmit = "return confirm('회원정보를 수정하시겠습니까?');">
+	<c:if test="${not empty dto.id && empty sessionId && empty kname }">
+	아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${editDto.id}"/><br/>
+	</c:if>
+	<c:if test="${empty dto.id && not empty sessionId && empty kname }">
+	아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${sessionNid}"/><br/>
+	</c:if>
+	<c:if test="${empty dto.id && empty sessionId && not empty kname }">
+	아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${sessionKid}"/><br/>
+	</c:if>
+	새로운 패스워드 :<input type="password" name="pw" ><br/>
+	새로운 패스워드 확인 :<input type="password" name="pwchk" /><br/>
+	주소 :<input type="text" id="postcode" name="postcode" value="${editDto.postcode} "readonly="readonly"/>
 	<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br/>
-	<input type="text" id="addr" name="addr" value="${dto.addr}" readonly="readonly"/><br/>
-	상세주소 :<input type="text" id="detailAddress" name="detailAddress" value="${dto.detailAddress}" ><br/>
-	참고사항 :<input type="text" id="extraAddress" name="extraAddress" value="${dto.extraAddress}" readonly="readonly"/><br/>
-	이메일 :<input type="text" id="email" name="email" value="${dto.email }"/><br/>
-	휴대전화 :<input type="text" id="tel" name="tel" value="${dto.tel}"/><br/>
+	<input type="text" id="addr" name="addr" value="${editDto.addr}" readonly="readonly"/><br/>
+	상세주소 :<input type="text" id="detailAddress" name="detailAddress" value="${editDto.detailAddress}" ><br/>
+	참고사항 :<input type="text" id="extraAddress" name="extraAddress" value="${editDto.extraAddress}" readonly="readonly"/><br/>
+	<c:if test="${not empty dto.id && empty sessionId && empty kname }">
+	이메일 :<input type="text" id="email" name="email" value="${editDto.email }"/><br/>
+	</c:if>
+	<c:if test="${empty dto.id && not empty sessionId && empty kname }">
+	이메일 :<input type="text" id="email" name="email" value="${sessionEmail }"/><br/>
+	</c:if>
+	<c:if test="${empty dto.id && empty sessionId && not empty kemail }">
+	이메일 :<input type="text" id="email" name="email" value="${sessionEmail }"/><br/>
+	</c:if>
+	휴대전화 :<input type="text" id="tel" name="tel" value="${editDto.tel}"/><br/>
 	<input type="submit" value="수정">
 </form>
 
