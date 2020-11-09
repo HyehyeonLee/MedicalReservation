@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>3조 main 페이지</title>
+
 <style>
 .search_div {
 	background-color: #B0E0EA;
@@ -55,7 +56,9 @@ td {
     top: 283px;
 	cursor:pointer;
 }
+
 </style>
+
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="resources/js/Chart.js"></script>
 </head>
@@ -143,6 +146,9 @@ td {
 					style="display: block; margin: 0 auto;"></canvas>
 			</div>
 		</div>
+	<div class="slideDiv" style = "width : 60%; margin : 0 auto; padding-top : 50px; margin-top : 50px; border-top : 1px solid #b8b8b8;">
+		<%@include file = "./slider.jsp" %>
+	</div>
 	</div>
 	
 	<div class="footer">

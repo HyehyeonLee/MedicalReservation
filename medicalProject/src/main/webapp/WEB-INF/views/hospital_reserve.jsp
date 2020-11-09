@@ -6,12 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>예약 정보 입력</title>
-<style>
-.sub-title {
-	padding: 20px;
-	color: #5c5c5c;
-}
-</style>
 </head>
 <body>
 <div class="header">

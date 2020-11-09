@@ -11,7 +11,7 @@
 	.reserveItem{
 		width : 60%;
 		margin : 0 auto;
-		border : 1px solid #8c8c8c;
+		border : 1px solid white;
 		padding : 20px;
 		text-align: center;
 		box-shadow: 5px 5px 5px 5px #8c8c8c;

@@ -44,6 +44,7 @@
 							str += "<br />";
 							$("#timeDiv").append(str);	
 						}
+					$('input:radio[name=hospital_reserve_id]').eq(0).attr("required", true);
 					},
 				error : function(xhr,status,error){
 					alert("code:"+xhr.status+"\n"+"message:"+xhr.responseText+"\n"+"error:"+error);
@@ -52,32 +53,39 @@
 			});
 		}
 </script>
+<style>
+	#timeDiv{
+		padding-top : 20px;
+	}
+</style>
 </head>
 <body>
 <div class="header">
 		<%@ include file="./header.jsp"%>
 	</div>
 <div class="content">
-<h1>${yadmNm }의 예약 가능 정보입니다.</h1>
-<h3>내원 가능한 날짜와 시간을 선택해주세요</h3>	
+<h1 class="sub-title">${yadmNm }의 예약 가능 정보입니다.</h1>
+<h3 class="sub-title" style="padding-top : 0px;">내원 가능한 날짜와 시간을 선택해주세요.</h3>	
 <form action="${pageContext.request.contextPath}/reserve/guestReserve" method="GET" id = "reserveForm">
 <input type="hidden" name="yadmNm" class = "yadmNm"  id = "yadmNm" value = "${ yadmNm}"/>
 <input type="hidden" name="hospital_id" value = "${ hospital_id}" />
-	<select name="date" id="date">
+<input type="hidden" name="guest_id" value="${dto.id }" />
+<br />
+	<select name="date" id="date" class="form-control" style = "width : 30%;" required>
 		<c:forEach var = "dateList" items = "${dateList }">
 			<option value="${dateList }">${dateList }</option>
 		</c:forEach>
 	</select>
-	
+	<br />
 	<input type="button" value="날짜선택" class= "dateBtn btn btn-primary" id = "dateBtn"/>
-	
-	<input type="hidden" name="guest_id" value="${dto.id }" />
+	<div></div>
 	<div id = "timeDiv">
 		
 	</div>
 
-	<input type="submit" value="예약완료" class = "submitBtn btn btn-success"/>
+	<input type="submit" value="예약완료" class = "submitBtn btn btn-success" style="float : right;"/>
 </form>
+<div style="height : 50px;"></div>
 </div>
 	<div class="footer">
 		<%@ include file="./footer.jsp"%>

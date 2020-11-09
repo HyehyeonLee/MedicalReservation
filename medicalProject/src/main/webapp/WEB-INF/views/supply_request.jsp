@@ -23,11 +23,6 @@ ul{
 	list-style: none;
 }
 
-.sub-title {
-	padding: 20px;
-	color: #5c5c5c;
-}
-
 .totalPrice{
 	border : 0px;
 	text-align: center;
@@ -45,6 +40,19 @@ ul{
 	color : black;
 	font-weight: bold;
 }
+
+.receipt{
+	display : inline-block; 
+	float : right; 
+	width : 10%; 
+	border:1px solid white;
+	padding : 10px 20px;
+	position : fixed;
+	top : 150px;
+	right: 30px;
+	box-shadow: 2px 2px 2px 2px #8c8c8c;
+}
+
 </style>
 <script>
 	var sum = 0;
@@ -66,17 +74,24 @@ function getIndex(title){
 	return index;
 }
 
+//천단위 구분 콤마
+//출처: stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function priceCalc(){ //총합계를 구하는 함수
 	sum = 0;
 	for(var i = 0; i<totalArray.length; i++){
 			sum = sum + Number(totalArray[i]);
-			if(sum > 20000){
-				alert("20,000원 이하로 선택 가능합니다.");
+			if(sum > 100000){
+				alert("100,000원 이하로 선택 가능합니다.");
 				return false;
 				}
 		}
-	$(".total").html(sum);
-		return true;
+	
+	$(".total").html(numberWithCommas(sum));
+	return true;
 	}
 
 $(function(){
@@ -88,9 +103,14 @@ $(function(){
 				index = getIndex(title);
 				totalArray[index] = price;
 				
-				if(priceCalc() == false) { 
-					$(this).attr('checked', false );
+				if(priceCalc() == false){
+					$(this).parent().find("input.oneChk").prop("checked", false);
+					var title = $(this).parent().find(".title").html();
+					index = getIndex(title);
+					totalArray[index] = 0;
+					priceCalc();
 				}
+				
 			}else{
 				var title = $(this).parent().find(".title").html();
 				index = getIndex(title);
@@ -110,7 +130,20 @@ $(function(){
 					var title = $(this).parent().find(".title").html();
 					index = getIndex(title);
 					totalArray[index] = $(this).parent().find(".totalPrice").val();
-					priceCalc();
+					
+					if(priceCalc() == false){ //일정 금액 이상일 때 체크 해제
+						$(this).parent().find("input.supplyChk").prop("checked", false);
+						$(this).parent().find(".totalPrice").val($(this).parent().find(".price").val());
+						$(this).parent().find(".qty").attr("disabled","disabled");
+						$(this).parent().find(".qty").val("");
+						$(this).parent().find(".plusBtn").attr("disabled","disabled");
+						$(this).parent().find(".minusBtn").attr("disabled","disabled");
+						var title = $(this).parent().find(".title").html();
+						index = getIndex(title);
+						totalArray[index] = 0;
+						priceCalc();
+					}
+					
 					
 				}else{ //체크박스가 풀리면 수량 조절을 못하게 함(disabled 속성 추가)
 						$(this).parent().find(".totalPrice").val($(this).parent().find(".price").val());
@@ -118,13 +151,10 @@ $(function(){
 						$(this).parent().find(".qty").val("");
 						$(this).parent().find(".plusBtn").attr("disabled","disabled");
 						$(this).parent().find(".minusBtn").attr("disabled","disabled");
-
 						var title = $(this).parent().find(".title").html();
 						index = getIndex(title);
 						totalArray[index] = 0;
 						priceCalc();
-
-						
 				};
 	 	 	});
 
@@ -145,6 +175,7 @@ $(function(){
 								var mul = price * qty;
 								$(this).parent().find(".totalPrice").val(mul);
 								totalArray[index] = mul;
+								$(this).parent().find("input.supplyChk").attr("checked", false);
 								priceCalc();
 							 }
 							$(this).parent().find(".qty").val(qty);
@@ -189,7 +220,6 @@ $(function(){
 		<br />
 		<form action="${pageContext.request.contextPath }/supply/address" method="get">
 		<input type="hidden" name="id" value="${dto.id }" />
-			<div class="supply-wrap">
 				<ul>
 				<c:forEach var="supply" items="${supply }">
 					<li>
@@ -199,9 +229,7 @@ $(function(){
 						<label><c:choose>
 								<c:when test="${supply.plural == 1 }"><!-- 여러 개 선택 가능한 경우 -->
 								<input type="checkbox" value="${supply.code }" class="supplyChk" name="supplyChk"/>
-								<p class="title"><c:out value="${supply.title }" /></p>
-								<%-- <input type="text" class="title" value="${supply.title }" readonly="readonly"/> --%>
-								
+								<span class="title"><c:out value="${supply.title }" /></span>
 								<br />
 									<input type="hidden" name="" class="price" value="${supply.price }" />
 									<input type="text" name="" id="totalPrice" class="totalPrice" value="${supply.price }" readonly="readonly"/><br />
@@ -212,9 +240,10 @@ $(function(){
 								</c:when>
 								<c:when test="${supply.plural == 0 }"><!-- 하나만 선택 가능한 경우 -->
 									<input type="checkbox" value="${supply.code }" class="oneChk" name="supplyChk"/>
-									<p class="title"><c:out value="${supply.title }" /></p>									
+									<span class="title"><c:out value="${supply.title }" /></span>									
 									<input type="hidden" name="" class="price" value="${supply.price }" />
-									<input type="text" name="" id="totalPrice" class="totalPrice" value="${supply.price }" readonly="readonly"/><br />
+									<br />
+									<input type="text" id="totalPrice" class="totalPrice" value="${supply.price }" readonly="readonly"/><br />
 								</c:when>
 							</c:choose> 
 						</label> <br />
@@ -222,13 +251,17 @@ $(function(){
 					</li>
 				</c:forEach>
 					</ul>
-			</div>
-			<span></span>
-			<div class="total"></div>/20,000
-			<input type="submit" value="다음" class="btn btn-primary"
-				style="float: right;" />
+		<br />
+		<br />
+		<input type="submit" value="다음" class="btn btn-primary"
+				style="float: right; margin-bottom : 300px;" />
 		</form>
-		<br /> <br />
+			<div class="receipt">
+			물품 금액<br />
+			<span class="total" style="float : right;">0</span>
+			<br />
+			<span style="float : right;">/100,000</span>
+			</div>
 	</div>
 <div class="footer">
 	<%@ include file = "./footer.jsp" %>
