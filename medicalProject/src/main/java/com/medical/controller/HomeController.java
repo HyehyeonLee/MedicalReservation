@@ -433,6 +433,8 @@ public class HomeController {
 //
 //	  return "kakaosuccess";
 //	}
+	
+	
 	// 로그아웃
 	@RequestMapping(value = "/logout", method = { RequestMethod.GET, RequestMethod.POST })
 	public String logout(HttpSession session) throws IOException {
