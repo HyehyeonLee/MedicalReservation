@@ -9,7 +9,7 @@
 </head>
 <style>
 #consult{
-	float: right;
+   float: right;
     position: relative;
     right: 70px;
     top: 283px;
@@ -20,8 +20,8 @@
 }
 
 .sub-title {
-	padding: 20px;
-	color: #5c5c5c;
+   padding: 20px;
+   color: #5c5c5c;
 }
 
 </style>
@@ -77,78 +77,78 @@
     }
 </script>
 <%
-	String pwchange = (String)request.getAttribute("pwchange");
-	String pwnotequal = (String)request.getAttribute("pwnotequal");
-	String addresschange = (String)request.getAttribute("addresschange");
-	
-	String detailAddress = "abd";
+   String pwchange = (String)request.getAttribute("pwchange");
+   String pwnotequal = (String)request.getAttribute("pwnotequal");
+   String addresschange = (String)request.getAttribute("addresschange");
+   
+   String detailAddress = "abd";
 try{
-	detailAddress = (String)session.getAttribute("loginDetailAddress");
-	//System.out.println("디테일"+detailAddress);
+   detailAddress = (String)session.getAttribute("loginDetailAddress");
+   //System.out.println("디테일"+detailAddress);
 }catch(Exception e){
-	//System.out.println("디테일"+detailAddress);
+   //System.out.println("디테일"+detailAddress);
 }
-	
-	
-	if("mode".equals("pwchange")){
+   
+   
+   if("mode".equals("pwchange")){
 %>
-	<script>alert("비밀번호가 변경되었습니다!");</script>
-<%		
-	}else if("mode".equals("pwnotequal")){
+   <script>alert("비밀번호가 변경되었습니다!");</script>
+<%      
+   }else if("mode".equals("pwnotequal")){
 %>
-	<script>alert("비밀번호가 일치하지않습니다! 다시해주세요!");</script>
-<%	
-	}else if("mode".equals("addresschange")){
+   <script>alert("비밀번호가 일치하지않습니다! 다시해주세요!");</script>
+<%   
+   }else if("mode".equals("addresschange")){
 %>
-	<script>alert("주소가 변경되었습니다!");</script>
-<%		
-	}
+   <script>alert("주소가 변경되었습니다!");</script>
+<%      
+   }
 %>
 <div class="header">
-		<%@ include file="./header.jsp"%>
+      <%@ include file="./header.jsp"%>
 </div>
 <div class="content">
 
 <h2 class="sub-title">회원 정보 수정</h2>
-<form action="${pageContext.request.contextPath}/editMypage" method="post" onsubmit = "return confirm('회원정보를 수정하시겠습니까?');">
-	<c:if test="${not empty dto.id && empty sessionId && empty kname }">
-	아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${editDto.id}"/><br/>
-	</c:if>
-	<c:if test="${empty dto.id && not empty sessionId && empty kname }">
-	아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${sessionNid}"/><br/>
-	</c:if>
-	<c:if test="${empty dto.id && empty sessionId && not empty kname }">
-	아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${sessionKid}"/><br/>
-	</c:if>
-	새로운 패스워드 :<input type="password" name="pw" ><br/>
-	새로운 패스워드 확인 :<input type="password" name="pwchk" /><br/>
-	주소 :<input type="text" id="postcode" name="postcode" value="${editDto.postcode} "readonly="readonly"/>
-	<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br/>
-	<input type="text" id="addr" name="addr" value="${editDto.addr}" readonly="readonly"/><br/>
-	상세주소 :<input type="text" id="detailAddress" name="detailAddress" value="${editDto.detailAddress}" ><br/>
-	참고사항 :<input type="text" id="extraAddress" name="extraAddress" value="${editDto.extraAddress}" readonly="readonly"/><br/>
-	<c:if test="${not empty dto.id && empty sessionId && empty kname }">
-	이메일 :<input type="text" id="email" name="email" value="${editDto.email }"/><br/>
-	</c:if>
-	<c:if test="${empty dto.id && not empty sessionId && empty kname }">
-	이메일 :<input type="text" id="email" name="email" value="${sessionEmail }"/><br/>
-	</c:if>
-	<c:if test="${empty dto.id && empty sessionId && not empty kemail }">
-	이메일 :<input type="text" id="email" name="email" value="${sessionEmail }"/><br/>
-	</c:if>
-	휴대전화 :<input type="text" id="tel" name="tel" value="${editDto.tel}"/><br/>
-	<input type="submit" value="수정">
-</form>
+	<form action="${pageContext.request.contextPath}/editMypage" method="post" onsubmit = "return confirm('회원정보를 수정하시겠습니까?');" class="form" style="width : 60%;">
+	   <c:if test="${not empty dto.id && empty sessionId && empty kname }">
+	   아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${editDto.id}" class="form-control"/><br/>
+	   </c:if>
+	   <c:if test="${empty dto.id && not empty sessionId && empty kname }">
+	   아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${sessionNid}" class="form-control"/><br/>
+	   </c:if>
+	   <c:if test="${empty dto.id && empty sessionId && not empty kname }">
+	   아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${sessionKid}" class="form-control"/><br/>
+	   </c:if>
+	   새로운 패스워드 :<input type="password" name="pw" class="form-control"><br/>
+	   새로운 패스워드 확인 :<input type="password" name="pwchk" class="form-control" /><br/>
+	   <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="btn btn-success"><br/>
+	   주소 :<input type="text" id="postcode" name="postcode" value="${editDto.postcode} "readonly="readonly" class="form-control"/>
+	   <input type="text" id="addr" name="addr" value="${editDto.addr}" readonly="readonly" class="form-control"/><br/>
+	   참고사항 :<input type="text" id="extraAddress" name="extraAddress" value="${editDto.extraAddress}" readonly="readonly" class="form-control"/><br/>
+	   상세주소 :<input type="text" id="detailAddress" name="detailAddress" value="${editDto.detailAddress}" class="form-control"><br/>
+	   <c:if test="${not empty dto.id && empty sessionId && empty kname }">
+	   이메일 :<input type="text" id="email" name="email" value="${editDto.email }" class="form-control"/><br/>
+	   </c:if>
+	   <c:if test="${empty dto.id && not empty sessionId && empty kname }">
+	   이메일 :<input type="text" id="email" name="email" value="${sessionEmail }" class="form-control"/><br/>
+	   </c:if>
+	   <c:if test="${empty dto.id && empty sessionId && not empty kemail }">
+	   이메일 :<input type="text" id="email" name="email" value="${sessionEmail }" class="form-control"/><br/>
+	   </c:if>
+	   휴대전화 :<input type="text" id="tel" name="tel" value="${editDto.tel}" class="form-control"/><br/>
+	   <input type="submit" value="수정" class="btn btn-primary">
+	</form>
 
-	<button type="submit" onclick="location.href='memberDeletePage'">회원탈퇴</button>
-	<div class="chat-doot">
-		<svg width="50px" height="50px" float="right" viewBox="0 0 16 16" id="consult" onclick="nwindow();" class="bi bi-chat-dots-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-	 		<path fill-rule="evenodd" d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
-		</svg>
-	</div>
+   <button type="submit" onclick="location.href='memberDeletePage'" class="btn btn-danger">회원탈퇴</button>
+   <div class="chat-doot">
+      <svg width="50px" height="50px" float="right" viewBox="0 0 16 16" id="consult" onclick="nwindow();" class="bi bi-chat-dots-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM5 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+      </svg>
+   </div>
 </div>
 <div class="footer">
-		<%@ include file="./footer.jsp"%>
+      <%@ include file="./footer.jsp"%>
 </div>
 </body>
 </html>
