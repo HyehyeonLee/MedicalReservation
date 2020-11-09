@@ -20,8 +20,9 @@ import com.medical.dto.GrahpDto;
 //당일 날짜만 불러오는 페이지(누적확진자,격리해제,사망자)
 public class GrahpXml2 {
 	static String getTagValue(String tag, Element eElement) {
-		   if(eElement.getElementsByTagName(tag).item(0)==null) System.out.println("getTagValue()에서 null!");
-		   System.out.println("tag:" + tag + "/length:" + eElement.getElementsByTagName(tag).getLength());
+		   if(eElement.getElementsByTagName(tag).item(0)==null);
+		   //System.out.println("getTagValue()에서 null!");
+		   //System.out.println("tag:" + tag + "/length:" + eElement.getElementsByTagName(tag).getLength());
 	  		 NodeList nList = eElement.getElementsByTagName(tag).item(0).getChildNodes();
 	   
 	   Node nValue = (Node) nList.item(0);

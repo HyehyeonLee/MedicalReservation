@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.medical.mapper.replyMapper">
+	<insert id="writeReply">
+	insert into my_reply (bno , rno , content , writer)values (#{bno},#{rno},#{content},#{writer}) 
+	</insert>
+	
+	<select id="readReply" resultType="com.medical.dto.ReplyDto">
+		select rno , content , writer,reg_date from my_reply where bno=#{bno} 
+	</select>
+	
+	<!-- 댓글 수정 -->
+	<update id="updateReply" parameterType="com.medical.dto.ReplyDto">
+		update my_reply set content=#{content} where rno=#{rno} 
+	</update>
+	
+	<!-- 댓글 삭제 -->
+	<delete id="deleteReply" parameterType="com.medical.dto.ReplyDto">
+		delete from my_reply where rno=#{rno} 
+	</delete>
+	
+	<!-- 선택된 댓글 조회 -->
+	<select id="selectReply" resultType="com.medical.dto.ReplyDto">
+	select bno , rno , content , writer , reg_date from my_reply where rno=#{rno} 
+	</select>
+
+</mapper>
+

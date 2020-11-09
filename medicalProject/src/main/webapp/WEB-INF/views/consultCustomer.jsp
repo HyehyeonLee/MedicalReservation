@@ -7,15 +7,57 @@
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 <body>
-	<form>
-		<button id="btnRequest" type="button" onclick="openSocket();">대화방 참여</button> 
-		<input id="textMessage" type="text" readonly="readonly" onkeydown="return enter()" style="width:280px;">
-		<input onclick="sendMessage()" value="Send" type="button">
-		<button type="button" id="btnQuit" onclick="closeSocket();" style="display:none;">상담 종료</button>
-	</form>
-	<br/>
-	<textarea id="messageTextArea" rows="10" cols="50" disabled="disabled"></textarea>
+
+
+	<div class="wrap">	
+
+		<div class="chat">
+			<form>
+				<div class="form-group">
+					<button id="btnRequest" class="btn btn-outline-primary" type="button" onclick="openSocket();">대화방 참여</button> 
+				</div>
+
+				<div class="form-group">
+					<input id="textMessage" class="form-control" type="text" readonly="readonly" onkeydown="return enter()" style="width:320px; float:left; margin-left:10px; margin-right:10px;">
+				</div>
+	
+				<div class="form-group">
+					<button type="button" class="btn btn-outline-primary" onclick="sendMessage()" value="Send" type="button" style="float:left;">Send</button>
+				</div>
+				
+				<div>
+				<button id="btnQuit" class="btn btn-outline-primary" type="button"  onclick="closeSocket();" style="display:none;">상담 종료</button>
+				</div>
+			</form><br/>
+			<textarea id="messageTextArea" rows="10" cols="50" disabled="disabled"></textarea>
+		</div>
+		
+	</div>
+
+	<style>
+		.chat{
+		    display: block;
+		    margin: 0 auto;
+		    width: 550px;
+		    border: 1px solid black;
+		    margin-top: 200px;
+		    margin-bottom: 200px;
+			}    
+		    #btnRequest{
+		    	font-size:11px;
+		    	float:left;
+		    }
+			#messageTextArea{
+				position: relative;
+				left:90px;
+				top:20px;
+			}
+	</style>
+
 	<script type="text/javascript">
 		var webSocket = new WebSocket("ws://localhost:9096/www/broadsocket");
 		var messageTextArea = document.getElementById("messageTextArea");
@@ -79,14 +121,7 @@
 			    win.close();
 			}else{
 				return "redirect:/soc2/index";
-			}
-
-			
-			//alert("!");
-			//alert("@");
-			//window.open('about:blank','_self').close();	 
-			//window.open('','_self').close();
-						
+			}						
 		} 
 	</script>
 </body>

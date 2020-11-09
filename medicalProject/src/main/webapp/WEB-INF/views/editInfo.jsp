@@ -75,6 +75,39 @@
             }
         }).open();
     }
+
+    function check_pw(){
+        var pw = document.getElementById('pw').value;
+        var SC = ["!","@","#","$","%"];
+        var check_SC = 0;
+
+        
+        if(pw.length < 6 || pw.length>16){
+            window.alert('비밀번호는 6글자 이상, 16글자 이하만 이용 가능합니다.');
+            document.getElementById('pw').value='';
+        }
+        for(var i=0;i<SC.length;i++){
+            if(pw.indexOf(SC[i]) != -1){
+                check_SC = 1;
+            }
+        }
+        if(check_SC == 0){
+            window.alert('!,@,#,$,% 의 특수문자가 들어가 있지 않습니다.')
+            document.getElementById('pw').value='';
+            }
+        
+        if(document.getElementById('pw').value !='' && document.getElementById('pwchk').value!=''){
+            if(document.getElementById('pw').value==document.getElementById('pwchk').value){
+                document.getElementById('check').innerHTML='비밀번호가 일치합니다.'
+                document.getElementById('check').style.color='blue';
+            }
+            else{
+                document.getElementById('check').innerHTML='비밀번호가 일치하지 않습니다.';
+                document.getElementById('check').style.color='red';
+            }
+        }
+    }
+    
 </script>
 <%
    String pwchange = (String)request.getAttribute("pwchange");
@@ -110,35 +143,35 @@ try{
 <div class="content">
 
 <h2 class="sub-title">회원 정보 수정</h2>
-	<form action="${pageContext.request.contextPath}/editMypage" method="post" onsubmit = "return confirm('회원정보를 수정하시겠습니까?');" class="form" style="width : 60%;">
-	   <c:if test="${not empty dto.id && empty sessionId && empty kname }">
-	   아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${editDto.id}" class="form-control"/><br/>
-	   </c:if>
-	   <c:if test="${empty dto.id && not empty sessionId && empty kname }">
-	   아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${sessionNid}" class="form-control"/><br/>
-	   </c:if>
-	   <c:if test="${empty dto.id && empty sessionId && not empty kname }">
-	   아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${sessionKid}" class="form-control"/><br/>
-	   </c:if>
-	   새로운 패스워드 :<input type="password" name="pw" class="form-control"><br/>
-	   새로운 패스워드 확인 :<input type="password" name="pwchk" class="form-control" /><br/>
-	   <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="btn btn-success"><br/>
-	   주소 :<input type="text" id="postcode" name="postcode" value="${editDto.postcode} "readonly="readonly" class="form-control"/>
-	   <input type="text" id="addr" name="addr" value="${editDto.addr}" readonly="readonly" class="form-control"/><br/>
-	   참고사항 :<input type="text" id="extraAddress" name="extraAddress" value="${editDto.extraAddress}" readonly="readonly" class="form-control"/><br/>
-	   상세주소 :<input type="text" id="detailAddress" name="detailAddress" value="${editDto.detailAddress}" class="form-control"><br/>
-	   <c:if test="${not empty dto.id && empty sessionId && empty kname }">
-	   이메일 :<input type="text" id="email" name="email" value="${editDto.email }" class="form-control"/><br/>
-	   </c:if>
-	   <c:if test="${empty dto.id && not empty sessionId && empty kname }">
-	   이메일 :<input type="text" id="email" name="email" value="${sessionEmail }" class="form-control"/><br/>
-	   </c:if>
-	   <c:if test="${empty dto.id && empty sessionId && not empty kemail }">
-	   이메일 :<input type="text" id="email" name="email" value="${sessionEmail }" class="form-control"/><br/>
-	   </c:if>
-	   휴대전화 :<input type="text" id="tel" name="tel" value="${editDto.tel}" class="form-control"/><br/>
-	   <input type="submit" value="수정" class="btn btn-primary">
-	</form>
+   <form action="${pageContext.request.contextPath}/editMypage" method="post" onsubmit = "return confirm('회원정보를 수정하시겠습니까?');" class="form" style="width : 60%;">
+      <c:if test="${not empty dto.id && empty sessionId && empty kname }">
+      아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${editDto.id}" class="form-control"/><br/>
+      </c:if>
+      <c:if test="${empty dto.id && not empty sessionId && empty kname }">
+      아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${sessionNid}" class="form-control"/><br/>
+      </c:if>
+      <c:if test="${empty dto.id && empty sessionId && not empty kname }">
+      아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${sessionKid}" class="form-control"/><br/>
+      </c:if>
+      새로운 패스워드 :<input type="password" id="pw" onchange="check_pw();"class="form-control"><br/>
+      새로운 패스워드 확인 :<input type="password" id="pwchk" onchange="check_pw();" class="form-control" /><br/>
+      <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="btn btn-success"><br/>
+      주소 :<input type="text" id="postcode" name="postcode" value="${editDto.postcode} "readonly="readonly" class="form-control"/>
+      <input type="text" id="addr" name="addr" value="${editDto.addr}" readonly="readonly" class="form-control"/><br/>
+      참고사항 :<input type="text" id="extraAddress" name="extraAddress" value="${editDto.extraAddress}" readonly="readonly" class="form-control"/><br/>
+      상세주소 :<input type="text" id="detailAddress" name="detailAddress" value="${editDto.detailAddress}" class="form-control"><br/>
+      <c:if test="${not empty dto.id && empty sessionId && empty kname }">
+      이메일 :<input type="text" id="email" name="email" value="${editDto.email }" class="form-control"/><br/>
+      </c:if>
+      <c:if test="${empty dto.id && not empty sessionId && empty kname }">
+      이메일 :<input type="text" id="email" name="email" value="${sessionEmail }" class="form-control"/><br/>
+      </c:if>
+      <c:if test="${empty dto.id && empty sessionId && not empty kemail }">
+      이메일 :<input type="text" id="email" name="email" value="${sessionEmail }" class="form-control"/><br/>
+      </c:if>
+      휴대전화 :<input type="text" id="tel" name="tel" value="${editDto.tel}" class="form-control"/><br/>
+      <input type="submit" value="수정" class="btn btn-primary">
+   </form>
 
    <button type="submit" onclick="location.href='memberDeletePage'" class="btn btn-danger">회원탈퇴</button>
    <div class="chat-doot">
