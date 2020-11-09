@@ -51,6 +51,7 @@ ul{
 	top : 150px;
 	right: 30px;
 	box-shadow: 2px 2px 2px 2px #8c8c8c;
+	background-color: white;
 }
 
 #consult {
@@ -71,6 +72,13 @@ ul{
 
 	var totalArray = new Array(titleArray.length);
 	totalArray.fill(0);
+
+
+//함수 form action페이지로의 이동을 막고 로그인 페이지로 이동.
+function goToLoginPage() {
+	alert("로그인이 필요한 서비스입니다. 로그인 후 이용 부탁드립니다.");
+	//location.href="${pageContext.request.contextPath }/L_loginform";
+}	
 
 //상품명을 매개변수로 받아 배열의 인덱스를 구함
 function getIndex(title){
@@ -249,8 +257,17 @@ $(document).ready(function() {
 	<div class="content">
 		<h2 class="sub-title">구호 물품 신청</h2>
 		<br />
-		<form action="${pageContext.request.contextPath }/supply/address" method="get">
-		<input type="hidden" name="id" value="${dto.id }" />
+			<c:choose>
+				<c:when test="${empty dto.id && empty sessionId && empty kname}">
+					<form action="${pageContext.request.contextPath }/L_loginform" onsubmit="goToLoginPage()" method="get">
+					<!-- 무슨짓을 해도 로그인 페이지로 넘어갈거임 -->
+				</c:when>
+				<c:otherwise>
+					<form action="${pageContext.request.contextPath }/supply/address" method="get">
+				</c:otherwise>
+			</c:choose>
+		
+				<input type="hidden" name="id" value="${dto.id }" />
 				<ul>
 				<c:forEach var="supply" items="${supply }">
 					<li>
@@ -285,7 +302,7 @@ $(document).ready(function() {
 
 
 			
-			  <input type="submit" id="next" value="다음" class="btn btn-primary" />
+			  <input type="submit" id="next" value="다음" class="btn btn-primary" style="margin-left:90%;"/>
 
 
 		</form>
