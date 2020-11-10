@@ -15,7 +15,7 @@
 
 	<div class="wrap">	
 
-		<div class="chat">
+		<div class>
 			<form>
 				<div class="form-group">
 					<button id="btnRequest" class="btn btn-outline-primary" type="button" onclick="openSocket();">대화방 참여</button> 
@@ -30,10 +30,10 @@
 				</div>
 				
 				<div>
-				<button id="btnQuit" class="btn btn-outline-primary" type="button"  onclick="closeSocket();" style="display:none;">상담 종료</button>
+				<button id="btnQuit" class="btn btn-outline-primary" type="button"  onclick="closeSocket();" style="display:none; float : left;">상담 종료</button>
 				</div>
 			</form><br/>
-			<textarea id="messageTextArea" rows="10" cols="50" disabled="disabled"></textarea>
+			<textarea id="messageTextArea" rows="10" cols="50" disabled="disabled" style = "resize: none;"></textarea>
 		</div>
 		
 	</div>
