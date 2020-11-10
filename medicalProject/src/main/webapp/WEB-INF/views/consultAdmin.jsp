@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file = "./include_file.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,23 +16,23 @@
 <body>
 	<div>
 		<p>현재 상담 인원 :</p>
-		<input id="nowTalk" readonly="readonly">
+		<input id="nowTalk" readonly="readonly" class="form-control" style = "width : 20%;">
 		<p>현재 대기 인원 :</p>
-		<input id="waitingTalk" readonly="readonly">
-		<button type="button" onclick="nowSituation();">인원 확인</button>
+		<input id="waitingTalk" readonly="readonly" class="form-control" style = "width : 20%;">
+		<button type="button" onclick="nowSituation();" class="btn btn-primary">인원 확인</button>
 	</div>
 	<div class="template" style="display: none">
 		<form>
 			<input type="text" class="message"
 				onkeydown="if(event.keyCode === 13) return false;"
-				style="width: 280px;"> <input value="Send" type="button"
-				class="sendBtn">
-			<button type="button" class="acceptBtn" onclick="acceptSocket();">수락</button>
-			<button type="button" id="btnQuit" onclick="closeSocket();" style="display:none;">상담 종료</button>
+				style="width: 280px;" class="form-control">
+				<input value="Send" type="button" class="sendBtn btn btn-success">
+			<button type="button" class="acceptBtn btn btn-primary " onclick="acceptSocket();">수락</button>
+			<button type="button" id="btnQuit" class="btn btn-warning" onclick="closeSocket();" style="display:none;">상담 종료</button>
 		</form>
 		<br />
 		<textarea rows="10" cols="50" id="console" class="console"
-			disabled="disabled"></textarea>
+			disabled="disabled" style = "resize : none;"></textarea>
 	</div>
 	<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript">

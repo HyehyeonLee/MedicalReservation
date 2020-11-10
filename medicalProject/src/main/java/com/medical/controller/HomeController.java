@@ -382,24 +382,24 @@ public class HomeController {
       session.setAttribute("kgender", kgender);
       session.setAttribute("kbirthday", kbirthday);
       session.setAttribute("kage", kage);
-      MemberDto kakaoDto = new MemberDto();
-      String kId = "k_"+kemail.substring(0, kemail.indexOf("@"));
-      session.setAttribute("sessionKid", kId);
-      kakaoDto.setId(kId);
-      kakaoDto.setName(kname);
+//      MemberDto kakaoDto = new MemberDto();
+//      String kId = "k_"+kemail.substring(0, kemail.indexOf("@"));
+//      session.setAttribute("sessionKid", kId);
+//      kakaoDto.setId(kId);
+//      kakaoDto.setName(kname);
 //         mav.addObject("kemail", kemail);
 //         mav.addObject("kname", kname); 
 //         mav.addObject("kimage", kimage); 
 //         mav.addObject("kgender", kgender); 
 //         mav.addObject("kbirthday", kbirthday); 
 //         mav.addObject("kage", kage); 
-      System.out.println(kname);
-      System.out.println(kakaoDto.toString());
-      if(ser.socialIdCheckAction(kakaoDto)>0) {
-         // login성공.
-      } else {
-         ser.insertNaverAction(kakaoDto);
-      }
+//      System.out.println(kname);
+//      System.out.println(kakaoDto.toString());
+//      if(ser.socialIdCheckAction(kakaoDto)>0) {
+//         // login성공.
+//      } else {
+//         ser.insertNaverAction(kakaoDto);
+//      }
 
 //         mav.setViewName("redirect:/L_index"); 
 //      return mav; 
@@ -502,22 +502,6 @@ public class HomeController {
    public String deletepage() {
       return "memberDeletePage";
    }
-
-   @RequestMapping("/deleteAction")
-   public String deleteAction(MemberDto dto, HttpSession session, RedirectAttributes rttr) {
-      System.out.println(dto.getId());
-      System.out.println(dto.getPw());
-      // MemberDto loginId = (MemberDto)session.getAttribute("loginId");
-//      String sessionPw = loginId.getPw();
-//      String dtoPw = dto.getPw();
-//      if(!(sessionPw.equals(dtoPw))) {
-//         rttr.addFlashAttribute("msg",false);
-//         return "redirect:/memberDeletePage";
-//      }
-      session.invalidate();
-      ser.deleteMemberAction(dto);
-      return "redirect:/index";
-   }
    
    @RequestMapping("/mypage")
    public String mypage() {
@@ -527,26 +511,31 @@ public class HomeController {
    
    @RequestMapping("/suggestionsEmail.do")
    public String emailWrite(HttpSession session) {
-      
-      
          return "SuggestionsEmail";
       
    }
+   
    @RequestMapping("/SuggSend.do")
-   public String send(@ModelAttribute Email dto,Model model,HttpServletRequest request) {
-      try {
-         ser.sendMail(dto);
-         //model.addAttribute("message", "이메일이 발송되었습니다.");
-         request.setAttribute("messageSend", "successSend");
-         //System.out.println("이메일 성공");
-         return "index";
-      }catch(Exception e) {
-         //model.addAttribute("message", "이메일 발송이 실패하였습니다.");
-         request.setAttribute("messageSend", "failSend");
-         //System.out.println("이메일 전송 실패!");
-         e.printStackTrace();
-         return "SuggestionsEmail";
-      }
+	public String send(@ModelAttribute Email dto,Model model,HttpServletRequest request) {
+		//ModelAndView mavv = new ModelAndView();
+			try {
+				ser.sendMail(dto);
+				model.addAttribute("message", "이메일이 발송되었습니다.");
+			
+			}catch(Exception e) {
+				e.printStackTrace();
+				model.addAttribute("message", "이메일 발송이 실패하였습니다.");
+			}
+			return "SuggestionsEmail";
+	}
+   
+   @RequestMapping("/deleteAction")
+   public String deleteAction(MemberDto dto, HttpSession session, RedirectAttributes rttr,Model model) {
+      
+	   	  dto.setPw(Sha256.encrypt(dto.getPw()));
+	      session.invalidate();
+	      ser.deleteMemberAction(dto);
+	      return "redirect:/index";
    }
    
    @RequestMapping("/redirect/index")

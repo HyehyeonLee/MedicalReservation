@@ -25,7 +25,7 @@ class KakaoController {
 	private final static String K_CLIENT_ID = "bea0a692f4a72d26d3b0ee07ffbfc144";
 //이런식으로 REDIRECT_URI를 써넣는다. 
 
-	private final static String K_REDIRECT_URI = "http://localhost:9096/www/login.do";
+	private final static String K_REDIRECT_URI = "http://192.168.4.147:9096/www/login.do";
 
 	public String getAuthorizationUrl(HttpSession session) {
 		String kakaoUrl = "https://kauth.kakao.com/oauth/authorize?" + "client_id=" + K_CLIENT_ID + "&redirect_uri="

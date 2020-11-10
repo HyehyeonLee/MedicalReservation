@@ -39,14 +39,14 @@
 	</div>
 
 	<style>
-		.chat{
+		/* .chat{
 		    display: block;
 		    margin: 0 auto;
 		    width: 550px;
 		    border: 1px solid black;
 		    margin-top: 200px;
-		    margin-bottom: 200px;
-			}
+		    margin-bottom: 200px; 
+			} */
 			    
 		    #btnRequest{
 		    	font-size:11px;
