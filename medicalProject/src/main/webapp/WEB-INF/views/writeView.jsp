@@ -68,7 +68,7 @@
                   </tr>
    
                   <tr>
-                     <td><label for="writer" class="label-control">작성자</label><input type="text"
+                     <td><label for="writer" class="label-control">작성자</label><input type="text" value="${dto.id }"
                         id="writer" name="writer" class="form-control chk" title="작성자를 입력하세요" readonly="readonly"/></td>
                   </tr></br>
                   
@@ -95,6 +95,7 @@
    <div class="footer">
       <%@ include file="./footer.jsp"%>
    </div>
+
 
    <style>
       .outLine{
