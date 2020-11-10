@@ -100,10 +100,12 @@ $(document).ready(function() {
         });
          
         $("#scrollTop").click(function() {
-            $('html, body').animate({
-                scrollTop : 0
-            }, 400);
-            return false;
+//            alert("!");
+            $(window).scrollTop(0);
+            /*   $("body").animate({
+                scrollTop : '0px'
+            }, 0, 'linear');
+            return false */;
         });
     });
 
