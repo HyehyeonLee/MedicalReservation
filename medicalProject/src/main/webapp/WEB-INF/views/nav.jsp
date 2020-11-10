@@ -21,7 +21,7 @@ function goToLoginPage() {
 
    <!-- 로그인전 페이지 -->
       <c:if test="${empty dto.id && empty sessionId && empty kname}">      <!-- 일반로그인,네이버,카카오 로그인 정보가 null값일 때 -->
-          <div class ="">      
+          <div class ="sub-menu">      
                   <ul>             
                   <a href="${pageContext.request.contextPath}/list" style="font-size:20px;">목록 </a>      
                   </ul>
@@ -29,8 +29,8 @@ function goToLoginPage() {
       </c:if>   
       
       <!-- 로그인 성공시 페이지 -->
-      <c:if test="${!empty dto.id || !empty sessionId || !empty kname} ">            <!-- 일반로그인 정보가 담겨져있을 때 -->
-              <div class = "">      
+      <c:if test="${!empty dto.id} ">            <!-- 일반로그인 정보가 담겨져있을 때 -->
+              <div class = "sub-menu">      
                   <ul>    
                   <a href="${pageContext.request.contextPath}/list" style="font-size:20px;">목록 /</a>      
                   <a href="${pageContext.request.contextPath}/writeView" style="font-size:20px;">글쓰기</a>      
