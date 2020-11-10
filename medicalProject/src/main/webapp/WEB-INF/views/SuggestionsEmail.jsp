@@ -71,7 +71,7 @@
 		</form>
 		<span style="color:red;">${message}</span>
 		<button id="goMain" onclick="location.href='${pageContext.request.contextPath}/index'" style="display:none;" class="btn btn-success">메인으로</button>
-		<c:if test="${message eq '이메일이 발송되었습니다.'}">
+		<c:if test="${message eq '이메일이 발송되었습니다.  '}">
 		<script>
 			$('#sBtn').css('display','none');
 			$('#goMain').css('display','block');
