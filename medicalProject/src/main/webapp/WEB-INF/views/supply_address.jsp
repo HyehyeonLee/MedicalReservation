@@ -56,7 +56,7 @@
 			<p>상기된 주소가 맞습니까?</p>
 			<br />
 			<input type="button" value="예(물품 신청 완료)" id="okBtn" class="btn btn-primary"/>
-			<input type="button" value="아니오(주소지 수정)" class="btn btn-danger" onclick="location.href='${pageContext.request.contextPath}/editInfo'"/>
+			<input type="button" value="아니오(주소지 수정)" class="btn btn-danger" onclick="location.href='${pageContext.request.contextPath}/editInfo?id=${dto.id}'"/>
 		</div>
 </c:if>
 		<!-- 상담 채팅 아이콘 -->
