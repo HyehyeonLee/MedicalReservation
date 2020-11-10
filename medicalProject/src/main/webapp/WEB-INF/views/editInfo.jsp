@@ -153,8 +153,8 @@ try{
       <c:if test="${empty dto.id && empty sessionId && not empty kname }">
       아이디 : <input type="text" id="id" name="id" readonly="readonly" value="${sessionKid}" class="form-control"/><br/>
       </c:if>
-      새로운 패스워드 :<input type="password" id="pw" onchange="check_pw();"class="form-control"><br/>
-      새로운 패스워드 확인 :<input type="password" id="pwchk" onchange="check_pw();" class="form-control" /><br/>
+      새로운 패스워드 :<input type="password" name="pw" id="pw" onchange="check_pw();"class="form-control"><br/>
+      새로운 패스워드 확인 :<input type="password" id="pwchk" onchange="check_pw();" class="form-control" /><span id="check"></span><br/>
       <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="btn btn-success"><br/>
       주소 :<input type="text" id="postcode" name="postcode" value="${editDto.postcode} "readonly="readonly" class="form-control"/>
       <input type="text" id="addr" name="addr" value="${editDto.addr}" readonly="readonly" class="form-control"/><br/>

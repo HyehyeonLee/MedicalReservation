@@ -13,10 +13,11 @@
 </div>
 <div class="content">
 <h2 class="sub-title">예약 정보 입력</h2>
-		<form action="${pageContext.request.contextPath }/reserve/ReserveInfo" method="post">
+		<form action="${pageContext.request.contextPath }/reserve/ReserveInfo" method="post" style="width : 50%;">
 			<input type="hidden" name="hospital_id" value="${dto.id }" /> <input
-				type="date" name="date" id="date" /><br /> <input type="time"
-				name="time" id="time" /><br /> <input type="submit" value="작성" />
+				type="date" name="date" id="date" class="form-control"/><br /> 
+				<input type="time" name="time" id="time" class="form-control"/><br />
+				<input type="submit" value="작성" class="btn btn-primary"/>
 		</form>
 	</div>
 <div class="footer">

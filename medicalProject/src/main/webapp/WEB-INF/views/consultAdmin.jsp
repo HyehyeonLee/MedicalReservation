@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>실시간 상담 :: 기관</title>
 <style>
 .float-left {
 	float: left;

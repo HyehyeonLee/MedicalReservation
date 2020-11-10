@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>실시간 상담 :: 회원</title>
 <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -46,7 +46,8 @@
 		    border: 1px solid black;
 		    margin-top: 200px;
 		    margin-bottom: 200px;
-			}    
+			}
+			    
 		    #btnRequest{
 		    	font-size:11px;
 		    	float:left;

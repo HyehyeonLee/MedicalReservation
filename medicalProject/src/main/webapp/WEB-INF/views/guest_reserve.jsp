@@ -84,6 +84,7 @@
 <input type="hidden" name="guest_id" value="${dto.id }" />
 <br />
 	<select name="date" id="date" class="form-control" style = "width : 30%;" required>
+		<option value="">날짜 선택해주세요</option>
 		<c:forEach var = "dateList" items = "${dateList }">
 			<option value="${dateList }">${dateList }</option>
 		</c:forEach>

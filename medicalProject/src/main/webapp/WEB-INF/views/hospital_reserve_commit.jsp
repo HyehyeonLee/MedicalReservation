@@ -1,15 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@include file = "./include_file.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>예약 정보 입력</title>
 </head>
 <body>
-	<h1>예약 정보 등록 완료</h1>
-	<p>${dto.hospital_id }</p>
-	<p>${dto.date }</p>
-	<p>${dto.time }</p>
+<div class="header">
+	<%@ include file = "./header.jsp" %>
+</div>
+<div class = "content">
+	<h1 class="sub-title">예약 정보가 등록되었습니다.</h1>
+	<p class="sub-title" style = "padding : 5;">&nbsp;&nbsp;${reserveDto.date }</p>
+	<p class="sub-title"  style = "padding : 5;">&nbsp;&nbsp;${reserveDto.time }</p>
+	<br />
+	<input type="button" value="이전으로" onclick="history.go(-1);" class="btn btn-success"/>
+</div>
+<div class="footer">
+	<%@ include file = "./footer.jsp" %>
+</div>
 </body>
 </html>

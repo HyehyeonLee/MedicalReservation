@@ -62,7 +62,7 @@ public class ReserveController {
 	public String reserve(HospitalReserveDto dto, Model model) {
 		//병원 측에서 예약 정보를 입력
 		reService.insertReserveInfo(dto);
-		model.addAttribute("dto", dto);
+		model.addAttribute("reserveDto", dto);
 		return "hospital_reserve_commit";
 	}
 	@RequestMapping(value="/reserveCheck")

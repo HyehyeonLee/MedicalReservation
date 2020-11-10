@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <title>게시판</title>
 <style type="text/css">
 li {
@@ -13,18 +14,26 @@ li {
 	float: left;
 	padding: 6px;
 }
+
+.container{
+			margin-top:150px;
+ 		}
+ 		
+ 	table{
+ 			border-spacing:10px;
+ 			border-collapse: separate;
+ 		}
+ 		
 </style>
 </head>
 <body>
-
 	<div class="header">
 		<%@ include file="./header.jsp"%>
 	</div>
 	
-
-	<div class="container">
+	<div class="content">
 		<header>
-			<h1>게시판</h1>
+			<h1 class="sub-title">게시판</h1>
 		</header>
 			<div class="navPosition">
 				<%@include file="nav.jsp" %>
@@ -104,20 +113,11 @@ li {
 					</ul>
 				</div>
 			</form>
-		</section>
+			</section>
 		<hr />
 	</div>
-
-	
-	<style>
-		.container{
-			margin-top:150px;
- 		}
- 		
- 		table{
- 			border-spacing:10px;
- 			border-collapse: separate;
- 		}
-	</style>
+	<div class="footer">
+		<%@ include file="./footer.jsp"%>
+	</div>
 </body>
 </html>

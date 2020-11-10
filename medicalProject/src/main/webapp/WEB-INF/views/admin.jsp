@@ -22,7 +22,7 @@
 </head>
 <body>
 	<div class="template">
-		<textarea rows="10" cols="50" class="console" disabled="disabled"></textarea>
+		<textarea rows="10" cols="50" class="console" style="resize: none;" disabled="disabled"></textarea>
 	</div>
 	<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript">
