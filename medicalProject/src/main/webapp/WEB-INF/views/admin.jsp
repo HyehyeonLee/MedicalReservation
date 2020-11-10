@@ -32,7 +32,7 @@
 		$(".console").val(log + "(new) " + info + "\n");
 	}
 	
-		var webSocket = new WebSocket("ws://localhost:9096/www/admin");
+		var webSocket = new WebSocket("ws://192.168.4.147:9096/www/admin");
 		webSocket.onopen = function(message){};
 		webSocket.onclose = function(message){};
 		webSocket.onerror = function(message){};

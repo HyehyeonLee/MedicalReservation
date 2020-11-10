@@ -36,7 +36,7 @@
 	<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript">
 		var count = 0; // 대화중인 명 수
-		var webSocket = new WebSocket("ws://localhost:9096/www/admin");
+		var webSocket = new WebSocket("ws://192.168.4.147:9096/www/admin");
 		var acceptS = "상담이 연결되었습니다.";
 		//var bWaiting = false;   // bWating:수락을 기다리는 상황인지 여부. (true:누군가 상담신청해놓고 기다리고 있음.)
 		
