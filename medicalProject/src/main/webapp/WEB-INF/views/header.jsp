@@ -11,12 +11,6 @@
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
   />
-<style>
-	.sub-title {
-		padding: 20px;
-		color: #5c5c5c;
-	}
-</style>
 </head>
 <!-- 로그인전 페이지 -->
 <c:if test="${empty dto.id && empty sessionId && empty kname}">		<!-- 일반로그인,네이버,카카오 로그인 정보가 null값일 때 -->
@@ -148,6 +142,3 @@
 		</script>
 	</c:otherwise>
 </c:choose>
-        
-        
-        

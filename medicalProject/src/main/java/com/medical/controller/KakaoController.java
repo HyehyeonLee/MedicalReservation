@@ -38,7 +38,7 @@ class KakaoController {
 		final List<NameValuePair> postParams = new ArrayList<NameValuePair>();
 		postParams.add(new BasicNameValuePair("grant_type", "authorization_code"));
 		postParams.add(new BasicNameValuePair("client_id", "bea0a692f4a72d26d3b0ee07ffbfc144")); // REST API KEY
-		postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost:9096/www/login.do")); // 리다이렉트 URI
+		postParams.add(new BasicNameValuePair("redirect_uri", "http://192.168.4.147:9096/www/login.do")); // 리다이렉트 URI
 		postParams.add(new BasicNameValuePair("code", autorize_code)); // 로그인 과정중 얻은 code 값
 		final HttpClient client = HttpClientBuilder.create().build();
 		final HttpPost post = new HttpPost(RequestUrl);

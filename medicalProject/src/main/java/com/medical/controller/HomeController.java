@@ -349,62 +349,63 @@ public class HomeController {
    }
 
    @RequestMapping(value = "/login.do", produces = "application/json", method = { RequestMethod.GET,
-         RequestMethod.POST })
-   public String kakaoLogin(@RequestParam("code") String code, HttpServletRequest request,
-         HttpServletResponse response, HttpSession session, Model model) throws Exception {
-      System.out.println(code);
-      // ModelAndView mav = new ModelAndView();
-      // 결과값을 node에 담아줌
-      JsonNode node = KakaoController.getAccessToken(code);
-      System.out.println(node.toString());
-      // accessToken에 사용자의 로그인한 모든 정보가 들어있음
-      JsonNode accessToken = node.get("access_token");
-      // 사용자의 정보
-      JsonNode userInfo = KakaoController.getKakaoUserInfo(accessToken);
-      String kemail = null;
-      String kname = null;
-      String kgender = null;
-      String kbirthday = null;
-      String kage = null;
-      String kimage = null;
-      // 유저정보 카카오에서 가져오기 Get properties
-      JsonNode properties = userInfo.path("properties");
-      JsonNode kakao_account = userInfo.path("kakao_account");
-      kemail = kakao_account.path("email").asText();
-      kname = properties.path("nickname").asText();
-      kimage = properties.path("profile_image").asText();
-      kgender = kakao_account.path("gender").asText();
-      kbirthday = kakao_account.path("birthday").asText();
-      kage = kakao_account.path("age_range").asText();
-      session.setAttribute("kemail", kemail);            //session으로 담아줘야 redirect가 가능
-      session.setAttribute("kname", kname); // 세션 생성      //redirect 해줘야 로그인 후 그래프가 잘 나옴
-      session.setAttribute("kimage", kimage);
-      session.setAttribute("kgender", kgender);
-      session.setAttribute("kbirthday", kbirthday);
-      session.setAttribute("kage", kage);
-//      MemberDto kakaoDto = new MemberDto();
-//      String kId = "k_"+kemail.substring(0, kemail.indexOf("@"));
-//      session.setAttribute("sessionKid", kId);
-//      kakaoDto.setId(kId);
-//      kakaoDto.setName(kname);
-//         mav.addObject("kemail", kemail);
-//         mav.addObject("kname", kname); 
-//         mav.addObject("kimage", kimage); 
-//         mav.addObject("kgender", kgender); 
-//         mav.addObject("kbirthday", kbirthday); 
-//         mav.addObject("kage", kage); 
-//      System.out.println(kname);
-//      System.out.println(kakaoDto.toString());
-//      if(ser.socialIdCheckAction(kakaoDto)>0) {
-//         // login성공.
-//      } else {
-//         ser.insertNaverAction(kakaoDto);
-//      }
+	         RequestMethod.POST })
+	   public String kakaoLogin(@RequestParam("code") String code, HttpServletRequest request,
+	         HttpServletResponse response, HttpSession session, Model model) throws Exception {
+	      System.out.println(code);
+	      // ModelAndView mav = new ModelAndView();
+	      // 결과값을 node에 담아줌
+	      JsonNode node = KakaoController.getAccessToken(code);
+	      System.out.println(node.toString());
+	      // accessToken에 사용자의 로그인한 모든 정보가 들어있음
+	      JsonNode accessToken = node.get("access_token");
+	      // 사용자의 정보
+	      JsonNode userInfo = KakaoController.getKakaoUserInfo(accessToken);
+	      String kemail = null;
+	      String kname = null;
+	      String kgender = null;
+	      String kbirthday = null;
+	      String kage = null;
+	      String kimage = null;
+	      // 유저정보 카카오에서 가져오기 Get properties
+	      JsonNode properties = userInfo.path("properties");
+	      JsonNode kakao_account = userInfo.path("kakao_account");
+	      kemail = kakao_account.path("email").asText();
+	      kname = properties.path("nickname").asText();
+	      kimage = properties.path("profile_image").asText();
+	      kgender = kakao_account.path("gender").asText();
+	      kbirthday = kakao_account.path("birthday").asText();
+	      kage = kakao_account.path("age_range").asText();
+	      session.setAttribute("kemail", kemail);            //session으로 담아줘야 redirect가 가능
+	      session.setAttribute("kname", kname); // 세션 생성      //redirect 해줘야 로그인 후 그래프가 잘 나옴
+	      session.setAttribute("kimage", kimage);
+	      session.setAttribute("kgender", kgender);
+	      session.setAttribute("kbirthday", kbirthday);
+	      session.setAttribute("kage", kage);
+	      System.out.println(kname);
+//	      MemberDto kakaoDto = new MemberDto();
+//	      String kId = "k_"+kemail.substring(0, kemail.indexOf("@"));
+//	      session.setAttribute("sessionKid", kId);
+//	      kakaoDto.setId(kId);
+//	      kakaoDto.setName(kname);
+//	         mav.addObject("kemail", kemail);
+//	         mav.addObject("kname", kname); 
+//	         mav.addObject("kimage", kimage); 
+//	         mav.addObject("kgender", kgender); 
+//	         mav.addObject("kbirthday", kbirthday); 
+//	         mav.addObject("kage", kage); 
+//	      System.out.println(kname);
+//	      System.out.println(kakaoDto.toString());
+//	      if(ser.socialIdCheckAction(kakaoDto)>0) {
+//	         // login성공.
+//	      } else {
+//	         ser.insertNaverAction(kakaoDto);
+//	      }
 
-//         mav.setViewName("redirect:/L_index"); 
-//      return mav; 
-      return "redirect:/index";
-   }// end kakaoLogin()
+//	         mav.setViewName("redirect:/L_index"); 
+//	      return mav; 
+	      return "redirect:/index";
+	   }// end kakaoLogin()
 
 //   @RequestMapping(value = "/login.do")
 //   public String getKakaoSignIn(ModelMap model,@RequestParam("code") String code, HttpSession session) throws Exception {
