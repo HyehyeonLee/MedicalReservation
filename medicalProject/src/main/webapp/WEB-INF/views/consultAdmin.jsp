@@ -28,7 +28,7 @@
 				style="width: 280px;" class="form-control">
 				<input value="Send" type="button" class="sendBtn btn btn-success">
 			<button type="button" class="acceptBtn btn btn-primary " onclick="acceptSocket();">수락</button>
-			<button type="button" id="btnQuit" class="btn btn-warning" onclick="closeSocket();" style="display:none;">상담 종료</button>
+			<!-- <button type="button" id="btnQuit" class="btn btn-warning" onclick="closeSocket();" style="display:none;">상담 종료</button> -->
 		</form>
 		<br />
 		<textarea rows="10" cols="50" id="console" class="console"
@@ -37,8 +37,9 @@
 	<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript">
 		var count = 0; // 대화중인 명 수
-		var webSocket = new WebSocket("ws://localhost:9096/www/admin");
+		var webSocket = new WebSocket("ws://192.168.4.147:9096/www/admin");
 		var acceptS = "상담이 연결되었습니다.";
+		var what = "무엇을 도와드릴까요?";
 		//var bWaiting = false;   // bWating:수락을 기다리는 상황인지 여부. (true:누군가 상담신청해놓고 기다리고 있음.)
 		
 		function nowSituation() {
@@ -62,7 +63,7 @@
 		} */
 
 		webSocket.onopen = function(message) {
-			alert("오픈(admin)");
+			alert("실시간 상담 서버 오픈");
 		};
 
 		webSocket.onclose = function(message) {
@@ -76,7 +77,7 @@
 		webSocket.onmessage = function(message) {
 			if (JSON.parse(message.data).message == "(클라이언트가 나갔음)") {
 				count--;
-				alert("admin:클라이언트가 나갔음. 이제 count:" + count);
+				alert("고객님께서 1:1 상담을 나가셨습니다. 현재 상담 대기인원: " + count);
 			}
 			/* if(JSON.parse(message.data).message == "상담이 요청되었습니다.") {
 				bWaiting = true;
@@ -93,7 +94,7 @@
 				let $div = $("[data-key='" + node.key + "']");
 				let log = $div.find(".console").val();
 				$div.find(".console").val(
-						log + "${dto.id }"+"님께서 " + node.message + "\n");
+						log + "고객님:" + node.message + "\n");
 			} else if (node.status === "bye") {
 				$("[data-key='" + node.key + "']").remove();
 			}
@@ -124,9 +125,9 @@
 		$(document).on("click", ".acceptBtn", function acceptSocket() {
 			count++;
 			if (count <= 4) {
-				alert("count = " + count);
+				alert("현재 상담 중인 인원 = " + count+"명");
 			} else {
-				alert("count :5이상");
+				alert("현재 상담 대기인원 5명 이상");
 			}
 			if (count > 4) {
 				webSocket.send("모든 상담사가 상담중입니다. 잠시후 다시 시도해주세요.");
@@ -141,6 +142,7 @@
 			$div.find(".console").val(log + "(me)=>" + message + "\n");
 			$div.find(".message").val("");
 			webSocket.send(key + "####" + acceptS);
+			webSocket.send(key+"####"+what);
 			$("#btnQuit").css('display', 'block');
 			//alert(key);
 			//alert("admin : " + acceptS);

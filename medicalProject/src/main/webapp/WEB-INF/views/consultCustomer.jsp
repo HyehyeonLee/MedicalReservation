@@ -60,7 +60,7 @@
 	</style>
 
 	<script type="text/javascript">
-		var webSocket = new WebSocket("ws://localhost:9096/www/broadsocket");
+		var webSocket = new WebSocket("ws://192.168.4.147:9096/www/broadsocket");
 		var messageTextArea = document.getElementById("messageTextArea");
 		var accept = "상담이 연결되었습니다.";
 		var talk = "상담이 요청되었습니다.";
@@ -103,7 +103,7 @@
 		};
 		function sendMessage(){
 			let message = document.getElementById("textMessage");
-			messageTextArea.value +="${dto.id}"+ message.value + "\n";
+			messageTextArea.value +="${dto.id}"+"님:"+ message.value + "\n";
 			webSocket.send(message.value);
 			message.value="";
 		}

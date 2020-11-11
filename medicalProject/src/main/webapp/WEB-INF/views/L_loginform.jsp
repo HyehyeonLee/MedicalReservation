@@ -46,9 +46,9 @@ pageEncoding="UTF-8"%>
                      alert("입력하신 아이디 혹은 비밀번호가 다릅니다.");
                      </script>
                   </c:if>
+            </form>
                      <button class="btn btn-outline-primary" style="font-size:13px; margin-left:5px;" onclick="location.href='L_idsearch'">아이디찾기</button>
                      <button class="btn btn-outline-primary" style="font-size:13px; margin-left:5px;" onclick="location.href='L_pwsearch'">비밀번호찾기</button>
-            </form>
             <br>
                <!-- 네이버 로그인 창으로 이동 -->
                <div id="naver_id_login" style="text-align:center"><a href="${url}">

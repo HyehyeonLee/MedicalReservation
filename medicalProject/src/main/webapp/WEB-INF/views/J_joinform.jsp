@@ -163,16 +163,18 @@
             <input type="text" id="postcode" name="postcode" placeholder="우편번호" readonly="readonly" class="form-control" style="width:300px; float:left;" required>
              <button type="button" class="btn btn-outline-primary" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="float:left; font-size:10px;" >우편번호 찾기</button><br/>
             <input type="text" id="addr" name="addr" placeholder="주소" readonly="readonly" class="form-control" style="width:300px; float:left;"><br/>
-            <input type="text" id="extraAddress"name="extraAddress" placeholder="참고항목" readonly="readonly" class="form-control" style="width:300px; float:left;">
-            <input type="text" id="detailAddress"name="detailAddress" placeholder="상세주소" class="form-control" style="width:300px; float:left;"><br />
+            <input type="text" id="extraAddress"name="extraAddress" placeholder="참고항목" readonly="readonly" class="form-control" style="width:300px; float:left;"><br />
+            <input type="text" id="detailAddress"name="detailAddress" placeholder="상세주소" class="form-control" style="width:300px; float:left;"><br /><br />
          </div>
 
-         <div class="form-group" style="margin:5 5 5 5; height:100px;">         
+         <div class="form-group" style="margin:5 5 5 5; height:100px; margin-top : 50px;">
+         <br />
+         <br />     
             <label style="float:left; margin:0;">휴대전화</label><br />
             <input type="text" name="tel" class="form-control" style="width:300px; float:left;" required/><br/>
          </div>
          
-         <div class="form-group" style="margin:5 5 5 5; height:100px;">         
+         <div class="form-group" style="margin:5 5 5 5; height:100px; margin-top : 50px;">         
             <label style="float:left; margin:0;">생년월일</label><br />
             <input type="date" name="birth" class="form-control" style="width:300px; float:left;" required/><br/>
             <input type="hidden" value="guest" name="grade"/>

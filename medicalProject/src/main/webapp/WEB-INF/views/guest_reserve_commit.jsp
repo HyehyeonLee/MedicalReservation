@@ -17,7 +17,7 @@
 	}
 
 	$(function() {
-		webSocket = new WebSocket("ws://localhost:9096/www/broadsocket");
+		webSocket = new WebSocket("ws://192.168.4.147:9096/www/broadsocket");
 
 		webSocket.onopen = function(message) {
 			sendMessage();
