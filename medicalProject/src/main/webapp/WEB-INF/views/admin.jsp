@@ -18,9 +18,14 @@
 		float:left;
 		margin:5px;
 	}
+	
+	.sub-title {
+	padding: 20px;
+}
 </style>
 </head>
 <body>
+	<h3 class="sub-title">${name } 예약 정보 현황</h3>
 	<div class="template">
 		<textarea rows="10" cols="50" class="console" style="resize: none;" disabled="disabled"></textarea>
 	</div>
@@ -32,7 +37,7 @@
 		$(".console").val(log + "(new) " + info + "\n");
 	}
 	
-		var webSocket = new WebSocket("ws://192.168.4.147:9096/www/admin");
+		var webSocket = new WebSocket("ws://localhost:9096/www/admin");
 		webSocket.onopen = function(message){};
 		webSocket.onclose = function(message){};
 		webSocket.onerror = function(message){};

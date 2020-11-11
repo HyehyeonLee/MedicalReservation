@@ -42,7 +42,6 @@
       <%@ include file="./header.jsp"%>
    </div>
 
-
    <div id="root">
       <header>
          <h1 style="margin-left:30px;">게시판</h1>

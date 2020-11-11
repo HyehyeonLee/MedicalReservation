@@ -19,9 +19,11 @@ li {
 			margin-top:150px;
  		}
  		
- 	table{
+ 	.board-table{
  			border-spacing:10px;
  			border-collapse: separate;
+ 			width : 90%;
+ 			margin : 0 auto;
  		}
  		
 </style>
@@ -42,7 +44,7 @@ li {
 		<section id="container">
 			<form role="form" method="get" class="table table-bover"
 				action="${pageContext.request.contextPath}/write">
-				<table>
+				<table class="board-table">
 					<tr>
 						<td style="width:55px; text-align:center;">번호</td>
 						<td style="width:800px; text-align:center;">제목</td>
@@ -53,7 +55,7 @@ li {
 					<c:forEach items="${list}" var="list">
 						<tr>
 							<td style="text-align:center;"><c:out value="${list.bno}" /></td>
-							<td style="text-align:center;">
+							<td style="text-align:left;">
 							<a href="${pageContext.request.contextPath}/readView?bno=${list.bno}&
 										page=${scri.page}&
 										perPageNum=${scri.perPageNum}&
@@ -86,7 +88,7 @@ li {
   						     </span>
   						 </div>
   					</div>
-  						     
+  					   
 				    <script>
 				      function searching(){
 				        $('#searchBtn').click(function() {
@@ -119,5 +121,20 @@ li {
 	<div class="footer">
 		<%@ include file="./footer.jsp"%>
 	</div>
+	<style>         
+      .footer-content ul{
+         height: 30px;
+      }
+      
+      .company{
+          position: relative;
+          left: 480px;
+      }
+      
+      .content{
+         margin-top:150px;
+      }
+   </style>   
+	
 </body>
 </html>

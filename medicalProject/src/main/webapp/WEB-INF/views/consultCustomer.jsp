@@ -60,7 +60,7 @@
 	</style>
 
 	<script type="text/javascript">
-		var webSocket = new WebSocket("ws://192.168.4.147:9096/www/broadsocket");
+		var webSocket = new WebSocket("ws://localhost:9096/www/broadsocket");
 		var messageTextArea = document.getElementById("messageTextArea");
 		var accept = "상담이 연결되었습니다.";
 		var talk = "상담이 요청되었습니다.";

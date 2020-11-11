@@ -17,7 +17,7 @@
 	}
 
 	$(function() {
-		webSocket = new WebSocket("ws://192.168.4.147:9096/www/broadsocket");
+		webSocket = new WebSocket("ws://localhost:9096/www/broadsocket");
 
 		webSocket.onopen = function(message) {
 			sendMessage();
@@ -48,7 +48,7 @@
 			type="hidden" class="hospital_id" value="${hospital_id }" /> <input
 			type="hidden" class="hospital_reserve_id"
 			value="${hospital_reserve_id }" />
-		<h1 class="sub-title">${guest_id }님</h1>
+		<h1 class="sub-title">${dto.name }님</h1>
 		<h1 class="sub-title" style="padding-top : 0px">${ yadmNm} 예약 완료 되었습니다.</h1>
 		<div style ="padding-left : 20px;">
 		<input type="button" value="메인화면" onclick="location.href='${pageContext.request.contextPath}/index'" class = "btn btn-info"/>

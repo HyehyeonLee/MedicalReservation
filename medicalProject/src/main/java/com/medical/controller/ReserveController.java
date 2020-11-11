@@ -43,11 +43,11 @@ public class ReserveController {
 	}
 	
 	@RequestMapping(value = "/admin")
-	public String admin(String id, Model model) {
+	public String admin(String id, String name, Model model) {
 		List<GuestReserveDto1> list = reService.getGuestReserveAction(id);	//예약현황 불러오는 sql컬럼이 섞여있어서 새로운 Dto1을 만들어서  사용
 		model.addAttribute("dto", reService.getGuestReserveAction(id));
 		//병원 측에서 예약 정보를 불러옴
-		
+		model.addAttribute("name", name);
 		model.addAttribute("dto", list);
 		model.addAttribute("id", id);
 		return "admin";

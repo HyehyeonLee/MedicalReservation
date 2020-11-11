@@ -12,6 +12,7 @@
 	<%@ include file="./header.jsp"%>
 </div>
 <div class="content">
+<br />
 <h2 class="sub-title">예약 정보 입력</h2>
 		<form action="${pageContext.request.contextPath }/reserve/ReserveInfo" method="post" style="width : 50%;">
 			<input type="hidden" name="hospital_id" value="${dto.id }" /> <input
