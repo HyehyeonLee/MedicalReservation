@@ -8,7 +8,8 @@
 <a href = "https://github.com/Sangkun-svg" target = "_blank">김상혁</a>,
 박현) <br />
 프로젝트 설계서 PPT : https://url.kr/tu1jcz (google drive link)<br />
-완성 PPT : https://url.kr/v3ekb4 (google drive link)
+완성 PPT : https://url.kr/v3ekb4 (google drive link) PPT 미리 보기🔽<br /><br />
+<img src = "https://github.com/HyehyeonLee/MedicalReservation/blob/main/medicalProject/src/main/webapp/resources/img/medicalppt.jpg" style="align : center; width : 100%;">
 
 ## 1. 개요
 2020년 1월 국내 코로나 19 확진자 첫 발생 당시 진료소 예약 관련 체계가 잡혀있지 않아 진료소 현장 대기 시간과 질병 관리 본부 통화 대기 시간이 증가했습니다.<br />
